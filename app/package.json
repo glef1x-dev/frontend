@@ -1,0 +1,58 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@7.14.0",
+  "scripts": {
+    "start": "vite serve",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "echo \"Not implemented\"; exit 1"
+  },
+  "dependencies": {
+    "@babel/runtime": "~7.19.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "~5.10.9",
+    "@mui/lab": "~5.0.0-alpha.106",
+    "@mui/material": "~5.10.12",
+    "@octokit/auth-token": "~3.0.2",
+    "@octokit/rest": "~19.0.5",
+    "@tanstack/react-query": "~4.10.3",
+    "axios": "~1.0.0",
+    "custom-cursor-react": "^1.0.5",
+    "gsap": "^3.11.3",
+    "moment": "^2.29.4",
+    "notistack": "~2.0.8",
+    "prop-types": "^15.8.1",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "react-lazy-load-image-component": "^1.5.5",
+    "react-markdown": "^8.0.3",
+    "react-router-dom": "~6.4.3",
+    "react-syntax-highlighter": "^15.5.0",
+    "recoil": "~0.7.6",
+    "rehype-raw": "^6.1.1",
+    "remark-gfm": "^3.0.1",
+    "vite-plugin-node-polyfills": "^0.5.0"
+  },
+  "devDependencies": {
+    "@emotion/babel-plugin": "~11.10.5",
+    "@mui/types": "~7.2.0",
+    "@tanstack/react-query-devtools": "~4.10.4",
+    "@types/jest": "~29.1.2",
+    "@types/node": "~18.8.5",
+    "@types/react": "~18.0.25",
+    "@types/react-dom": "~18.0.8",
+    "@types/react-lazy-load-image-component": "^1.5.2",
+    "@types/react-syntax-highlighter": "^15.5.5",
+    "@vitejs/plugin-react": "~2.1.0",
+    "envars": "~0.4.0",
+    "typescript": "~4.8.4",
+    "vite": "~3.1.8"
+  },
+  "envars": {
+    "cwd": "../env"
+  }
+}

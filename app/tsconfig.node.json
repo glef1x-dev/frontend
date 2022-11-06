@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "moduleResolution": "Node",
+    "outDir": "./dist",
+    "emitDeclarationOnly": true
+  },
+  "include": [
+    "vite.config.ts"
+  ]
+}

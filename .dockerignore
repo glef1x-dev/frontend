@@ -1,0 +1,23 @@
+# ignore everything
+*
+
+# Allow those files & directories
+!/app
+!/env
+!/edge
+!/scripts
+!/.npmrc
+!/package.json
+!/pnpm-lock.yaml
+!/pnpm-workspace.yaml
+!/.gitignore
+
+# Ignore from allowed directories
+**/*~
+**/*.log
+**/.DS_Store
+**/Thumbs.db
+**/.next/*
+**/.turbo/*
+**/node_modules/*
+**/Dockerfile*
