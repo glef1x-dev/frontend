@@ -30,6 +30,7 @@ export default function About(): JSX.Element {
       </Grid>
       <Grid item>
         <Typography variant="body1">
+          base api url - {BASE_API_URL}
           My name is Hlib Haranin, but I usually go by Glib or Gleb ("Глеб" in
           Russian). I'm a Pythonista, Gopher, and full-stack developer. I'm a
           software engineer from Ukraine &#x1F1FA;&#x1F1E6;. Currently, I'm
