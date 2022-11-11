@@ -1,5 +1,7 @@
 FROM node:18-alpine AS base
 
+LABEL MAINTAINER="Glib Garanin <glebgar567@gmail.com>"
+
 ARG PNPM_VERSION=7.15.0
 
 RUN npm install -g pnpm@$PNPM_VERSION
@@ -22,10 +24,3 @@ RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store\
 COPY . .
 RUN NODE_ENV=production pnpm run app:build
 
-
-#FROM nginx:alpine
-#WORKDIR /usr/share/nginx/html
-#RUN rm -rf ./*
-#COPY --from=builder /root/frontend-app/app/dist/ /usr/share/nginx/html
-#
-#ENTRYPOINT ["nginx", "-g", "daemon off;"]
