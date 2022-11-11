@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ComponentType, SuspenseProps} from "react";
+import { ComponentType, SuspenseProps } from "react";
 import Spinner from "../common/Spinner.js";
 
 /**

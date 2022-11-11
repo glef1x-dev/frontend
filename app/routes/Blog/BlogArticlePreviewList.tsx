@@ -42,7 +42,7 @@ export default function BlogArticlePreviewList(): JSX.Element | null {
         marginRight: "auto",
         fontSize: "large",
         gap: "2rem",
-        padding: "1rem"
+        padding: "1rem",
       }}
     >
       {query?.data?.results.map((post) => (

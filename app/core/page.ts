@@ -2,7 +2,7 @@
 /* SPDX-License-Identifier: MIT */
 
 import * as React from "react";
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export function usePageEffect(options?: Options, deps?: React.DependencyList) {
   const location = useLocation();

@@ -5,8 +5,6 @@
   "type": "module",
   "packageManager": "pnpm@7.14.0",
   "scripts": {
-    "postinstall": "zx scripts/postinstall.js",
-    "update-schema": "zx ./scripts/update-schema.js",
     "start": "zx scripts/start.js",
     "lint": "eslint --cache --report-unused-disable-directives glef1x.dev/frontend",
     "test": "jest",

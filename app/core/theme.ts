@@ -1,10 +1,15 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {type PaletteMode, responsiveFontSizes} from "@mui/material";
-import {createTheme} from "@mui/material/styles";
-import {atom, selectorFamily, useRecoilCallback, useRecoilValue,} from "recoil";
-import {components} from "./components.js";
+import { type PaletteMode, responsiveFontSizes } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import {
+  atom,
+  selectorFamily,
+  useRecoilCallback,
+  useRecoilValue,
+} from "recoil";
+import { components } from "./components.js";
 import palettes from "./palettes.js";
 import * as typography from "./typography.js";
 
@@ -46,16 +51,18 @@ export const Theme = selectorFamily({
   get(name: PaletteMode) {
     return function () {
       const { palette } = createTheme({ palette: palettes[name] });
-      return responsiveFontSizes(createTheme(
-        {
-          palette,
-          typography: typography.options,
-          components: components(palette),
-        },
-        {
-          typography: typography.overrides,
-        }
-      ));
+      return responsiveFontSizes(
+        createTheme(
+          {
+            palette,
+            typography: typography.options,
+            components: components(palette),
+          },
+          {
+            typography: typography.overrides,
+          }
+        )
+      );
     };
   },
 });

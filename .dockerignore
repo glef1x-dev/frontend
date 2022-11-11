@@ -11,6 +11,9 @@
 !/pnpm-lock.yaml
 !/pnpm-workspace.yaml
 !/.gitignore
+!/tsconfig.base.json
+!/rollup.config.mjs
+!/nginx.conf
 
 # Ignore from allowed directories
 **/*~

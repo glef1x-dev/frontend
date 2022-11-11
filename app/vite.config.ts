@@ -3,8 +3,8 @@
 
 import react from "@vitejs/plugin-react";
 import envars from "envars";
-import {defineConfig} from "vite";
-import {nodePolyfills} from "vite-plugin-node-polyfills";
+import { defineConfig } from "vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 // Load environment variables for the target environment
 envars.config();
@@ -53,7 +53,7 @@ export default defineConfig({
       "/api": {
         target: process.env.BASE_API_URL,
         changeOrigin: true,
-        secure: false
+        secure: false,
       },
     },
   },

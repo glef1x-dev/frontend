@@ -1,15 +1,15 @@
 /* SPDX-FileCopyrightText: 2014-present Kriasoft */
 /* SPDX-License-Identifier: MIT */
 
-import {CssBaseline, ThemeProvider} from "@mui/material";
-import {useTheme} from "../core/theme.js";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { useTheme } from "../core/theme.js";
 import Spinner from "./Spinner.js";
-import {RouterProvider} from "react-router-dom";
-import {router} from "../routes/router.js";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
-import {OctokitContext} from "../core/integrations/github.js";
-import {Octokit} from "@octokit/rest";
+import { RouterProvider } from "react-router-dom";
+import { router } from "../routes/router.js";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { OctokitContext } from "../core/integrations/github.js";
+import { Octokit } from "@octokit/rest";
 import CustomCursor from "./CustomCursor.js";
 
 export function App(): JSX.Element {
@@ -32,7 +32,7 @@ export function App(): JSX.Element {
               targetOpacity: 0.3,
               dimensions: 80,
               targetScale: 1.5,
-              strokeWidth: 0.5
+              strokeWidth: 0.5,
             }}
           />
           <RouterProvider router={router} fallbackElement={<Spinner />} />

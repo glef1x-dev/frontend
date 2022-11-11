@@ -101,13 +101,21 @@ function AppNavigation() {
             >
               {navigationRoutes.map((route) => (
                 <MenuItem key={route.name} onClick={handleCloseNavMenu} divider>
-                  <Link href={route.path} sx={{
-                    textDecoration: "none"
-                  }}>
+                  <Link
+                    href={route.path}
+                    sx={{
+                      textDecoration: "none",
+                    }}
+                  >
                     {route.icon}
-                    <Typography sx={{
-                      display: "inline-block"
-                    }} textAlign="center">{route.name}</Typography>
+                    <Typography
+                      sx={{
+                        display: "inline-block",
+                      }}
+                      textAlign="center"
+                    >
+                      {route.name}
+                    </Typography>
                     <></>
                   </Link>
                 </MenuItem>

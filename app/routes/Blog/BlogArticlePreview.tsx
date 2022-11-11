@@ -46,12 +46,12 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
         >
           <LazyLoadedImage
             height="140"
-            src="https://i.pinimg.com/564x/32/64/ea/3264ea57168f165845ba56ef67e03c7b.jpg"
+            src={article.image}
             style={{
               width: "100%",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              objectFit: "cover"
+              objectFit: "cover",
             }}
           />
           <CardContent
