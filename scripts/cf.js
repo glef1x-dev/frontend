@@ -32,7 +32,7 @@ args = args
 const secret = args.find((_, i) => args[i - 2] === "secret" && args[i - 1] === "put"); // prettier-ignore
 
 // Launch Wrangler CLI
-const p = execa("npx", ["wrangler", "-c", configFile, ...args], {
+const p = execa("pnpm exec", ["wrangler", "-c", configFile, ...args], {
   stdio: secret && $.env[secret] ? ["pipe", "inherit", "inherit"] : "inherit",
   cwd: $.env.PROJECT_CWD,
 });
