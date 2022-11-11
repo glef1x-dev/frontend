@@ -23,9 +23,9 @@ COPY . .
 RUN NODE_ENV=production pnpm run app:build
 
 
-FROM nginx:alpine
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=builder /root/frontend-app/app/dist/ /usr/share/nginx/html
-
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#FROM nginx:alpine
+#WORKDIR /usr/share/nginx/html
+#RUN rm -rf ./*
+#COPY --from=builder /root/frontend-app/app/dist/ /usr/share/nginx/html
+#
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]
