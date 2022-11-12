@@ -85,7 +85,9 @@ export default function OpenSource() {
   const theme = useTheme();
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{
+      display: "grid"
+    }}>
       <Grid
         container
         direction="column"
@@ -105,7 +107,6 @@ export default function OpenSource() {
             "@media(max-width: 850px)": {
               gridTemplateColumns: "repeat(1, 1fr)",
             },
-            maxHeight: "70vh",
           }}
         >
           {openSourceProjects.map((project: OpenSourceProject) => {
