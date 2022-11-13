@@ -34,8 +34,12 @@ export default defineConfig({
             "react-dom",
             "react-router-dom",
             "recoil",
-            "react-markdown",
           ],
+          reactMarkdown: [
+            "react-markdown",
+            "remark-gfm",
+            "rehype-raw"
+          ]
         },
 
       },
