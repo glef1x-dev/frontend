@@ -31,6 +31,7 @@ export default function StatusBar() {
         position: "sticky",
         width: "100vw",
         top: 0,
+        height: "7px"
       }}
     >
       <LinearProgress variant="determinate" value={progress} />
