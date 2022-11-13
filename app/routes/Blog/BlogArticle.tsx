@@ -8,9 +8,12 @@ import rehypeRaw from "rehype-raw";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { default as atomDarkStyle } from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
 import StatusBar from "../../common/ScrollProgress.js";
+import {usePageEffect} from "../../core/page.js";
 
 export default function BlogArticle() {
   const article = useLoaderData() as Article;
+
+  usePageEffect({title: article.title});
 
   return (
     <div>
