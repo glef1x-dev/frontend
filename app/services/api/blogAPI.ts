@@ -13,7 +13,6 @@ export interface Article {
   created: Date;
   modified: Date;
   image: string;
-  imageLabel: string;
   body: string;
   slug: string;
 }

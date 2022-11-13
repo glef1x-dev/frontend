@@ -7,7 +7,6 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { default as atomDarkStyle } from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
-import { createRef } from "react";
 import StatusBar from "../../common/ScrollProgress.js";
 
 export default function BlogArticle() {
@@ -15,7 +14,7 @@ export default function BlogArticle() {
 
   return (
     <div>
-      <StatusBar/>
+      <StatusBar />
       <Container
         className="article-container"
         maxWidth="md"
@@ -43,7 +42,7 @@ export default function BlogArticle() {
             <BlogArticleMetadata article={article} />
             <CardMedia
               component="img"
-              image="https://wallpapercave.com/wp/wp4293324.jpg"
+              image={article.image}
               alt="article-image-preview"
               sx={{
                 paddingTop: "1rem",
