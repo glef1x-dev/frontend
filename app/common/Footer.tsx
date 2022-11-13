@@ -27,7 +27,6 @@ export default function Footer(props: FooterProps) {
         maxHeight: "10vh",
         display: "flex",
         alignItems: "center",
-        padding: "2rem",
       }}
     >
       <Container>
