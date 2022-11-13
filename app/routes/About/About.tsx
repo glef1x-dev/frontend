@@ -30,8 +30,8 @@ export default function About(): JSX.Element {
       </Grid>
       <Grid item>
         <Typography variant="body1">
-          My name is Hlib Haranin, but I usually go by Glib or Gleb ("Глеб" in
-          Russian). I'm a Pythonista, Gopher, and full-stack developer. I'm a
+          My name is Hlib Haranin, but I usually go by Glib or Gleb ("Гліб" in
+          Ukrainian). I'm a Pythonista, Gopher, and full-stack developer. I'm a
           software engineer from Ukraine &#x1F1FA;&#x1F1E6;. Currently, I'm
           living in New York, USA &#x1F1FA;&#x1F1F8;
         </Typography>
