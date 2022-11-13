@@ -22,9 +22,9 @@ export default function BlogArticle() {
         className="article-container"
         maxWidth="md"
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          wordBreak: "break-all",
+          padding: "0 11.4%",
+          margin: "0 auto",
+          width: "100%",
           "@media(max-width: 600px)": {
             padding: "0 0.5rem",
           },
