@@ -67,8 +67,11 @@ export default function BlogArticle() {
   return (
     <div>
       <ScrollProgressBar
-        style={{
-          height: "10px",
+        sx={{
+          "@media(min-width: 600px)": {
+            height: "0.5rem",
+          },
+          height: "0.25rem",
           position: "sticky",
           width: "100vw",
           top: 0,

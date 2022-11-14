@@ -1,13 +1,10 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
+import { LinearProgressProps } from "@mui/material/LinearProgress/LinearProgress.js";
 
-type ScrollProgressBarProps = {
-  style?: CSSProperties;
-};
-
-export default function ScrollProgressBar({
-  style,
-}: ScrollProgressBarProps): JSX.Element {
+export default function ScrollProgressBar(
+  props: LinearProgressProps
+): JSX.Element {
   const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
@@ -31,9 +28,5 @@ export default function ScrollProgressBar({
     return () => window.removeEventListener("scroll", computeProgress);
   });
 
-  return (
-    <div style={style}>
-      <LinearProgress variant="determinate" value={progress} />
-    </div>
-  );
+  return <LinearProgress {...props} variant="determinate" value={progress} />;
 }
