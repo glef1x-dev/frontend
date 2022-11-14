@@ -26,6 +26,4 @@ export function usePageEffect(options?: Options, deps?: React.DependencyList) {
 
 type Options = {
   title?: string;
-  /** @default true */
-  trackPageView?: boolean;
 };
