@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { default as atomDarkStyle } from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
-import StatusBar from "../../common/ScrollProgress.js";
+import ScrollProgressBar from "../../common/ScrollProgressBar.js";
 import { usePageEffect } from "../../core/page.js";
 
 export default function BlogArticle() {
@@ -17,7 +17,14 @@ export default function BlogArticle() {
 
   return (
     <div>
-      <StatusBar />
+      <ScrollProgressBar
+        style={{
+          height: "10px",
+          position: "sticky",
+          width: "100vw",
+          top: 0,
+        }}
+      />
       <Container
         className="article-container"
         maxWidth="md"

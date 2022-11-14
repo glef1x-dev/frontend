@@ -1,10 +1,14 @@
-import * as React from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
 
-export default function StatusBar() {
-  const [progress, setProgress] = React.useState<number>(0);
+type ScrollProgressBarProps = {
+  style?: CSSProperties;
+};
 
-  React.useEffect(() => {
+export default function ScrollProgressBar({ style }: ScrollProgressBarProps): JSX.Element {
+  const [progress, setProgress] = useState<number>(0);
+
+  useEffect(() => {
     const computeProgress = () => {
       // The scrollTop gives length of window that has been scrolled
       const scrolled = document.documentElement.scrollTop;
@@ -13,9 +17,9 @@ export default function StatusBar() {
       const scrollLength =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      const progress = `${(100 * scrolled) / scrollLength}`;
+      const progress = (100 * scrolled) / scrollLength;
 
-      setProgress(parseFloat(progress));
+      setProgress(progress);
     };
 
     // Adding event listener on mounting
@@ -27,12 +31,7 @@ export default function StatusBar() {
 
   return (
     <div
-      style={{
-        position: "sticky",
-        width: "100vw",
-        top: 0,
-        height: "7px"
-      }}
+      style={style}
     >
       <LinearProgress variant="determinate" value={progress} />
     </div>
