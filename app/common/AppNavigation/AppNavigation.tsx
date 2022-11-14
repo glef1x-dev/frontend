@@ -8,20 +8,19 @@ import Menu from "@mui/material/Menu";
 // @ts-ignore
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "@mui/material";
 import { Link as ReactRouterLink } from "react-router-dom";
 import SocialMedias from "../SocialMedias.js";
 import { ThemeButton } from "../ThemeButton.js";
-import { useTheme } from "../../core/theme.js";
 // @ts-ignore
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 // @ts-ignore
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 // @ts-ignore
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
+import AvatarLink from "../Avatar.js";
 
 type Route = {
   name: string;
@@ -44,7 +43,6 @@ const navigationRoutes: Route[] = [
 ];
 
 function AppNavigation() {
-  const theme = useTheme();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -61,14 +59,7 @@ function AppNavigation() {
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters>
-          <Avatar
-            alt="my avatar"
-            src="/myAvatar.jpeg"
-            sx={{
-              maxWidth: 40,
-              maxHeight: 40,
-            }}
-          />
+          <AvatarLink alt="my avatar" src="/myAvatar.jpeg" to="/" />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton

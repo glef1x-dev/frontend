@@ -81,17 +81,7 @@ export default function BlogArticle() {
         className="article-container"
         maxWidth="md"
         sx={{
-          padding: "0 11.4%",
           margin: "0 auto",
-          width: "100%",
-          "@media(max-width: 600px)": {
-            padding: "0 0.5rem",
-          },
-          "& img": {
-            maxWidth: "100%",
-            maxHeight: "100%",
-            objectFit: "contain",
-          },
         }}
       >
         <article>

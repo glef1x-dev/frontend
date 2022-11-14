@@ -7,7 +7,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { OctokitContext } from "../core/integrations/github.js";
 import { Octokit } from "@octokit/rest";
-import CustomCursor from "./CustomCursor.js";
 
 export function App(): JSX.Element {
   const theme = useTheme();
@@ -19,19 +18,6 @@ export function App(): JSX.Element {
       <QueryClientProvider client={queryClient}>
         <OctokitContext.Provider value={octokit}>
           <CssBaseline />
-          <CustomCursor
-            thirdPartyLibProps={{
-              smoothness: {
-                movement: 0.4,
-                scale: 0.2,
-                opacity: 0.2,
-              },
-              targetOpacity: 0.3,
-              dimensions: 80,
-              targetScale: 1.5,
-              strokeWidth: 0.5,
-            }}
-          />
           <RouterProvider router={router} fallbackElement={<Spinner />} />
           <ReactQueryDevtools position="bottom-right" />
         </OctokitContext.Provider>
