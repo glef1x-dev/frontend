@@ -20,7 +20,7 @@
     "@octokit/auth-token": "~3.0.2",
     "@octokit/rest": "~19.0.5",
     "@tanstack/react-query": "~4.10.3",
-    "axios": "~1.0.0",
+    "axios": "^1.0.0",
     "custom-cursor-react": "^1.0.5",
     "gsap": "^3.11.3",
     "moment": "^2.29.4",
