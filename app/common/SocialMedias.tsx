@@ -41,7 +41,7 @@ export default function SocialMedias(): JSX.Element {
   );
 }
 
-interface SocialMedia {
+export interface SocialMedia {
   name: string;
   href: string;
   iconElement: JSX.Element;
