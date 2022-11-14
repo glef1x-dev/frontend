@@ -1,6 +1,3 @@
-/* SPDX-FileCopyrightText: 2014-present Kriasoft */
-/* SPDX-License-Identifier: MIT */
-
 import react from "@vitejs/plugin-react";
 import envars from "envars";
 import { defineConfig } from "vite";
@@ -29,19 +26,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: [
-            "react",
-            "react-dom",
-            "react-router-dom",
-            "recoil",
-          ],
-          reactMarkdown: [
-            "react-markdown",
-            "remark-gfm",
-            "rehype-raw"
-          ]
+          react: ["react", "react-dom", "react-router-dom", "recoil"],
+          reactMarkdown: ["react-markdown", "remark-gfm", "rehype-raw"],
         },
-
       },
     },
   },

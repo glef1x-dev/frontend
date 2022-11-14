@@ -1,6 +1,3 @@
-/* SPDX-FileCopyrightText: 2014-present Kriasoft */
-/* SPDX-License-Identifier: MIT */
-
 import { type PaletteMode, responsiveFontSizes } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import {

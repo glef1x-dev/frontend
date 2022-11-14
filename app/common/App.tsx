@@ -1,6 +1,3 @@
-/* SPDX-FileCopyrightText: 2014-present Kriasoft */
-/* SPDX-License-Identifier: MIT */
-
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useTheme } from "../core/theme.js";
 import Spinner from "./Spinner.js";

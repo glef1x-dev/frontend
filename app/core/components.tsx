@@ -1,6 +1,3 @@
-/* SPDX-FileCopyrightText: 2014-present Kriasoft */
-/* SPDX-License-Identifier: MIT */
-
 import { type Palette, type ThemeOptions } from "@mui/material/styles";
 
 /**

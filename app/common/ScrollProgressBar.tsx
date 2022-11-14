@@ -5,7 +5,9 @@ type ScrollProgressBarProps = {
   style?: CSSProperties;
 };
 
-export default function ScrollProgressBar({ style }: ScrollProgressBarProps): JSX.Element {
+export default function ScrollProgressBar({
+  style,
+}: ScrollProgressBarProps): JSX.Element {
   const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
@@ -30,9 +32,7 @@ export default function ScrollProgressBar({ style }: ScrollProgressBarProps): JS
   });
 
   return (
-    <div
-      style={style}
-    >
+    <div style={style}>
       <LinearProgress variant="determinate" value={progress} />
     </div>
   );

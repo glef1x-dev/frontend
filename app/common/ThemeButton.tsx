@@ -1,6 +1,3 @@
-/* SPDX-FileCopyrightText: 2014-present Kriasoft */
-/* SPDX-License-Identifier: MIT */
-
 import { DarkMode, LightMode } from "@mui/icons-material";
 import { IconButton, IconButtonProps } from "@mui/material";
 import { useTheme } from "@mui/material/styles";

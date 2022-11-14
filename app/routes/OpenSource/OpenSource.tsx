@@ -85,9 +85,12 @@ export default function OpenSource() {
   const theme = useTheme();
 
   return (
-    <Container maxWidth="lg" sx={{
-      display: "grid"
-    }}>
+    <Container
+      maxWidth="lg"
+      sx={{
+        display: "grid",
+      }}
+    >
       <Grid
         container
         direction="column"
