@@ -2,7 +2,7 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import { Article } from "../../services/api/blogAPI.js";
 import { Link } from "react-router-dom";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
-import LazyLoadedImage from "../../common/LazyLoadedImage.js";
+import {LazyLoadImage} from "react-lazy-load-image-component";
 
 interface BlogPostProps {
   article: Article;
@@ -44,7 +44,7 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             height: "100%",
           }}
         >
-          <LazyLoadedImage
+          <LazyLoadImage
             height="140"
             src={article.image}
             style={{
