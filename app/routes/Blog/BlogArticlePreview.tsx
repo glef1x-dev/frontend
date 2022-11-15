@@ -41,11 +41,11 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             display: "flex",
             flex: 1,
             flexDirection: "column",
-            height: "100%",
+            height: "100%"
           }}
         >
           <LazyLoadImage
-            height="140"
+            height="205"
             src={article.image}
             style={{
               width: "100%",
