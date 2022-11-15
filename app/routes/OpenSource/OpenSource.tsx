@@ -81,7 +81,7 @@ const OpenSourcePageTitle = () => {
 };
 
 export default function OpenSource() {
-  usePageEffect({ title: "Opensource projects" });
+  usePageEffect({ title: "Opensource" });
   const theme = useTheme();
 
   return (
