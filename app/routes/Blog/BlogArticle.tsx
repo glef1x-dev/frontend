@@ -10,6 +10,7 @@ import { default as atomDarkStyle } from "react-syntax-highlighter/dist/esm/styl
 import { usePageEffect } from "../../core/page.js";
 import { useMemo } from "react";
 import "./css/BlogArticle.css";
+import ScrollProgressBar from "../../common/ScrollProgressBar.js";
 
 export default function BlogArticle() {
   const article = useLoaderData() as Article;
@@ -66,18 +67,21 @@ export default function BlogArticle() {
   }, [article.body]);
 
   return (
-    <div>
-      {/*<ScrollProgressBar*/}
-      {/*  sx={{*/}
-      {/*    "@media(min-width: 600px)": {*/}
-      {/*      height: "0.5rem",*/}
-      {/*    },*/}
-      {/*    height: "0.25rem",*/}
-      {/*    position: "sticky",*/}
-      {/*    width: "100vw",*/}
-      {/*    top: 0,*/}
-      {/*  }}*/}
-      {/*/>*/}
+    <>
+      <ScrollProgressBar
+        sx={{
+          "@media(min-width: 600px)": {
+            height: "0.5rem",
+          },
+          height: "0.25rem",
+          position: "sticky",
+          width: "100vw",
+          marginLeft: "calc(-50vw + 50%)",
+          maxWidth: "none",
+          top: 0,
+          overflow: "unset"
+        }}
+      />
       <Container className="article-container" maxWidth="md">
         <article
           style={{
@@ -112,6 +116,6 @@ export default function BlogArticle() {
           {renderedArticleBodyAsMarkdown}
         </article>
       </Container>
-    </div>
+    </>
   );
 }
