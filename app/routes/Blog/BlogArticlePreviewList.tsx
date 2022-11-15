@@ -42,9 +42,10 @@ export default function BlogArticlePreviewList(): JSX.Element | null {
         fontSize: "large",
         rowGap: "2rem",
         columnGap: "2rem",
-        gridTemplateColumns: "repeat(auto-fill, 1fr)",
-        "@media(min-width: 400px)": {
-          gridTemplateColumns: "repeat(auto-fill, minmax(350px,1fr))",
+        gridTemplateColumns: "repeat(auto-fill, minmax(350px,1fr))",
+        "@media(max-width: 400px)": {
+          gridTemplateColumns: "repeat(auto-fill, 1fr)",
+          padding: 0,
         },
       }}
     >
