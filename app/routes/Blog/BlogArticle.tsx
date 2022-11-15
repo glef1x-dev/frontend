@@ -7,9 +7,9 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { default as atomDarkStyle } from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
-import ScrollProgressBar from "../../common/ScrollProgressBar.js";
 import { usePageEffect } from "../../core/page.js";
 import { useMemo } from "react";
+import "./css/BlogArticle.css";
 
 export default function BlogArticle() {
   const article = useLoaderData() as Article;
@@ -19,6 +19,7 @@ export default function BlogArticle() {
     return (
       <ReactMarkdown
         children={article.body}
+        className="markdown"
         components={{
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
@@ -66,28 +67,29 @@ export default function BlogArticle() {
 
   return (
     <div>
-      <ScrollProgressBar
-        sx={{
-          "@media(min-width: 600px)": {
-            height: "0.5rem",
-          },
-          height: "0.25rem",
-          position: "sticky",
-          width: "100vw",
-          top: 0,
-        }}
-      />
-      <Container
-        className="article-container"
-        maxWidth="md"
-        sx={{
-          margin: "0 auto",
-        }}
-      >
-        <article>
+      {/*<ScrollProgressBar*/}
+      {/*  sx={{*/}
+      {/*    "@media(min-width: 600px)": {*/}
+      {/*      height: "0.5rem",*/}
+      {/*    },*/}
+      {/*    height: "0.25rem",*/}
+      {/*    position: "sticky",*/}
+      {/*    width: "100vw",*/}
+      {/*    top: 0,*/}
+      {/*  }}*/}
+      {/*/>*/}
+      <Container className="article-container" maxWidth="md">
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            wordWrap: "break-word",
+            justifyContent: "center",
+          }}
+        >
           <header>
             <Typography
-              variant="h4"
+              variant="h1"
               sx={{
                 marginTop: "2rem",
                 marginBottom: "1rem",

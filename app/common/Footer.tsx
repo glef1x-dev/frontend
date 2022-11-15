@@ -3,7 +3,7 @@ import * as React from "react";
 
 function Copyright() {
   return (
-    <Typography variant="h5" color="text.secondary" align="center">
+    <Typography variant="h2" color="text.secondary" align="center">
       {"© "}
       <Link color="inherit" href="">
         Hlib Haranin

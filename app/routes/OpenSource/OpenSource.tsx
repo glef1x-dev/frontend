@@ -64,11 +64,11 @@ const OpenSourcePageTitle = () => {
         py: "1rem",
       }}
     >
-      <Typography fontWeight="bold" variant="h3">
+      <Typography fontWeight="bold" variant="h1">
         Open Source
       </Typography>
       <Typography
-        variant="subtitle1"
+        variant="h3"
         sx={{
           py: 2,
         }}
@@ -86,7 +86,6 @@ export default function OpenSource() {
 
   return (
     <Container
-      maxWidth="lg"
       sx={{
         display: "grid",
       }}
@@ -104,11 +103,11 @@ export default function OpenSource() {
         <OpenSourcePageTitle />
         <Box
           display="grid"
-          gridTemplateColumns="repeat(2, 1fr)"
+          gridTemplateColumns="repeat(1, 1fr)"
           gap="1.5rem"
           sx={{
-            "@media(max-width: 850px)": {
-              gridTemplateColumns: "repeat(1, 1fr)",
+            "@media(min-width: 850px)": {
+              gridTemplateColumns: "repeat(2, 1fr)",
             },
           }}
         >

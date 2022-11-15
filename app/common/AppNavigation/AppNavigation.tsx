@@ -20,7 +20,7 @@ import CoPresentIcon from "@mui/icons-material/CoPresent";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 // @ts-ignore
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
-import AvatarLink from "../Avatar.js";
+import AvatarLink from "../AvatarLink.js";
 
 type Route = {
   name: string;
@@ -59,7 +59,7 @@ function AppNavigation() {
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters>
-          <AvatarLink alt="my avatar" src="/myAvatar.jpeg" to="/" />
+          <AvatarLink alt="my avatar" src="/my-avatar.jpeg" to="/" />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton

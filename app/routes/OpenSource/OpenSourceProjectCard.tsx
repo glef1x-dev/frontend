@@ -43,7 +43,7 @@ function OpenSourceProjectGithubStarsCount({
       {query.isLoading ? (
         <Spinner isOpen={query.isLoading} />
       ) : (
-        <Typography variant="h5" color="text.secondary">
+        <Typography variant="h3" color="text.secondary">
           {`${query.data ?? 0} `} &#11088;
         </Typography>
       )}
@@ -82,7 +82,7 @@ export default function OpenSourceProjectCard({
       <CardContent>
         <Grid container alignItems="center">
           <Typography
-            variant="h5"
+            variant="h2"
             fontWeight="bold"
             sx={{
               textDecoration: "underline",

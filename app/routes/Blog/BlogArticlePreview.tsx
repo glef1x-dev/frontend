@@ -64,7 +64,7 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             <Typography
               gutterBottom
               component="div"
-              variant="body1"
+              variant="h2"
               fontWeight="bold"
               sx={{
                 flex: 1,

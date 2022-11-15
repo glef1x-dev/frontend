@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Container } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useSnackbar } from "notistack";
 import Spinner from "../../common/Spinner.js";
@@ -31,23 +31,26 @@ export default function BlogArticlePreviewList(): JSX.Element | null {
   }
 
   return (
-    <Box
+    <Container
       className="Blog"
-      display="grid"
-      gridTemplateColumns="repeat(auto-fill, minmax(350px,1fr))"
+      maxWidth="xl"
       sx={{
+        display: "grid",
         my: "1rem",
-        maxWidth: "80rem",
         marginLeft: "auto",
         marginRight: "auto",
         fontSize: "large",
-        gap: "2rem",
-        padding: "1rem",
+        rowGap: "2rem",
+        columnGap: "2rem",
+        gridTemplateColumns: "repeat(auto-fill, 1fr)",
+        "@media(min-width: 400px)": {
+          gridTemplateColumns: "repeat(auto-fill, minmax(350px,1fr))",
+        },
       }}
     >
       {query?.data?.results.map((post) => (
         <BlogArticlePreview key={post.id} article={post} />
       ))}
-    </Box>
+    </Container>
   );
 }
