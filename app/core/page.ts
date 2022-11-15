@@ -12,7 +12,7 @@ export function usePageEffect(options?: Options, deps?: React.DependencyList) {
       location.pathname === "/"
         ? options?.title ?? APP_NAME
         : options?.title
-        ? `${options.title} - ${APP_NAME}`
+        ? `${options.title} | Hlib Haranin`
         : APP_NAME;
 
     return function () {
