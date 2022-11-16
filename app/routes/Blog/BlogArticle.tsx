@@ -102,7 +102,7 @@ export default function BlogArticle() {
             >
               {article.title}
             </Typography>
-            <BlogArticleMetadata article={article} />
+            <BlogArticleMetadata article={article} showTags={false} />
             <CardMedia
               component="img"
               image={article.image}
