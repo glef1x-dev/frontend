@@ -18,6 +18,7 @@ import {
 import Spinner from "../../common/Spinner.js";
 import { useQuery } from "@tanstack/react-query";
 import { useSnackbar } from "notistack";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 function OpenSourceProjectGithubStarsCount({
   sourceCodeLink,
@@ -110,6 +111,7 @@ export default function OpenSourceProjectCard({
           target="_blank"
           rel="noreferrer"
           href={sourceCodeLink}
+          startIcon={<OpenInNewIcon />}
         >
           Source code
         </Button>
@@ -119,6 +121,7 @@ export default function OpenSourceProjectCard({
           rel="noreferrer"
           href={documentationLink ?? "#"}
           onClick={onDocumentationButtonClick}
+          startIcon={<OpenInNewIcon />}
         >
           Documentation
         </Button>
