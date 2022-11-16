@@ -60,7 +60,7 @@ type AvatarLinkProps = {
 
 export default function AvatarLink(props: AvatarLinkProps) {
   return (
-    <Link component={RouterLink} to={props.to}>
+    <Link reloadDocument component={RouterLink} to={props.to}>
       <Avatar
         sx={{
           maxWidth: 40,
