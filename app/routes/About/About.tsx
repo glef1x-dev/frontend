@@ -1,7 +1,6 @@
 import * as React from "react";
 import { usePageEffect } from "../../core/page.js";
-import { Box, Paper } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { Box, Paper, Typography } from "@mui/material";
 
 export default function About(): JSX.Element {
   usePageEffect({ title: "About Me" });
