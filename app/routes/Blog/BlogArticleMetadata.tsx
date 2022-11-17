@@ -40,7 +40,7 @@ export default function BlogArticleMetadata({
         <Typography variant="caption">{readingTime} min read</Typography>
       </Box>
       {
-        showTags ?? <Stack sx={{
+        showTags && <Stack sx={{
           mt: "0.2rem"
         }} direction="row" spacing={1}>
           {article.tags.map(tag => (

@@ -28,6 +28,8 @@ export default defineConfig({
         manualChunks: {
           react: ["react", "react-dom", "react-router-dom", "recoil"],
           reactMarkdown: ["react-markdown", "remark-gfm", "rehype-raw"],
+          utils: ["moment", "react-lazy-load-image-component", "notistack"],
+          mui: ["@mui/system", "@mui/icons-material"]
         },
       },
     },

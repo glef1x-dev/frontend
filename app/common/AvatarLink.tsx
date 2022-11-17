@@ -45,7 +45,7 @@ type AvatarLinkProps = {
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  sx?: SxProps<Theme>;
+  sx?: any;
   /**
    * The shape of the avatar.
    * @default 'circular'
