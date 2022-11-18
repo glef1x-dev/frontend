@@ -1,17 +1,15 @@
-import { useMemo } from "react";
-
 const AVERAGE_APPROXIMATE_WORDS_PER_MINUTE_READ = 225;
 
-export function calculateApproximateReadingTime(
+export default function useCalculateApproximateReadingTime(
   text: string,
-  wpm = AVERAGE_APPROXIMATE_WORDS_PER_MINUTE_READ
-): number {
+  howMuchWordsAreReadPerMinute = AVERAGE_APPROXIMATE_WORDS_PER_MINUTE_READ
+): string {
   const words = text.trim().split(/\s+/).length;
-  return Math.ceil(words / wpm);
-}
+  const readingTimeInMinutes = words / howMuchWordsAreReadPerMinute;
 
-export function useCalculateApproximateReadingTime(text: string): number {
-  return useMemo(() => {
-    return calculateApproximateReadingTime(text);
-  }, [text]);
+  if (readingTimeInMinutes < 1) {
+    return "less than a minute read";
+  }
+
+  return `${Math.ceil(readingTimeInMinutes)} min read`;
 }

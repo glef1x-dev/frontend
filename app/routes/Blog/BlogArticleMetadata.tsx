@@ -1,9 +1,9 @@
 // @ts-ignore
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
-import {Box, Chip, Stack, Typography} from "@mui/material";
+import { Box, Chip, Stack, Typography } from "@mui/material";
 import moment from "moment";
-import {useCalculateApproximateReadingTime} from "../../utils/readingTime.js";
-import {Article} from "../../services/api/blogAPI.js";
+import useCalculateApproximateReadingTime from "../../utils/readingTime.js";
+import { Article } from "../../services/api/blogAPI.js";
 
 type BlogArticleMetadatProps = {
   article: Article;
@@ -37,7 +37,7 @@ export default function BlogArticleMetadata({
         >
           {formattedDateOfCreation}
         </Typography>
-        <Typography variant="caption">{readingTime} min read</Typography>
+        <Typography variant="caption">{readingTime}</Typography>
       </Box>
       {
         showTags && <Stack sx={{
