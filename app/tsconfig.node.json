@@ -4,7 +4,8 @@
     "composite": true,
     "moduleResolution": "Node",
     "outDir": "./dist",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true
   },
   "include": ["vite.config.ts"]
 }

@@ -18,12 +18,17 @@ module.exports = {
     "eslint:recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "prettier",
+    "prettier"
   ],
 
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: "module",
+  },
+
+  rules: {
+    // turn on errors for missing imports
+    "import/no-unresolved": "error"
   },
 
   overrides: [
@@ -46,7 +51,7 @@ module.exports = {
     },
     {
       files: ["*.test.js"],
-      env: { jest: true },
+      env: {jest: true},
     },
     {
       files: [
@@ -56,11 +61,11 @@ module.exports = {
         "rollup.config.mjs",
         "scripts/**/*.js",
       ],
-      env: { node: true },
+      env: {node: true},
     },
     {
       files: ["*.cjs"],
-      parserOptions: { sourceType: "script" },
+      parserOptions: {sourceType: "script"},
     },
   ],
 
@@ -76,6 +81,7 @@ module.exports = {
   settings: {
     "import/resolver": {
       typescript: {
+        alwaysTryTypes: true,
         project: ["app/tsconfig.json", "edge/tsconfig.json"],
       },
     },

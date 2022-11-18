@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import envars from "envars";
 import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { fileURLToPath, URL } from "url";
 
 // Load environment variables for the target environment
 envars.config();
@@ -37,6 +38,11 @@ export default defineConfig({
   define: Object.fromEntries(
     defineVars.map((key) => [key, JSON.stringify(process.env[key])])
   ),
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL(".", import.meta.url)),
+    },
+  },
 
   plugins: [
     // https://github.com/vitejs/vite/tree/main/packages/plugin-react
