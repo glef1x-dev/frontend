@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { App } from "./common/App.js";
-import { SnackbarProvider } from "notistack";
 
 const container = document.getElementById("root") as HTMLElement;
 
@@ -13,9 +12,7 @@ const container = document.getElementById("root") as HTMLElement;
 ReactDOM.createRoot(container).render(
   <RecoilRoot>
     <React.StrictMode>
-      <SnackbarProvider>
         <App />
-      </SnackbarProvider>
     </React.StrictMode>
   </RecoilRoot>
 );
