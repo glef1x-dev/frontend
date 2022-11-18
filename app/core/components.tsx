@@ -29,14 +29,8 @@ export const components = (palette: Palette): ThemeOptions["components"] => ({
   MuiCssBaseline: {
     styleOverrides: `
         @font-face {
-          font-family: 'Wotfard';
-          src: local('Wotfard'), local('Wotfard-Regular'), url("/fonts/wotfard-regular-webfont.woff2") format('woff2');
-          font-weight: 'regular';
-        }
-
-        @font-face {
           font-family: 'FantasqueSansMonoRegular';
-          src:  local('FantasqueSansMonoRegular'), local('FantasqueSansMonoRegular-regular'), url('/fonts/FantasqueSansMono-Regular.woff');
+          src:  local('FantasqueSansMonoRegular'), local('FantasqueSansMonoRegular-regular'), url('/fonts/FantasqueSansMono-Regular.woff') format('woff');
           font-weight: 'regular';
         }
       `,
