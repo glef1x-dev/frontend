@@ -1,7 +1,7 @@
 // @ts-ignore
 import { default as CustomCursorLib } from "custom-cursor-react";
 import "custom-cursor-react/dist/index.css";
-import { useTheme } from "../core/theme.js";
+import { useTheme } from "../lib/ui/mui/theme.js";
 
 type CustomCursorProps = {
   thirdPartyLibProps: object;

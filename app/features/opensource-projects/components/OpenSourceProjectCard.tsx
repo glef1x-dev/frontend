@@ -14,8 +14,8 @@ import {
   extractRepoNameAndOwnerFromGithubLink,
   getRepositoryStarsCount,
   useOctokit,
-} from "../../core/integrations/github.js";
-import Spinner from "../../common/Spinner.js";
+} from "../api/github.js";
+import Spinner from "@/components/Spinner.js";
 import { useQuery } from "@tanstack/react-query";
 import { useSnackbar } from "notistack";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";

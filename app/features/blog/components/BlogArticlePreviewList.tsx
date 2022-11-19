@@ -1,9 +1,9 @@
 import { Container } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { useSnackbar } from "notistack";
-import Spinner from "../../common/Spinner.js";
-import { usePageEffect } from "../../core/page.js";
-import { getArticles } from "../../services/api/blogAPI.js";
+import Spinner from "../../../components/Spinner.js";
+import { usePageEffect } from "@/hooks/page.js";
+import { getArticles } from "../api/blog-api.js";
 import BlogArticlePreview from "./BlogArticlePreview.js";
 
 export default function BlogArticlePreviewList(): JSX.Element | null {

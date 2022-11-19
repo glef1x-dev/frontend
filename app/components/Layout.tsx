@@ -1,4 +1,4 @@
-import AppNavigation from "./AppNavigation/AppNavigation.js";
+import AppNavigation from "./AppNavigation.js";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer.js";
 import { Box, Container } from "@mui/material";

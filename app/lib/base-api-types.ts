@@ -1,6 +1,6 @@
-declare type PaginatedResult<T> = {
+export interface PaginatedResult<T> {
   results: Array<T>;
-  count: int;
+  count: number;
   next: string;
   previous: string;
-};
+}

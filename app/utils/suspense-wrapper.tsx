@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ComponentType, SuspenseProps } from "react";
-import Spinner from "../common/Spinner.js";
+import Spinner from "../components/Spinner.js";
 
 /**
  * Wraps the provide component in a `Suspense`, with the provided fallback.

@@ -29,8 +29,8 @@ export const components = (palette: Palette): ThemeOptions["components"] => ({
   MuiCssBaseline: {
     styleOverrides: `
         @font-face {
-          font-family: 'FantasqueSansMonoRegular';
-          src:  local('FantasqueSansMonoRegular'), local('FantasqueSansMonoRegular-regular'), url('/fonts/FantasqueSansMono-Regular.woff') format('woff');
+          font-family: 'JetbrainsMonoNL';
+          src:  local('JetBrainsMono'), local('JetBrainsMono-Regular'), url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
           font-weight: 'regular';
         }
       `,

@@ -1,11 +1,11 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { useTheme } from "../core/theme.js";
+import { useTheme } from "../lib/ui/mui/theme.js";
 import Spinner from "./Spinner.js";
 import { RouterProvider } from "react-router-dom";
 import { router } from "../routes/router.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { OctokitContext } from "../core/integrations/github.js";
+import { OctokitContext } from "../features/opensource-projects/api/github.js";
 import { Octokit } from "@octokit/rest";
 import {SnackbarProvider} from "notistack";
 

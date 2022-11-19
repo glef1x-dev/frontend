@@ -5,22 +5,18 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// @ts-ignore
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "@mui/material";
 import { Link as ReactRouterLink } from "react-router-dom";
-import SocialMedias from "../SocialMedias.js";
-import { ThemeButton } from "../ThemeButton.js";
-// @ts-ignore
+import SocialMedias from "./SocialMedias.js";
+import { ThemeButton } from "./ThemeButton.js";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
-// @ts-ignore
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
-// @ts-ignore
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
-import AvatarLink from "../AvatarLink.js";
+import AvatarLink from "./AvatarLink.js";
 
 type Route = {
   name: string;

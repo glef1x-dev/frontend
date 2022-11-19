@@ -2,8 +2,8 @@ import * as React from "react";
 
 import { Box, Container, Grid, Typography } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
-import { usePageEffect } from "../../core/page.js";
-import { useTheme } from "../../core/theme.js";
+import { usePageEffect } from "@/hooks/page.js";
+import { useTheme } from "@/lib/ui/mui/theme.js";
 
 type OpenSourceProject = {
   title: string;

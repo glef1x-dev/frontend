@@ -1,5 +1,5 @@
 import * as React from "react";
-import { usePageEffect } from "../../core/page.js";
+import { usePageEffect } from "@/hooks/page.js";
 import { Box, Paper, Typography } from "@mui/material";
 
 export default function About(): JSX.Element {

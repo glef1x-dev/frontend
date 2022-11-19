@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const axiosInstance = axios.create({
+export const axiosClient = axios.create({
   withCredentials: true,
   baseURL: BASE_API_URL,
 });
