@@ -25,7 +25,7 @@ function Markdown({ children }: CoreOptions) {
             <Box
               sx={{
                 "& code": {
-                  fontFamily: "JetbrainsMonoNL",
+                  fontFamily: "JetbrainsMonoNL, monospace",
                   fontSize: "1em",
                   letterSpacing: ".9px",
                   fontWeight: "bold",
