@@ -1,5 +1,5 @@
-import { useLoaderData } from "react-router-dom";
-import { CardMedia, Container, Typography } from "@mui/material";
+import {Link, useLoaderData} from "react-router-dom";
+import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useMemo } from "react";
@@ -7,6 +7,9 @@ import "./css/BlogArticle.css";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
 import { Article } from "@/features/blog/api/types.js";
 import Markdown from "@/features/blog/components/Markdown.js";
+import moment from "moment";
+import BlogArticleTags from "@/features/blog/components/BlogArticleTags.js";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
 
 export default function BlogArticle() {
   const article = useLoaderData() as Article;
@@ -64,6 +67,28 @@ export default function BlogArticle() {
             />
           </header>
           {renderedArticleBodyAsMarkdown}
+          <Box
+            className="article-ending"
+            sx={{
+              "& > *+*": {
+                marginTop: "2rem"
+              }
+            }}
+          >
+            <BlogArticleTags tags={article.tags} />
+            {article.modified && (
+              <Typography variant="body2">
+                Last updated: {moment(article.created).format("MMM Do YYYY")}
+              </Typography>
+            )}
+
+            <Button size="large" variant="outlined" startIcon={<ArrowBackIcon />} sx={{
+              padding: "1rem",
+              fontWeight: "bold"
+            }} component={Link} to="/blog">
+              RETURN TO ALL ARTICLES
+            </Button>
+          </Box>
         </article>
       </Container>
     </>

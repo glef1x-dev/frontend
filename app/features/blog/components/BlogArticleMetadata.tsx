@@ -1,9 +1,10 @@
 // @ts-ignore
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
-import { Box, Chip, Stack, Typography } from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import moment from "moment";
 import useCalculateApproximateReadingTime from "../hooks/reading-time.js";
 import {Article} from "@/features/blog/api/types.js";
+import BlogArticleTags from "@/features/blog/components/BlogArticleTags.js";
 
 type BlogArticleMetadatProps = {
   article: Article;
@@ -39,15 +40,7 @@ export default function BlogArticleMetadata({
         </Typography>
         <Typography variant="caption">{readingTime}</Typography>
       </Box>
-      {
-        showTags && <Stack sx={{
-          mt: "0.2rem"
-        }} direction="row" spacing={1}>
-          {article.tags.map(tag => (
-            <Chip key={tag.title} label={tag.title} size="small"/>
-          ))}
-        </Stack>
-      }
+      {showTags && <BlogArticleTags tags={article.tags}/>}
     </Box>
   );
 }

@@ -12,7 +12,7 @@ const container = document.getElementById("root") as HTMLElement;
 ReactDOM.createRoot(container).render(
   <RecoilRoot>
     <React.StrictMode>
-        <App />
+      <App />
     </React.StrictMode>
   </RecoilRoot>
 );
