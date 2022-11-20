@@ -75,7 +75,7 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             </Typography>
             <Box
               sx={{
-                marginTop: "1rem",
+                marginTop: "1.5rem",
               }}
             >
               <BlogArticleMetadata article={article} />
