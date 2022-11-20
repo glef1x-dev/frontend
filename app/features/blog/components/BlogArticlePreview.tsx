@@ -15,11 +15,11 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
       sx={{
         "&:hover": {
           transform: "translateY(-4px)",
-          boxShadow: "rgb(0 44 155 / 15%)",
+          boxShadow: "rgb(11 43 158 / 35%) 0px 10px 20px",
         },
         transition: "box-shadow 0.4s ease 0s, transform 0.4s ease 0s",
-        borderRadius: "0px 0px 16px 16px",
         willChange: "box-shadow, transform",
+        borderRadius: "12px",
       }}
       className="article-preview-card"
     >
@@ -41,7 +41,8 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             display: "flex",
             flex: 1,
             flexDirection: "column",
-            height: "100%"
+            height: "100%",
+            borderRadius: "12px",
           }}
         >
           <LazyLoadImage
