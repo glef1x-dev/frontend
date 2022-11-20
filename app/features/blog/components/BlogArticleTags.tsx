@@ -10,9 +10,10 @@ export default function BlogArticleTags({ tags }: BlogArticleTagsProps) {
     <Stack
       sx={{
         mt: "0.2rem",
+        flexWrap: "wrap",
+        gap: "0.3rem"
       }}
       direction="row"
-      spacing={1}
     >
       {tags.map((tag) => (
         <Chip key={tag.title} label={tag.title} size="small" />

@@ -1,5 +1,5 @@
-import {Link, useLoaderData} from "react-router-dom";
-import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
+import { Link, useLoaderData } from "react-router-dom";
+import {Box, Button, CardMedia, Container, Divider, Typography} from "@mui/material";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useMemo } from "react";
@@ -70,22 +70,28 @@ export default function BlogArticle() {
           <Box
             className="article-ending"
             sx={{
-              "& > *+*": {
-                marginTop: "2rem"
-              }
+              marginTop: "0.5rem",
             }}
           >
             <BlogArticleTags tags={article.tags} />
             {article.modified && (
-              <Typography variant="body2">
+              <Typography variant="body2" sx={{ mt: "1.5rem" }}>
                 Last updated: {moment(article.created).format("MMM Do YYYY")}
               </Typography>
             )}
 
-            <Button size="large" variant="outlined" startIcon={<ArrowBackIcon />} sx={{
-              padding: "1rem",
-              fontWeight: "bold"
-            }} component={Link} to="/blog">
+            <Button
+              size="large"
+              variant="outlined"
+              startIcon={<ArrowBackIcon />}
+              sx={{
+                padding: "1rem",
+                fontWeight: "bold",
+                marginTop: "2rem",
+              }}
+              component={Link}
+              to="/blog"
+            >
               RETURN TO ALL ARTICLES
             </Button>
           </Box>
