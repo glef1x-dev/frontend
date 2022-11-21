@@ -27,9 +27,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom", "react-router-dom", "recoil"],
-          reactMarkdown: ["react-markdown", "remark-gfm", "rehype-raw"],
-          utils: ["moment", "react-lazy-load-image-component", "notistack"],
+          react: ["react", "react-dom", "react-router-dom", "recoil"]
         },
       },
     },

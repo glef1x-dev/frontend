@@ -8,8 +8,8 @@ export interface Article {
   title: string;
   description: string;
   tags: Array<ArticleTag>;
-  created: Date;
-  modified: Date;
+  created: string;
+  modified: string;
   image: string;
   body: string;
   slug: string;

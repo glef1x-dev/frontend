@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "./routingErrorPage.js";
+import ErrorPage from "./routing-error-page.js";
 import { getPostArticleBySlug } from "@/features/blog/api/index.js";
 import { withSuspense } from "../utils/suspense-wrapper.js";
 

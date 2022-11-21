@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
-import {Box, Button, CardMedia, Container, Divider, Typography} from "@mui/material";
+import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useMemo } from "react";
@@ -7,9 +7,9 @@ import "./css/BlogArticle.css";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
 import { Article } from "@/features/blog/api/types.js";
 import Markdown from "@/features/blog/components/Markdown.js";
-import moment from "moment";
 import BlogArticleTags from "@/features/blog/components/BlogArticleTags.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
+import { formatDate } from "@/features/blog/utils.js";
 
 export default function BlogArticle() {
   const article = useLoaderData() as Article;
@@ -76,7 +76,7 @@ export default function BlogArticle() {
             <BlogArticleTags tags={article.tags} />
             {article.modified && (
               <Typography variant="body2" sx={{ mt: "1.5rem" }}>
-                Last updated: {moment(article.created).format("MMM Do YYYY")}
+                Last updated: {formatDate(article.created)}
               </Typography>
             )}
 

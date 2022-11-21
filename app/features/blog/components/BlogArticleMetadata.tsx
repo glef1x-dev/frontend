@@ -1,10 +1,10 @@
 // @ts-ignore
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
 import {Box, Typography} from "@mui/material";
-import moment from "moment";
 import useCalculateApproximateReadingTime from "../hooks/reading-time.js";
 import {Article} from "@/features/blog/api/types.js";
 import BlogArticleTags from "@/features/blog/components/BlogArticleTags.js";
+import {formatDate} from "@/features/blog/utils.js";
 
 type BlogArticleMetadatProps = {
   article: Article;
@@ -15,9 +15,7 @@ export default function BlogArticleMetadata({
                                               article,
                                               showTags = true
                                             }: BlogArticleMetadatProps) {
-  const formattedDateOfCreation = moment(article.created, true).format(
-    "MMM Do YYYY"
-  );
+  const formattedDateOfCreation = formatDate(article.created)
   const readingTime = useCalculateApproximateReadingTime(article.body);
 
   return (
