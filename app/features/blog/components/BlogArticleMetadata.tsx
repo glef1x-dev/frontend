@@ -5,6 +5,7 @@ import useCalculateApproximateReadingTime from "../hooks/reading-time.js";
 import {Article} from "@/features/blog/api/types.js";
 import BlogArticleTags from "@/features/blog/components/BlogArticleTags.js";
 import {formatDate} from "@/features/blog/utils.js";
+import MiddleDot from "@/components/MiddleDot";
 
 type BlogArticleMetadatProps = {
   article: Article;
@@ -30,12 +31,13 @@ export default function BlogArticleMetadata({
       >
         <CalendarMonthTwoToneIcon fontSize="small"/>
         <Typography
-          sx={{wordWrap: "break-word", mr: "1rem"}}
+          sx={{wordWrap: "break-word"}}
           variant="caption"
           fontWeight="bold"
         >
           {formattedDateOfCreation}
         </Typography>
+        <MiddleDot/>
         <Typography variant="caption">{readingTime}</Typography>
       </Box>
       {showTags && <BlogArticleTags tags={article.tags}/>}
