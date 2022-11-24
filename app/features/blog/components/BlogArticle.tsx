@@ -35,7 +35,7 @@ export default function BlogArticle() {
           overflow: "unset",
         }}
       />
-      <Container className="article-container" maxWidth="md">
+      <Container className="article-container" maxWidth="md" disableGutters={true}>
         <article
           style={{
             display: "flex",
