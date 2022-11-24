@@ -4,6 +4,8 @@ import { default as oneDark } from "react-syntax-highlighter/dist/esm/styles/pri
 import { default as oneLight } from "react-syntax-highlighter/dist/esm/styles/prism/one-light";
 import { memo } from "react";
 import { useTheme } from "@/lib/ui/mui/theme.js";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 type MarkdownProps = {
   text: string;
@@ -26,6 +28,8 @@ function Markdown(props: MarkdownProps) {
     <ReactMarkdown
       children={text}
       className="markdown-text"
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
       components={{
         code({ node, inline, className, children, ...props }) {
           const guessedLanguageName = /language-(\w+)/
