@@ -5,7 +5,7 @@ export function usePageEffect(options?: Options, deps?: React.DependencyList) {
   const location = useLocation();
 
   // Once the page component was rendered, update the HTML document's title
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const previousTitle = document.title;
 
     document.title =
