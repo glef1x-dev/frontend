@@ -41,8 +41,6 @@ function Markdown({ children }: CoreOptions) {
                 language={match[1]}
                 // PreTag="div"
                 style={isDarkTheme ? srceryCodeStyle: githubGistCodeStyle}
-                wrapLines="true"
-                wrapLongLines="true"
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 customStyle={{
