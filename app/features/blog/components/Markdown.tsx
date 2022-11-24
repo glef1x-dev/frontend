@@ -6,13 +6,12 @@ import { default as srceryCodeStyle } from "react-syntax-highlighter/dist/esm/st
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { CoreOptions } from "react-markdown/lib/react-markdown.js";
-import { withSuspense } from "@/utils/suspense-wrapper.js";
-import {useTheme} from "@/lib/ui/mui/theme.js";
+import { useTheme } from "@/lib/ui/mui/theme.js";
+import { memo } from "react";
 
 function Markdown({ children }: CoreOptions) {
   const theme = useTheme();
   const isDarkTheme = theme.palette.mode === "dark";
-
 
   return (
     <ReactMarkdown
@@ -40,7 +39,7 @@ function Markdown({ children }: CoreOptions) {
                 children={String(children).replace(/\n$/, "")}
                 language={match[1]}
                 // PreTag="div"
-                style={isDarkTheme ? srceryCodeStyle: githubGistCodeStyle}
+                style={isDarkTheme ? srceryCodeStyle : githubGistCodeStyle}
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 customStyle={{
@@ -61,4 +60,4 @@ function Markdown({ children }: CoreOptions) {
   );
 }
 
-export default withSuspense(Markdown);
+export default memo(Markdown);
