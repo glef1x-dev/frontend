@@ -1,18 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import { Box } from "@mui/material";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { default as githubGistCodeStyle } from "react-syntax-highlighter/dist/esm/styles/hljs/github-gist";
-import { default as srceryCodeStyle } from "react-syntax-highlighter/dist/esm/styles/hljs/srcery";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { default as materialDark } from "react-syntax-highlighter/dist/esm/styles/prism/material-dark";
 import { CoreOptions } from "react-markdown/lib/react-markdown.js";
-import { useTheme } from "@/lib/ui/mui/theme.js";
 import { memo } from "react";
 
 function Markdown({ children }: CoreOptions) {
-  const theme = useTheme();
-  const isDarkTheme = theme.palette.mode === "dark";
-
   return (
     <ReactMarkdown
       children={children}
@@ -38,10 +31,7 @@ function Markdown({ children }: CoreOptions) {
               <SyntaxHighlighter
                 children={String(children).replace(/\n$/, "")}
                 language={match[1]}
-                // PreTag="div"
-                style={isDarkTheme ? srceryCodeStyle : githubGistCodeStyle}
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
+                style={materialDark}
                 customStyle={{
                   borderRadius: "10px",
                   padding: "20px",

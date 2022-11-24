@@ -45,8 +45,9 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             borderRadius: "12px",
           }}
         >
-          <LazyLoadImage
+          <img
             height="205"
+            alt={`${article.title} preview`}
             src={article.image}
             style={{
               width: "100%",
