@@ -2,18 +2,37 @@ import ReactMarkdown from "react-markdown";
 import { Box } from "@mui/material";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { default as materialDark } from "react-syntax-highlighter/dist/esm/styles/prism/material-dark";
-import { CoreOptions } from "react-markdown/lib/react-markdown.js";
+import { default as materialLight } from "react-syntax-highlighter/dist/esm/styles/prism/material-light";
 import { memo } from "react";
+import { useTheme } from "@/lib/ui/mui/theme.js";
 
-function Markdown({ children }: CoreOptions) {
+type MarkdownProps = {
+  text: string;
+  prismCodeStyles?: {
+    dark: { [key: string]: React.CSSProperties };
+    light: { [key: string]: React.CSSProperties };
+  };
+};
+
+function Markdown(props: MarkdownProps) {
+  const text = props.text;
+  const prismCodeStyles = props.prismCodeStyles ?? {
+    dark: materialDark,
+    light: materialLight,
+  };
+  const theme = useTheme();
+  const isDarkThemeEnabled = theme.palette.mode === "dark";
+
   return (
     <ReactMarkdown
-      children={children}
+      children={text}
       className="markdown"
       components={{
         code({ node, inline, className, children, ...props }) {
-          const match = /language-(\w+)/.exec(className || "");
-          return !inline && match ? (
+          const guessedLanguageName = /language-(\w+)/
+            .exec(className || "")
+            ?.at(1);
+          return !inline && guessedLanguageName ? (
             <Box
               sx={{
                 "& code": {
@@ -30,8 +49,12 @@ function Markdown({ children }: CoreOptions) {
             >
               <SyntaxHighlighter
                 children={String(children).replace(/\n$/, "")}
-                language={match[1]}
-                style={materialDark}
+                language={guessedLanguageName}
+                style={
+                  isDarkThemeEnabled
+                    ? prismCodeStyles.dark
+                    : prismCodeStyles.light
+                }
                 customStyle={{
                   borderRadius: "10px",
                   padding: "20px",
@@ -41,7 +64,7 @@ function Markdown({ children }: CoreOptions) {
             </Box>
           ) : (
             <code className={className} {...props}>
-              {children}
+              {text}
             </code>
           );
         },

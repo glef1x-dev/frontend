@@ -16,7 +16,7 @@ export default function BlogArticle() {
 
   usePageEffect({ title: article.title });
   const renderedArticleBodyAsMarkdown = useMemo(() => {
-    return <Markdown children={article.body} />;
+    return <Markdown text={article.body} />;
   }, [article.body]);
 
   return (
@@ -35,7 +35,11 @@ export default function BlogArticle() {
           overflow: "unset",
         }}
       />
-      <Container className="article-container" maxWidth="md" disableGutters={true}>
+      <Container
+        className="article-container"
+        maxWidth="md"
+        disableGutters={true}
+      >
         <article
           style={{
             display: "flex",
