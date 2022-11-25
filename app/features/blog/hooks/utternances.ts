@@ -8,7 +8,7 @@ export default function useUtternances(
   const anchorIdForInjectingUtternances = useId();
   const theme = useTheme();
   const utterancesTheme =
-    theme.palette.mode === "dark" ? "proton-dark" : "github-light";
+    theme.palette.mode === "dark" ? "github-dark" : "github-light";
 
   useEffect(() => {
     const anchor = document.getElementById(anchorIdForInjectingUtternances);
