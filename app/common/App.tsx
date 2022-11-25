@@ -1,0 +1,34 @@
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import Spinner from "./Spinner.js";
+import { RouterProvider } from "react-router-dom";
+import { router } from "../core/router.js";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Octokit } from "@octokit/rest";
+import { SnackbarProvider } from "notistack";
+import { useTheme } from "@/core/ui/mui/theme.js";
+import { OctokitContext } from "@/services/api/github.js";
+import { ApiProvider } from "@/services/api";
+import * as React from "react";
+import { queryClient } from "@/services/queryClient/queryClient.js";
+
+export function App(): JSX.Element {
+  const theme = useTheme();
+  const octokit = new Octokit({ auth: GITHUB_PERSONAL_TOKEN });
+
+  return (
+    <SnackbarProvider>
+      <ThemeProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <OctokitContext.Provider value={octokit}>
+            <ApiProvider>
+              <CssBaseline />
+              <RouterProvider router={router} fallbackElement={<Spinner />} />
+              <ReactQueryDevtools position="bottom-right" />
+            </ApiProvider>
+          </OctokitContext.Provider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </SnackbarProvider>
+  );
+}

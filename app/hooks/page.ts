@@ -1,11 +1,11 @@
-import * as React from "react";
+import {DependencyList, useLayoutEffect} from "react";
 import { useLocation } from "react-router-dom";
 
-export function usePageEffect(options?: Options, deps?: React.DependencyList) {
+export function usePageEffect(options?: Options, deps?: DependencyList) {
   const location = useLocation();
 
   // Once the page component was rendered, update the HTML document's title
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     const previousTitle = document.title;
 
     document.title =
