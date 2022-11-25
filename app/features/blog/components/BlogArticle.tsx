@@ -15,9 +15,6 @@ export default function BlogArticle() {
   const article = useLoaderData() as Article;
 
   usePageEffect({ title: article.title });
-  const renderedArticleBodyAsMarkdown = useMemo(() => {
-    return <Markdown text={article.body} />;
-  }, [article.body]);
 
   return (
     <>
@@ -70,7 +67,7 @@ export default function BlogArticle() {
               }}
             />
           </header>
-          {renderedArticleBodyAsMarkdown}
+          <Markdown text={article.body} />
           <Box
             className="article-ending"
             sx={{

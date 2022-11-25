@@ -27,43 +27,39 @@ function Markdown(props: MarkdownProps) {
   return (
     <ReactMarkdown
       children={text}
-      className="markdown-text"
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{
         code({ node, inline, className, children, ...props }) {
-          const guessedLanguageName = /language-(\w+)/
-            .exec(className || "")
-            ?.at(1);
-          return !inline && guessedLanguageName ? (
-            <SyntaxHighlighter
-              children={String(children).replace(/\n$/, "")}
-              language={guessedLanguageName}
-              style={
-                isDarkThemeEnabled
-                  ? prismCodeStyles.dark
-                  : prismCodeStyles.light
-              }
-              customStyle={{
-                borderRadius: "10px",
-                padding: "20px",
-                fontFamily: "JetbrainsMonoNL, monospace",
-                fozntWeight: "bold",
-              }}
-              codeTagProps={{
-                style: {
-                  fontFamily: "inherit",
-                  letterSpacing: "inherit",
-                  fontWeight: "inherit",
-                  fontSize: "inherit",
-                },
-              }}
-              {...props}
-            />
-          ) : (
-            <code className={className} {...props}>
-              {text}
-            </code>
+          const match = /language-(\w+)/.exec(className || "");
+          return (
+            match && (
+              <SyntaxHighlighter
+                children={String(children).replace(/\n$/, "")}
+                language={match[1]}
+                style={
+                  isDarkThemeEnabled
+                    ? prismCodeStyles.dark
+                    : prismCodeStyles.light
+                }
+                customStyle={{
+                  borderRadius: "10px",
+                  padding: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)",
+                  fontFamily: "JetbrainsMonoNL, monospace",
+                  fozntWeight: "bold",
+                  fontSize: "0.9em",
+                }}
+                PreTag="div"
+                codeTagProps={{
+                  style: {
+                    fontSize: "inherit",
+                    letterSpacing: "inherit",
+                    fontFamily: "inherit",
+                  },
+                }}
+                {...props}
+              />
+            )
           );
         },
       }}
