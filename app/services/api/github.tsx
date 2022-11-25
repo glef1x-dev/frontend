@@ -1,7 +1,22 @@
 import { Octokit } from "@octokit/rest";
-import { createContext, useContext } from "react";
+import { createContext, ReactNode, useContext } from "react";
 
 export const OctokitContext = createContext<Octokit | null>(null);
+
+export const OctokitProvider = ({
+  children,
+  token = GITHUB_PERSONAL_TOKEN,
+}: {
+  token?: string;
+  children?: ReactNode;
+}) => {
+  const octokitInstance = new Octokit({ auth: token });
+  return (
+    <OctokitContext.Provider value={octokitInstance}>
+      {children}
+    </OctokitContext.Provider>
+  );
+};
 
 export const useOctokit = (): Octokit => {
   const octokit = useContext(OctokitContext);
