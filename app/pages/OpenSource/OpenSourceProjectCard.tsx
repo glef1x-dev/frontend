@@ -51,7 +51,9 @@ export default function OpenSourceProjectCard({
           >
             {title}
           </Typography>
-          {githubStarsCount ?? 0} &#11088;
+          <Typography variant="h3" color="text.secondary">
+            {githubStarsCount ?? 0} &#11088;
+          </Typography>
         </Grid>
         <Typography
           variant="caption"
