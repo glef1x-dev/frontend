@@ -14,6 +14,7 @@ const defineVars = [
   "APP_HOSTNAME",
   "GITHUB_PERSONAL_TOKEN",
   "BASE_API_URL",
+  "UTTERNANCES_REPOSTIRORY_NAME",
 ];
 
 /**
