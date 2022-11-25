@@ -74,13 +74,13 @@ export default function BlogArticle() {
               marginTop: "0.5rem",
             }}
           >
+            <Comments />
             <BlogArticleTags tags={article.tags} />
             {article.modified && (
               <Typography variant="body2" sx={{ mt: "1.5rem" }}>
                 Last updated: {formatDate(article.created)}
               </Typography>
             )}
-            <Comments />
 
             <Button
               size="large"
