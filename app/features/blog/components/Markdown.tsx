@@ -55,6 +55,7 @@ function Markdown(props: MarkdownProps) {
                     fontSize: "inherit",
                     letterSpacing: "inherit",
                     fontFamily: "inherit",
+                    overscrollBehaviorX: "contain",
                   },
                 }}
                 {...props}
