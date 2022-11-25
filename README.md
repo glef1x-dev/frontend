@@ -1,4 +1,4 @@
-# `everybodyknow.me` frontend
+# Frontend source code of `glefix.xyz`
 
 ## Features
 
@@ -13,7 +13,6 @@
 ## Directory Structure
 
 `├──`[`.github`](.github) — GitHub configuration including CI/CD workflows<br>
-`├──`[`.vscode`](.vscode) — VSCode settings including code snippets, recommended extensions etc.<br>
 `├──`[`app`](app) — Web application front-end built with [React](https://reactjs.org/) and [Material UI](https://mui.com/core/)<br>
 `├──`[`edge`](edge) — Cloudflare Workers (CDN) edge endpoint<br>
 `├──`[`env`](env) — Application settings, API keys, etc.<br>
@@ -25,18 +24,10 @@
 
 - [React](https://reactjs.org/), [React Router](https://reactrouter.com/), [Recoil](https://recoiljs.org/),
   [Emotion](https://emotion.sh/), [Material UI](https://next.material-ui.com/),
-  [Firebase Authentication](https://firebase.google.com/docs/auth)
 - [Vite](https://vitejs.dev/), [Rollup](https://rollupjs.org/),
   [TypeScript](https://www.typescriptlang.org/), [ESLint](https://eslint.org/),
   [Prettier](https://prettier.io/), [Jest](https://jestjs.io/),
   [Yarn](https://yarnpkg.com/) with PnP
-
-## Requirements
-
-- [Node.js](https://nodejs.org/) v18+ with [Corepack](https://nodejs.org/api/corepack.html) (`$ corepack enable`)
-- [VS Code](https://code.visualstudio.com/) editor with [recommended extensions](.vscode/extensions.json)
-- Optionally [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-  and [Reactime](https://chrome.google.com/webstore/detail/reactime/cgibknllccemdnfhfpmjhffpjfeidjga?hl=en) browser extensions
 
 ## Getting Started
 
@@ -45,8 +36,8 @@ from this template, clone it, install project dependencies, update the
 environment variables found in [`env/*.env`](env/), and start hacking:
 
 ```
-$ git clone https://github.com/kriasoft/react-starter-kit.git example
-$ cd ./example
-$ npm install
-$ npm run start
+$ git clone https://github.com/glef1x-dev/frontend frontend
+$ cd ./frontend
+$ pnpm install
+$ pnpm run start
 ```
