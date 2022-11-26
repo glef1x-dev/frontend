@@ -1,11 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { default as oneDark } from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
-import { default as oneLight } from "react-syntax-highlighter/dist/esm/styles/prism/one-light";
+import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
+import oneLight from "react-syntax-highlighter/dist/esm/styles/prism/one-light";
 import { memo } from "react";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import {useTheme} from "@/core/ui/mui/theme.js";
+import { useTheme } from "@/core/ui/mui/theme.js";
 
 type MarkdownProps = {
   text: string;
@@ -37,6 +37,7 @@ function Markdown(props: MarkdownProps) {
               <SyntaxHighlighter
                 children={String(children).replace(/\n$/, "")}
                 language={match[1]}
+                // @ts-expect-error
                 style={
                   isDarkThemeEnabled
                     ? prismCodeStyles.dark
@@ -46,7 +47,7 @@ function Markdown(props: MarkdownProps) {
                   borderRadius: "10px",
                   padding: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)",
                   fontFamily: "JetbrainsMonoNL, monospace",
-                  fozntWeight: "bold",
+                  fontWeight: "bold",
                   fontSize: "0.9em",
                 }}
                 PreTag="div"

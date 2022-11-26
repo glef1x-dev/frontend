@@ -76,9 +76,11 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
         getRepositoryStarsCount(
           octokitClient,
           repositoryOwner,
-          repositoryName,
+          repositoryName
         ).catch((error) => {
-          notifyOnError(`Failed to load opensource project metadata from GitHub [${error.toString()}]`);
+          notifyOnError(
+            `Failed to load opensource project metadata from GitHub [${error.toString()}]`
+          );
           return Promise.resolve(0);
         }),
     },

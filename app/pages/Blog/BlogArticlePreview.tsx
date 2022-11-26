@@ -1,7 +1,7 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
-import {Article} from "@/services/api/types/blog.js";
+import { Article } from "@/services/api/types/blog.js";
 
 interface BlogPostProps {
   article: Article;

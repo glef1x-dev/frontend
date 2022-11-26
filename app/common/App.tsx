@@ -7,9 +7,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SnackbarProvider } from "notistack";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { OctokitProvider } from "@/services/api/github.js";
-import { ApiProvider } from "@/services/api";
-import * as React from "react";
 import { queryClient } from "@/services/queryClient/queryClient.js";
+import { ApiProvider } from "@/services/api/index.js";
 
 export function App(): JSX.Element {
   const theme = useTheme();

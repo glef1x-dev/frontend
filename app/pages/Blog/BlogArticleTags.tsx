@@ -1,5 +1,5 @@
+import { ArticleTag } from "@/services/api/types/blog.js";
 import { Chip, Stack } from "@mui/material";
-import { ArticleTag } from "@/pages/Blog/api/index.js";
 
 type BlogArticleTagsProps = {
   tags: Array<ArticleTag>;

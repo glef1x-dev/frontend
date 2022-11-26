@@ -3,7 +3,7 @@ import * as React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 import { usePageEffect } from "@/hooks/page.js";
-import {useTheme} from "@/core/ui/mui/theme.js";
+import { useTheme } from "@/core/ui/mui/theme.js";
 
 type OpenSourceProject = {
   title: string;

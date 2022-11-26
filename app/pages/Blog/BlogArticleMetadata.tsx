@@ -4,7 +4,7 @@ import { type Article } from "@/services/api/types/blog.js";
 import MiddleDot from "@/common/MiddleDot.js";
 import useCalculateApproximateReadingTime from "@/hooks/reading-time.js";
 import BlogArticleTags from "@/pages/Blog/BlogArticleTags.js";
-import {formatDate} from "@/services/datetime.js";
+import { formatDate } from "@/services/datetime.js";
 
 type BlogArticleMetadatProps = {
   article: Article;

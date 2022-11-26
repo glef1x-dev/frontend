@@ -8,9 +8,7 @@ const About = withSuspense(
   React.lazy(() => import("../pages/AboutMe/AboutMe.js"))
 );
 const OpenSource = withSuspense(
-  React.lazy(
-      () => import("../pages/OpenSource/OpenSource.js")
-  )
+  React.lazy(() => import("../pages/OpenSource/OpenSource.js"))
 );
 const Blog = withSuspense(
   React.lazy(() => import("../pages/Blog/BlogArticlePreviewList.js"))

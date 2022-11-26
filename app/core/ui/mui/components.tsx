@@ -1,4 +1,4 @@
-import {type Palette, type ThemeOptions} from "@mui/material/styles";
+import { type Palette, type ThemeOptions } from "@mui/material/styles";
 
 /**
  * Style overrides for Material UI components.

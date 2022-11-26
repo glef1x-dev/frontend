@@ -18,7 +18,9 @@ export default function BlogArticle() {
     throw new Error("Slug is not found in query parameters");
   }
 
-  const { data: article } = useGetBlogArticleBySlug(slug);
+  const { data } = useGetBlogArticleBySlug(slug);
+  const article = data!;
+
   usePageEffect({ title: article.title });
 
   return (

@@ -1,35 +1,22 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
     "outDir": "./dist",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "noEmit": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.json"
-  ],
-  "exclude": [
-    "dist/**/*",
-    "vite.config.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.json"],
+  "exclude": ["dist/**/*", "vite.config.ts", "@mui/icons-material"],
   "references": [
     {
       "path": "./tsconfig.node.json"

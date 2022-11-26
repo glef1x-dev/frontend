@@ -1,4 +1,4 @@
-import {DependencyList, useLayoutEffect} from "react";
+import { DependencyList, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export function usePageEffect(options?: Options, deps?: DependencyList) {

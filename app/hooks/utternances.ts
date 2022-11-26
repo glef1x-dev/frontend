@@ -1,6 +1,5 @@
-
 import { useEffect, useId } from "react";
-import {useTheme} from "@/core/ui/mui/theme.js";
+import { useTheme } from "@/core/ui/mui/theme.js";
 
 export default function useUtternances(
   repositoryName: string,

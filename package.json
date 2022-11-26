@@ -5,6 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@7.14.0",
   "scripts": {
+    "postinstall": "husky install",
     "start": "zx scripts/start.js",
     "lint": "eslint --cache --report-unused-disable-directives glef1x.dev/frontend",
     "test": "jest",
@@ -12,7 +13,8 @@
     "app:start": "pnpm --filter 'app' run start",
     "app:build": "pnpm --filter 'app' run build",
     "app:preview": "pnpm --filter 'app' run preview",
-    "app:deploy": "pnpm --filter 'app' run deploy"
+    "app:deploy": "pnpm --filter 'app' run deploy",
+    "format": "pnpm exec prettier --write ."
   },
   "devDependencies": {
     "@babel/cli": "~7.19.3",
@@ -62,6 +64,11 @@
   },
   "resolutions": {
     "chalk@npm:~5.0.1": "~4.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "sideEffects": false,
   "jest": {

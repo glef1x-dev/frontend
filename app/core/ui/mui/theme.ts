@@ -1,7 +1,12 @@
-import {type PaletteMode, responsiveFontSizes} from "@mui/material";
-import {createTheme} from "@mui/material/styles";
-import {atom, selectorFamily, useRecoilCallback, useRecoilValue,} from "recoil";
-import {components} from "./components.js";
+import { type PaletteMode, responsiveFontSizes } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
+import {
+  atom,
+  selectorFamily,
+  useRecoilCallback,
+  useRecoilValue,
+} from "recoil";
+import { components } from "./components.js";
 import palettes from "./palettes.js";
 import * as typography from "./typography.js";
 
