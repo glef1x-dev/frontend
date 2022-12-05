@@ -1,5 +1,6 @@
 import { ArticleTag } from "@/services/api/types/blog.js";
 import { Chip, Stack } from "@mui/material";
+import { purple } from "@mui/material/colors";
 
 type BlogArticleTagsProps = {
   tags: Array<ArticleTag>;
@@ -16,7 +17,16 @@ export default function BlogArticleTags({ tags }: BlogArticleTagsProps) {
       direction="row"
     >
       {tags.map((tag) => (
-        <Chip key={tag.title} label={tag.title} size="small" />
+        <Chip
+          color="primary"
+          variant="outlined"
+          key={tag.title}
+          label={tag.title}
+          size="medium"
+          sx={{
+            fontWeight: "bold",
+          }}
+        />
       ))}
     </Stack>
   );
