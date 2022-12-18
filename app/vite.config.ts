@@ -34,9 +34,12 @@ export default defineConfig({
     },
   },
 
-  define: Object.fromEntries(
-    defineVars.map((key) => [key, JSON.stringify(process.env[key])])
-  ),
+  define: {
+    ...Object.fromEntries(
+      defineVars.map((key) => [key, JSON.stringify(process.env[key])])
+    ),
+    __DEV__: process.env.NODE_ENV === "development",
+  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL(".", import.meta.url)),

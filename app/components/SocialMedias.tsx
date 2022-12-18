@@ -7,7 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 // @ts-ignore
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
-export default function SocialMedias(): JSX.Element {
+export default React.memo(function SocialMedias(): JSX.Element {
   const socialMedias: Array<SocialMedia> = [
     {
       name: "github",
@@ -39,7 +39,7 @@ export default function SocialMedias(): JSX.Element {
       })}
     </Box>
   );
-}
+});
 
 export interface SocialMedia {
   name: string;

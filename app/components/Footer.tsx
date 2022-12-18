@@ -1,11 +1,10 @@
 import { Box, Container, Link, Typography } from "@mui/material";
-import * as React from "react";
 
 function Copyright() {
   return (
-    <Typography variant="h2" color="text.secondary" align="center">
+    <Typography variant="h6" color="text.secondary" align="center">
       {"© "}
-      <Link color="inherit" href="">
+      <Link color="inherit" href="/">
         Hlib Haranin
       </Link>{" "}
       {new Date().getFullYear()}

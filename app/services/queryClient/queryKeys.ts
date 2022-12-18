@@ -4,7 +4,10 @@ export type QueryKeys = {
 
 export const blogQueryKeys = {
   blogArticle: (slug: string) => ["blogArticle", slug],
-  blogArticles: () => ["blogArticles"],
+  blogArticles: (tagName: string | undefined) => [
+    "blogArticles",
+    tagName ?? "",
+  ],
 };
 
 export const githubQueryKeys = {

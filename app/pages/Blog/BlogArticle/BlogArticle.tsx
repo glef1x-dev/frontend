@@ -1,24 +1,18 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import { usePageEffect } from "@/hooks/page.js";
 import "./css/BlogArticle.css";
-import ScrollProgressBar from "../../common/ScrollProgressBar.js";
-import Markdown from "@/common/Markdown.js";
-import BlogArticleTags from "@/pages/Blog/BlogArticleTags.js";
+import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
+import Markdown from "@/components/Markdown.js";
+import BlogArticleTags from "@/pages/Blog/ArticleTags.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
-import Comments from "./Comments.js";
+import Comments from "../Comments.js";
 import { formatDate } from "@/services/datetime.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
 
 export default function BlogArticle() {
-  const { slug } = useParams();
-
-  if (!slug) {
-    throw new Error("Slug is not found in query parameters");
-  }
-
-  const { data } = useGetBlogArticleBySlug(slug);
+  const { data } = useGetBlogArticleBySlug();
   const article = data!;
 
   usePageEffect({ title: article.title });
@@ -54,7 +48,7 @@ export default function BlogArticle() {
         >
           <header>
             <Typography
-              variant="h1"
+              variant="h3"
               sx={{
                 marginTop: "2rem",
                 marginBottom: "1rem",

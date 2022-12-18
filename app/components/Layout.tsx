@@ -1,7 +1,7 @@
 import AppNavigation from "./AppNavigation.js";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer.js";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 
 export default function Layout(): JSX.Element {
   return (
@@ -14,9 +14,9 @@ export default function Layout(): JSX.Element {
       }}
     >
       <AppNavigation />
-      <Container className="content-wrapper" maxWidth="lg" sx={{ flex: 1 }}>
+      <Box className="content-wrapper" sx={{ flex: 1 }}>
         <Outlet />
-      </Container>
+      </Box>
       <Footer description="" />
     </Box>
   );

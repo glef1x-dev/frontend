@@ -1,20 +1,22 @@
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { withSuspense } from "../utils/suspense.js";
-import { ErrorPage } from "@/common/ErrorPage.js";
+import { withSuspense } from "../utils/HOC/suspense.js";
+import { ErrorPage } from "@/components/ErrorPage.js";
 
-const Layout = withSuspense(React.lazy(() => import("../common/Layout.js")));
+const Layout = withSuspense(
+  React.lazy(() => import("../components/Layout.js"))
+);
 const About = withSuspense(
   React.lazy(() => import("../pages/AboutMe/AboutMe.js"))
 );
 const OpenSource = withSuspense(
   React.lazy(() => import("../pages/OpenSource/OpenSource.js"))
 );
-const Blog = withSuspense(
-  React.lazy(() => import("../pages/Blog/BlogArticlePreviewList.js"))
+const ArticleList = withSuspense(
+  React.lazy(() => import("../pages/Blog/ArticleList.js"))
 );
 const BlogArticle = withSuspense(
-  React.lazy(() => import("../pages/Blog/BlogArticle.js"))
+  React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticle.js"))
 );
 
 export const router = createBrowserRouter([
@@ -28,16 +30,20 @@ export const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "/opensource",
+        path: "/opensource/",
         element: <OpenSource />,
       },
       {
-        path: "/blog",
-        element: <Blog />,
+        path: "/blog/",
+        element: <ArticleList />,
       },
       {
-        path: "/blog/article/:slug",
+        path: "/blog/article/:slug/",
         element: <BlogArticle />,
+      },
+      {
+        path: "/blog/:tagName/",
+        element: <ArticleList />,
       },
     ],
   },

@@ -1,7 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import Spinner from "./Spinner.js";
+import Spinner from "./Spinner/Spinner.js";
 import { RouterProvider } from "react-router-dom";
-import { router } from "../core/router.js";
+import { router } from "@/core/router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SnackbarProvider } from "notistack";

@@ -58,7 +58,7 @@ type AvatarLinkProps = {
   to: string;
 };
 
-export default function AvatarLink(props: AvatarLinkProps) {
+export default React.memo(function AvatarLink(props: AvatarLinkProps) {
   return (
     <Link reloadDocument component={RouterLink} to={props.to}>
       <Avatar
@@ -70,4 +70,4 @@ export default function AvatarLink(props: AvatarLinkProps) {
       />
     </Link>
   );
-}
+});

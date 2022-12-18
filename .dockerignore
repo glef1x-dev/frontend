@@ -24,3 +24,4 @@
 **/.turbo/*
 **/node_modules/*
 **/Dockerfile*
+**/.vscode/*

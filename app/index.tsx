@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
-import { App } from "./common/App.js";
+import { App } from "./components/App.js";
+import "./index.css";
 
 const container = document.getElementById("root") as HTMLElement;
 

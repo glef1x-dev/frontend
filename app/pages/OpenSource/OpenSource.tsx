@@ -4,6 +4,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
+import PageHeader from "@/components/PageHeader.js";
 
 type OpenSourceProject = {
   title: string;
@@ -49,83 +50,57 @@ const openSourceProjects: OpenSourceProject[] = [
   },
 ];
 
-const OpenSourcePageTitle = () => {
-  return (
-    <Grid
-      item
-      container
-      direction="column"
-      className="openSourcePageTitle"
-      sx={{
-        borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        alignItems: "center",
-        justifyContent: "center",
-        pb: "1rem",
-        py: "1rem",
-      }}
-    >
-      <Typography fontWeight="bold" variant="h1">
-        Open Source
-      </Typography>
-      <Typography
-        variant="h3"
-        sx={{
-          py: 2,
-        }}
-      >
-        These are the open source projects that I am involved with, either as
-        the author or as a maintainer.
-      </Typography>
-    </Grid>
-  );
-};
-
-export default function OpenSource() {
+export default React.memo(function OpenSource() {
   usePageEffect({ title: "Opensource" });
   const theme = useTheme();
 
   return (
-    <Container
-      sx={{
-        display: "grid",
-      }}
-    >
-      <Grid
-        container
-        direction="column"
+    <>
+      <PageHeader
+        title="Opensource"
+        description="These are the open source projects that I am involved with, either as the author or as a maintainer"
+      />
+      <Container
         sx={{
-          [theme.breakpoints.up("md")]: {
-            gap: 2,
-            padding: "2rem",
-          },
+          display: "grid",
         }}
       >
-        <OpenSourcePageTitle />
-        <Box
-          display="grid"
-          gridTemplateColumns="repeat(1, 1fr)"
-          gap="1.5rem"
+        <Grid
+          container
+          direction="column"
           sx={{
-            "@media(min-width: 850px)": {
-              gridTemplateColumns: "repeat(2, 1fr)",
+            [theme.breakpoints.up("md")]: {
+              gap: 2,
+              marginTop: theme.spacing(5),
             },
           }}
         >
-          {openSourceProjects.map((project: OpenSourceProject) => {
-            return (
-              <Box key={project.title}>
-                <OpenSourceProjectCard
-                  key={project.title}
-                  title={project.title}
-                  description={project.description}
-                  sourceCodeLink={project.sourceCodeLink}
-                  documentationLink={project.documentationLink}
-                />
-              </Box>
-            );
-          })}
-        </Box>
-      </Grid>
-    </Container>
+          <Box
+            display="grid"
+            gridTemplateColumns="repeat(1, 1fr)"
+            gap="1.5rem"
+            sx={{
+              "@media(min-width: 850px)": {
+                gridTemplateColumns: "repeat(2, 1fr)",
+              },
+            }}
+          >
+            {openSourceProjects.map((project: OpenSourceProject) => {
+              return (
+                <Box key={project.title}>
+                  <OpenSourceProjectCard
+                    key={project.title}
+                    title={project.title}
+                    description={project.description}
+                    sourceCodeLink={project.sourceCodeLink}
+                    documentationLink={project.documentationLink}
+                  />
+                </Box>
+              );
+            })}
+          </Box>
+        </Grid>
+      </Container>
+    </>
   );
-}
+});

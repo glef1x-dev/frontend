@@ -1,3 +1,5 @@
+import { PaginatedResult } from "./base";
+
 export interface ArticleTag {
   id: number;
   title: string;
@@ -13,4 +15,7 @@ export interface Article {
   image: string;
   body: string;
   slug: string;
+  likesCount: number;
 }
+
+export type ArticleList = PaginatedResult<Article>;

@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { Link as ReactRouterLink } from "react-router-dom";
 import SocialMedias from "./SocialMedias.js";
-import { ThemeButton } from "./ThemeButton.js";
+import ThemeButton from "./ThemeButton.js";
 import CoPresentIcon from "@mui/icons-material/CoPresent";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";

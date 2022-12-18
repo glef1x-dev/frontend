@@ -1,14 +1,15 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import BlogArticleMetadata from "./BlogArticleMetadata.js";
+import BlogArticleMetadata from "./BlogArticle/BlogArticleMetadata.js";
 import { Article } from "@/services/api/types/blog.js";
+import { memo } from "react";
 
-interface BlogPostProps {
+interface ArticleCardProps {
   article: Article;
   createdDateFormat?: string;
 }
 
-export default function BlogArticlePreview({ article }: BlogPostProps) {
+export default memo(function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Box
       sx={{
@@ -30,7 +31,6 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
           WebkitTapHighlightColor: "transparent",
           WebkitTouchCallout: "none",
           WebkitUserSelect: "none",
-          KhtmlUserSelect: "none",
           MozUserSelect: "none",
           userSelect: "none",
         }}
@@ -65,7 +65,7 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
             <Typography
               gutterBottom
               component="div"
-              variant="h2"
+              variant="h5"
               fontWeight="bold"
               sx={{
                 flex: 1,
@@ -85,4 +85,4 @@ export default function BlogArticlePreview({ article }: BlogPostProps) {
       </Link>
     </Box>
   );
-}
+});

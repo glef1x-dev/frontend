@@ -13,7 +13,7 @@ import { useSnackbar } from "notistack";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew.js";
 import { useGetStarsCount } from "@/hooks/api/useGithubApi.js";
 
-export default function OpenSourceProjectCard({
+export default React.memo(function OpenSourceProjectCard({
   icon,
   title,
   description,
@@ -41,7 +41,7 @@ export default function OpenSourceProjectCard({
       <CardContent>
         <Grid container alignItems="center">
           <Typography
-            variant="h2"
+            variant="h5"
             fontWeight="bold"
             sx={{
               textDecoration: "underline",
@@ -51,7 +51,7 @@ export default function OpenSourceProjectCard({
           >
             {title}
           </Typography>
-          <Typography variant="h3" color="text.secondary">
+          <Typography variant="h5" color="text.secondary">
             {githubStarsCount ?? 0} &#11088;
           </Typography>
         </Grid>
@@ -88,7 +88,7 @@ export default function OpenSourceProjectCard({
       </CardActions>
     </Card>
   );
-}
+});
 
 type OpenSourceProjectCardProps = {
   icon?: string;

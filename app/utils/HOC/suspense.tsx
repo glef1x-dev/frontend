@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ComponentType, SuspenseProps } from "react";
-import Spinner from "../common/Spinner.js";
+import Spinner from "../../components/Spinner/Spinner.js";
 
 /**
  * Wraps the provide component in a `Suspense`, with the provided fallback.
@@ -17,10 +17,10 @@ export function withSuspense<P extends object>(
   fallback: SuspenseProps["fallback"] | null = null
 ) {
   if (fallback === null) {
-    fallback = <Spinner isOpen={true} />;
+    fallback = <Spinner />;
   }
 
-  function ComponentWithSuspense(props: P) {
+  function ComponentWithSuspense(props: P): JSX.Element {
     return (
       <React.Suspense fallback={fallback}>
         <WrappedComponent {...props} />

@@ -7,7 +7,7 @@ import {
 } from "react";
 import axios from "axios";
 import { Article } from "@/services/api/types/blog.js";
-import { getRepositoryStarsCount, useOctokit } from "@/services/api/github.js";
+import { getRepositoryStarsCount, useOctokit } from "@/services/api/github";
 import { useSnackbar } from "notistack";
 
 export const ApiContext = createContext<ApiClient | null>(null);
@@ -68,8 +68,19 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
     blog: {
       getArticleBySlug: (slug: string) =>
         api.get(`/blog/articles/${slug}/`).then((response) => response.data),
-      getArticles: () =>
-        api.get("/blog/articles/").then((response) => response.data.results),
+      getArticles: () => {
+        const getBlogArticlesPromise = api
+          .get("/blog/articles/")
+          .then((response) => response.data.results);
+
+        if (__DEV__) {
+          getBlogArticlesPromise.catch((error) => {
+            return Promise.resolve([]);
+          });
+        }
+
+        return getBlogArticlesPromise;
+      },
     },
     github: {
       getStarsCount: (repositoryName: string, repositoryOwner: string) =>

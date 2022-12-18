@@ -7,12 +7,8 @@ import {
 } from "@mui/material";
 import { Box, ThemeProvider } from "@mui/system";
 import { Link, useRouteError } from "react-router-dom";
-
-interface RouterError {
-  status?: number;
-  statusText?: string;
-  data: object | null;
-}
+// @ts-ignore
+import { ErrorResponse } from "@remix-run/router/utils";
 
 const _theme = responsiveFontSizes(
   createTheme({
@@ -25,7 +21,7 @@ const _theme = responsiveFontSizes(
 );
 
 function ErrorPage(): JSX.Element {
-  const error = useRouteError() as RouterError;
+  const error = useRouteError() as ErrorResponse;
   const errorStatus = error.status ?? 500;
   const statusText = error.statusText ?? "Server internal error";
   usePageEffect({ title: statusText });

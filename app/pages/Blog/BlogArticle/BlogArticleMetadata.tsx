@@ -1,9 +1,9 @@
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
 import { Box, Typography } from "@mui/material";
 import { type Article } from "@/services/api/types/blog.js";
-import MiddleDot from "@/common/MiddleDot.js";
+import MiddleDot from "@/components/MiddleDot.js";
 import useCalculateApproximateReadingTime from "@/hooks/reading-time.js";
-import BlogArticleTags from "@/pages/Blog/BlogArticleTags.js";
+import BlogArticleTags from "@/pages/Blog/ArticleTags.js";
 import { formatDate } from "@/services/datetime.js";
 
 type BlogArticleMetadatProps = {

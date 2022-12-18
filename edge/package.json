@@ -7,7 +7,7 @@
   "scripts": {
     "cf": "yarn run --top-level zx ../scripts/cf.js ${npm_package_name}",
     "build": "yarn run --top-level rollup --config ../rollup.config.mjs --environment TARGET:${npm_package_name},BABEL_ENV:production",
-    "deploy": "yarn cf publish"
+    "deploy": "pnpm run"
   },
   "dependencies": {
     "@cloudflare/kv-asset-handler": "~0.2.0",
