@@ -66,7 +66,7 @@ export default function AboutMe(): JSX.Element {
                 maxWidth: "100%",
                 padding: "1.5rem",
               }}
-              src="/personal-image.jpg"
+              src="/personal-image.webp"
             />
           </Paper>
         </aside>
