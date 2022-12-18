@@ -25,7 +25,11 @@ export const useGetBlogArticles = () => {
   const { tagName } = useParams();
 
   const { blog } = useApiClient();
-  return useQuery(blogQueryKeys.blogArticles(tagName), blog.getArticles, {
-    keepPreviousData: true,
-  }) as QueryObserverSuccessResult<Article[]>;
+  return useQuery(
+    blogQueryKeys.blogArticles(tagName),
+    () => blog.getArticles(tagName),
+    {
+      keepPreviousData: true,
+    }
+  ) as QueryObserverSuccessResult<Article[]>;
 };

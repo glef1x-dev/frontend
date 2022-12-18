@@ -1,5 +1,5 @@
-import { Box, Container, Typography } from "@mui/material";
-import { usePageEffect } from "@/hooks/page.js";
+import { Container } from "@mui/material";
+import { useTagNameAsTitle } from "@/hooks/page.js";
 import ArticleCard from "./ArticleCard.js";
 import { useGetBlogArticles } from "@/hooks/api/useBlogApi.js";
 import PageHeader from "@/components/PageHeader.js";
@@ -7,14 +7,16 @@ import { memo } from "react";
 import { useTheme } from "@/core/ui/mui/theme.js";
 
 export default memo(function ArticleList(): JSX.Element {
-  usePageEffect({ title: "Blog" });
+  const pageName = useTagNameAsTitle({
+    defaultPageName: "Blog",
+  });
   const { data: articles } = useGetBlogArticles();
   const theme = useTheme();
 
   return (
     <>
       <PageHeader
-        title="Blog"
+        title={pageName}
         description="My latest news, updates, and stories for developers"
       />
       <Container

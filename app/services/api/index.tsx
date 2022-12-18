@@ -24,7 +24,7 @@ function handleError(
 export type ApiClient = {
   blog: {
     getArticleBySlug: (slug: string) => Promise<Article>;
-    getArticles: () => Promise<Article[]>;
+    getArticles: (tagName?: string) => Promise<Article[]>;
   };
   github: {
     getStarsCount: (
@@ -68,9 +68,16 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
     blog: {
       getArticleBySlug: (slug: string) =>
         api.get(`/blog/articles/${slug}/`).then((response) => response.data),
-      getArticles: () => {
+      getArticles: (tagName?: string) => {
+        const params: Record<string, string> = {};
+        if (tagName) {
+          params["tags__title"] = tagName;
+        }
+
         const getBlogArticlesPromise = api
-          .get("/blog/articles/")
+          .get("/blog/articles/", {
+            params: params,
+          })
           .then((response) => response.data.results);
 
         if (__DEV__) {

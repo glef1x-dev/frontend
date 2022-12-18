@@ -24,6 +24,9 @@ export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
           key={tag.id}
           sx={{
             textDecoration: "none",
+            "&:visited": {
+              color: "#6001ff",
+            },
           }}
         >
           <Chip
@@ -33,6 +36,12 @@ export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
             size="medium"
             sx={{
               fontWeight: "bold",
+              "&:hover": {
+                borderColor: "#3740ff",
+                background: "#3740ff",
+                color: "#ffffff",
+                cursor: "pointer",
+              },
             }}
             aria-label={tag.title}
           />
