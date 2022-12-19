@@ -6,7 +6,7 @@ import useCalculateApproximateReadingTime from "@/hooks/reading-time.js";
 import BlogArticleTags from "@/pages/Blog/ArticleTags.js";
 import { formatDate } from "@/services/datetime.js";
 
-type BlogArticleMetadatProps = {
+type BlogArticleMetadataProps = {
   article: Article;
   showTags?: boolean;
 };
@@ -14,7 +14,7 @@ type BlogArticleMetadatProps = {
 export default function BlogArticleMetadata({
   article,
   showTags = true,
-}: BlogArticleMetadatProps) {
+}: BlogArticleMetadataProps) {
   const formattedDateOfCreation = formatDate(article.created);
   const readingTime = useCalculateApproximateReadingTime(article.body);
 
