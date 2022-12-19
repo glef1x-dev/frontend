@@ -34,7 +34,6 @@ export default memo(function ArticleList(): JSX.Element {
             gridTemplateColumns: "repeat(auto-fill, 1fr)",
             padding: 0,
           },
-          maxWidth: "90vw !important",
           marginTop: theme.spacing(5),
         }}
       >
