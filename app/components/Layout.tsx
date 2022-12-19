@@ -14,10 +14,8 @@ export default function Layout(): JSX.Element {
       }}
     >
       <AppNavigation />
-      <main>
-        <Box className="content-wrapper" sx={{ flex: 1 }}>
-          <Outlet />
-        </Box>
+      <main className="content-wrapper" style={{ flex: 1 }}>
+        <Outlet />
       </main>
       <Footer description="" />
     </Box>
