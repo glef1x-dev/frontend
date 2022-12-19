@@ -14,7 +14,6 @@ export default memo(function PageHeader({
   const theme = useTheme();
   const pageHeaderBackgroundColor =
     theme.palette.mode === "light" ? "#f8f9fa" : "rgb(18,18,18)";
-  console.log(theme);
   return (
     <header
       style={{
