@@ -10,8 +10,10 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
 import Comments from "../Comments.js";
 import { formatDate } from "@/services/datetime.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
+import { useTheme } from "@/core/ui/mui/theme.js";
 
 export default function BlogArticle() {
+  const theme = useTheme();
   const { data } = useGetBlogArticleBySlug();
   const article = data!;
 
@@ -37,6 +39,9 @@ export default function BlogArticle() {
         className="article-container"
         maxWidth="md"
         disableGutters={true}
+        sx={{
+          padding: theme.spacing(2.5),
+        }}
       >
         <article
           style={{

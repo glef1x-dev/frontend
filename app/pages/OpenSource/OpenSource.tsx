@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
@@ -71,8 +71,8 @@ export default React.memo(function OpenSource() {
           sx={{
             [theme.breakpoints.up("md")]: {
               gap: 2,
-              marginTop: theme.spacing(5),
             },
+            padding: theme.spacing(2),
           }}
         >
           <Box

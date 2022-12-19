@@ -30,11 +30,10 @@ export default memo(function ArticleList(): JSX.Element {
           rowGap: "2rem",
           columnGap: "2rem",
           gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
-          "@media(max-width: 400px)": {
+          "@media(max-width: 450px)": {
             gridTemplateColumns: "repeat(auto-fill, 1fr)",
-            padding: 0,
           },
-          marginTop: theme.spacing(5),
+          padding: theme.spacing(2),
         }}
       >
         {articles.map((article) => (
