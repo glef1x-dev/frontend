@@ -9,6 +9,7 @@ import { useTheme } from "@/core/ui/mui/theme.js";
 import { OctokitProvider } from "@/services/api/github.js";
 import { queryClient } from "@/services/queryClient/queryClient.js";
 import { ApiProvider } from "@/services/api/index.js";
+import ScrollToTop from "./ScrollToTop.js";
 
 export function App(): JSX.Element {
   const theme = useTheme();

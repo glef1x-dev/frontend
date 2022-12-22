@@ -29,9 +29,9 @@ export default memo(function ArticleList(): JSX.Element {
           fontSize: "large",
           rowGap: "2rem",
           columnGap: "2rem",
-          gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
-          "@media(max-width: 450px)": {
-            gridTemplateColumns: "repeat(auto-fill, 1fr)",
+          gridTemplateColumns: "repeat(auto-fill, 1fr)",
+          "@media screen and (min-width: 450px)": {
+            gridTemplateColumns: "repeat(auto-fill, minmax(400px,1fr))",
           },
           padding: theme.spacing(2),
         }}
