@@ -1,5 +1,5 @@
 import { capitalizeFirstLetter } from "@/utils/strings";
-import { DependencyList, useLayoutEffect } from "react";
+import { DependencyList, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 export function useTagNameAsTitle({
@@ -19,10 +19,10 @@ export function useTagNameAsTitle({
 }
 
 export function usePageEffect(options?: Options, deps?: DependencyList) {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   // Once the page component was rendered, update the HTML document's title
-  useLayoutEffect(() => {
+  useEffect(() => {
     const previousTitle = document.title;
 
     document.title =
@@ -35,7 +35,7 @@ export function usePageEffect(options?: Options, deps?: DependencyList) {
     return function () {
       document.title = previousTitle;
     };
-  }, deps ?? []); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [pathname]); /* eslint-disable-line react-hooks/exhaustive-deps */
 }
 
 type Options = {
