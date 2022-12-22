@@ -74,14 +74,14 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
           params["tags__title"] = tagName;
         }
 
-        const getBlogArticlesPromise = api
+        let getBlogArticlesPromise = api
           .get("/blog/articles/", {
             params: params,
           })
           .then((response) => response.data.results);
 
         if (__DEV__) {
-          getBlogArticlesPromise.catch((error) => {
+          getBlogArticlesPromise = getBlogArticlesPromise.catch((error) => {
             return Promise.resolve([]);
           });
         }
