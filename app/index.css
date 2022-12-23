@@ -6,3 +6,7 @@ body {
   font-size: clamp(1rem, 0.96rem + 0.18vw, 1.125rem) !important;
   line-height: 1.7;
 }
+
+*::selection {
+  background: rgba(35, 131, 226, 0.28);
+}
