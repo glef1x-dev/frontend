@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
@@ -62,44 +62,27 @@ export default React.memo(function OpenSource() {
       />
       <Container
         sx={{
+          "@media(min-width: 850px)": {
+            gridTemplateColumns: "repeat(2, 1fr)",
+          },
           display: "grid",
+          gridTemplateColumns: "repeat(1, 1fr)",
+          gap: "1rem",
+          padding: theme.spacing(2),
+          gridAutoRows: "1fr",
         }}
       >
-        <Grid
-          container
-          direction="column"
-          sx={{
-            [theme.breakpoints.up("md")]: {
-              gap: 2,
-            },
-            padding: theme.spacing(2),
-          }}
-        >
-          <Box
-            display="grid"
-            gridTemplateColumns="repeat(1, 1fr)"
-            gap="1.5rem"
-            sx={{
-              "@media(min-width: 850px)": {
-                gridTemplateColumns: "repeat(2, 1fr)",
-              },
-            }}
-          >
-            {openSourceProjects.map((project: OpenSourceProject) => {
-              return (
-                <Box key={project.title}>
-                  <OpenSourceProjectCard
-                    key={project.title}
-                    title={project.title}
-                    description={project.description}
-                    sourceCodeLink={project.sourceCodeLink}
-                    documentationLink={project.documentationLink}
-                  />
-                </Box>
-              );
-            })}
-          </Box>
-        </Grid>
+        {openSourceProjects.map((project: OpenSourceProject) => {
+          return (
+              <OpenSourceProjectCard
+                key={project.title}
+                title={project.title}
+                description={project.description}
+                sourceCodeLink={project.sourceCodeLink}
+                documentationLink={project.documentationLink}
+              />
+          );
+        })}
       </Container>
     </>
   );
