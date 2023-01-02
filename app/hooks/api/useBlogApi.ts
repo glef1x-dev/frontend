@@ -27,7 +27,7 @@ export const useGetBlogArticles = () => {
   const { blog } = useApiClient();
   return useQuery(
     blogQueryKeys.blogArticles(tagName),
-    () => blog.getArticles(tagName),
+    () => blog.getArticles({ tagName: tagName }),
     {
       keepPreviousData: true,
     }

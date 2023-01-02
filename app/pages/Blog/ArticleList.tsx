@@ -30,7 +30,7 @@ export default memo(function ArticleList(): JSX.Element {
         setArticles(articles.concat(paginatedResult.results));
         setNextPageUrl(paginatedResult.next ?? null);
       });
-  }, [apiClient, nextPageUrl]);
+  }, [apiClient, nextPageUrl, tagName]);
 
   useEffect(() => {
     fetchArticles();
