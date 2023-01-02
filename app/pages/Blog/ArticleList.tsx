@@ -23,6 +23,7 @@ export default memo(function ArticleList(): JSX.Element {
   const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
   const [articles, setArticles] = useState<Article[]>([]);
 
+  // TODO maybe should be replaced with react-query's useInfiniteQuery hook
   const fetchArticles = useCallback(() => {
     apiClient.blog
       .getArticles({ nextResultsUrl: nextPageUrl, tagName: tagName })

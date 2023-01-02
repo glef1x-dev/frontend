@@ -1,35 +1,40 @@
 import { useApiClient } from "@/services/api/index.js";
-import { QueryObserverSuccessResult, useQuery } from "@tanstack/react-query";
+import {
+  QueryObserverSuccessResult,
+  UseQueryOptions,
+  useQuery,
+} from "@tanstack/react-query";
 import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
 import { Article } from "@/services/api/types/blog.js";
 import { useParams } from "react-router-dom";
+import { PaginatedResult } from "@/services/api/types/base";
 
-export const useGetBlogArticleBySlug = () => {
-  const { slug } = useParams();
+type FetchError = {};
 
-  if (!slug) {
-    throw new Error("Slug is not found in query parameters");
-  }
-
+export function useGetBlogArticleBySlug<Result = Article>(
+  slug: string,
+  options?: Partial<UseQueryOptions<Article, FetchError, Result>>
+) {
   const { blog } = useApiClient();
-  return useQuery(
+
+  return useQuery<Article, FetchError, Result>(
     blogQueryKeys.blogArticle(slug),
     () => blog.getArticleBySlug(slug),
-    {
-      keepPreviousData: true,
-    }
+    options
   );
-};
+}
 
-export const useGetBlogArticles = () => {
+export function useGetBlogArticles<Result = PaginatedResult<Article>>(
+  options?: Partial<
+    UseQueryOptions<PaginatedResult<Article>, FetchError, Result>
+  >
+) {
   const { tagName } = useParams();
 
   const { blog } = useApiClient();
-  return useQuery(
+  return useQuery<PaginatedResult<Article>, FetchError, Result>(
     blogQueryKeys.blogArticles(tagName),
     () => blog.getArticles({ tagName: tagName }),
-    {
-      keepPreviousData: true,
-    }
+    options
   ) as QueryObserverSuccessResult<Article[]>;
-};
+}

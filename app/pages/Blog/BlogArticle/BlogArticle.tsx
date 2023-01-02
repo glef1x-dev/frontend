@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import { usePageEffect } from "@/hooks/page.js";
@@ -14,7 +14,15 @@ import { useTheme } from "@/core/ui/mui/theme.js";
 
 export default function BlogArticle() {
   const theme = useTheme();
-  const { data } = useGetBlogArticleBySlug();
+
+  const { slug } = useParams();
+  if (!slug) {
+    throw new Error(
+      "Something went wrong: slug in path is empty. Contact developer if you see this message in console."
+    );
+  }
+
+  const { data } = useGetBlogArticleBySlug(slug);
   const article = data!;
 
   usePageEffect({ title: article.title });
