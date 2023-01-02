@@ -74,13 +74,13 @@ export default React.memo(function OpenSource() {
       >
         {openSourceProjects.map((project: OpenSourceProject) => {
           return (
-              <OpenSourceProjectCard
-                key={project.title}
-                title={project.title}
-                description={project.description}
-                sourceCodeLink={project.sourceCodeLink}
-                documentationLink={project.documentationLink}
-              />
+            <OpenSourceProjectCard
+              key={project.title}
+              title={project.title}
+              description={project.description}
+              sourceCodeLink={project.sourceCodeLink}
+              documentationLink={project.documentationLink}
+            />
           );
         })}
       </Container>

@@ -9,6 +9,7 @@ import axios from "axios";
 import { Article } from "@/services/api/types/blog.js";
 import { getRepositoryStarsCount, useOctokit } from "@/services/api/github";
 import { useSnackbar } from "notistack";
+import { PaginatedResult } from "./types/base";
 
 export const ApiContext = createContext<ApiClient | null>(null);
 
@@ -21,10 +22,18 @@ function handleError(
   return Promise.reject(error);
 }
 
+export type GetArticlesOptions = {
+  nextResultsUrl?: string | null;
+  tagName?: string | null;
+  pageSize?: number | null;
+};
+
 export type ApiClient = {
   blog: {
     getArticleBySlug: (slug: string) => Promise<Article>;
-    getArticles: (tagName?: string) => Promise<Article[]>;
+    getArticles: (
+      options?: GetArticlesOptions
+    ) => Promise<PaginatedResult<Article>>;
   };
   github: {
     getStarsCount: (
@@ -51,58 +60,71 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
   );
 
   const api = useMemo(() => {
-    return axios.create({
+    const client = axios.create({
       timeout: 10000,
       baseURL: BASE_API_URL,
     });
+    client.interceptors.response.use(
+      (response) => response,
+      (error) => handleError(error, notifyOnError)
+    );
+    return client;
   }, []);
-
-  api.interceptors.response.use(
-    (response) => response,
-    (error) => handleError(error, notifyOnError)
-  );
 
   const octokitClient = useOctokit();
 
-  const client: ApiClient = {
-    blog: {
-      getArticleBySlug: (slug: string) =>
-        api.get(`/blog/articles/${slug}/`).then((response) => response.data),
-      getArticles: (tagName?: string) => {
-        const params: Record<string, string> = {};
-        if (tagName) {
-          params["tags__title"] = tagName;
-        }
+  const client: ApiClient = useMemo(() => {
+    return {
+      blog: {
+        getArticleBySlug: (slug: string) =>
+          api.get(`/blog/articles/${slug}/`).then((response) => response.data),
+        getArticles: (options?: GetArticlesOptions) => {
+          const params: Record<string, string> = {};
+          if (options?.tagName) {
+            params["tags__title"] = options.tagName;
+          }
 
-        let getBlogArticlesPromise = api
-          .get("/blog/articles/", {
-            params: params,
-          })
-          .then((response) => response.data.results);
+          let getBlogArticlesPromise;
 
-        if (__DEV__) {
-          getBlogArticlesPromise = getBlogArticlesPromise.catch((error) => {
-            return Promise.resolve([]);
-          });
-        }
+          if (options?.nextResultsUrl) {
+            getBlogArticlesPromise = api.get(options.nextResultsUrl, {
+              params: params,
+              baseURL: "",
+            });
+          } else {
+            getBlogArticlesPromise = api.get("/blog/articles/", {
+              params: params,
+            });
+          }
 
-        return getBlogArticlesPromise;
-      },
-    },
-    github: {
-      getStarsCount: (repositoryName: string, repositoryOwner: string) =>
-        getRepositoryStarsCount(
-          octokitClient,
-          repositoryOwner,
-          repositoryName
-        ).catch((error) => {
-          notifyOnError(
-            `Failed to load opensource project metadata from GitHub [${error.toString()}]`
+          getBlogArticlesPromise = getBlogArticlesPromise.then(
+            (response) => response.data
           );
-          return Promise.resolve(0);
-        }),
-    },
-  };
+
+          if (__DEV__) {
+            getBlogArticlesPromise = getBlogArticlesPromise.catch((error) => {
+              return Promise.resolve([]);
+            });
+          }
+
+          return getBlogArticlesPromise;
+        },
+      },
+      github: {
+        getStarsCount: (repositoryName: string, repositoryOwner: string) =>
+          getRepositoryStarsCount(
+            octokitClient,
+            repositoryOwner,
+            repositoryName
+          ).catch((error) => {
+            notifyOnError(
+              `Failed to load opensource project metadata from GitHub [${error.toString()}]`
+            );
+            return Promise.resolve(0);
+          }),
+      },
+    };
+  }, [api, octokitClient]);
 
   return <ApiContext.Provider value={client}>{children}</ApiContext.Provider>;
 };

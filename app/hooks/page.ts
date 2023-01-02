@@ -1,22 +1,6 @@
 import { capitalizeFirstLetter } from "@/utils/strings";
 import { DependencyList, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
-
-export function useTagNameAsTitle({
-  defaultPageName,
-}: {
-  defaultPageName: string;
-}) {
-  const { tagName } = useParams();
-  let pageName = defaultPageName;
-
-  if (tagName) {
-    pageName = capitalizeFirstLetter(tagName);
-  }
-
-  usePageEffect({ title: pageName });
-  return pageName;
-}
+import { useLocation } from "react-router-dom";
 
 export function usePageEffect(options?: Options, deps?: DependencyList) {
   const { pathname } = useLocation();

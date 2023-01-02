@@ -36,13 +36,17 @@ export default React.memo(function OpenSourceProjectCard({
   };
 
   return (
-    <Card sx={{
-      position: "relative"
-    }}>
+    <Card
+      sx={{
+        position: "relative",
+      }}
+    >
       {icon && <CardMedia component="img" alt="project card" image={icon} />}
-      <CardContent sx={{
-        marginBottom: "3rem"
-      }}>
+      <CardContent
+        sx={{
+          marginBottom: "3rem",
+        }}
+      >
         <Grid container alignItems="center">
           <Typography
             variant="h5"
@@ -69,10 +73,12 @@ export default React.memo(function OpenSourceProjectCard({
           {description}
         </Typography>
       </CardContent>
-      <CardActions sx={{
-        position: "absolute",
-        bottom: 0,
-      }}>
+      <CardActions
+        sx={{
+          position: "absolute",
+          bottom: 0,
+        }}
+      >
         <Button
           size="medium"
           target="_blank"

@@ -1,6 +1,7 @@
 export interface PaginatedResult<T> {
   results: Array<T>;
-  count: number;
-  next: string;
-  previous: string;
+  /** doesn't exist when using cursor pagination for infinite scroll */
+  count?: number;
+  next?: string;
+  previous?: string;
 }
