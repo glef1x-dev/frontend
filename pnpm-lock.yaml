@@ -127,7 +127,7 @@ importers:
       notistack: ~2.0.8
       react: ~18.2.0
       react-dom: ~18.2.0
-      react-infinite-scroll-component: ^6.1.0
+      react-intersection-observer: ^9.4.1
       react-markdown: ^8.0.3
       react-router-dom: ~6.4.3
       react-syntax-highlighter: ^15.5.0
@@ -153,7 +153,7 @@ importers:
       notistack: 2.0.8_i2zh6h4kh2d4dfsph2ys5bh2ha
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-infinite-scroll-component: 6.1.0_react@18.2.0
+      react-intersection-observer: 9.4.1_react@18.2.0
       react-markdown: 8.0.3_fan5qbzahqtxlm5dzefqlqx5ia
       react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
       react-syntax-highlighter: 15.5.0_react@18.2.0
@@ -10943,16 +10943,15 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-infinite-scroll-component/6.1.0_react@18.2.0:
+  /react-intersection-observer/9.4.1_react@18.2.0:
     resolution:
       {
-        integrity: sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==,
+        integrity: sha512-IXpIsPe6BleFOEHKzKh5UjwRUaz/JYS0lT/HPsupWEQou2hDqjhLMStc5zyE3eQVT4Fk3FufM8Fw33qW1uyeiw==,
       }
     peerDependencies:
-      react: ">=16.0.0"
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-      throttle-debounce: 2.3.0
     dev: false
 
   /react-is/16.13.1:
@@ -12092,14 +12091,6 @@ packages:
         integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==,
       }
     dev: true
-
-  /throttle-debounce/2.3.0:
-    resolution:
-      {
-        integrity: sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==,
-      }
-    engines: { node: ">=8" }
-    dev: false
 
   /through/2.3.8:
     resolution:

@@ -1,7 +1,8 @@
 import { useApiClient } from "@/services/api/index.js";
 import {
-  QueryObserverSuccessResult,
+  UseInfiniteQueryOptions,
   UseQueryOptions,
+  useInfiniteQuery,
   useQuery,
 } from "@tanstack/react-query";
 import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
@@ -24,17 +25,21 @@ export function useGetBlogArticleBySlug<Result = Article>(
   );
 }
 
-export function useGetBlogArticles<Result = PaginatedResult<Article>>(
+export function useInfiniteArticlesList<Result = PaginatedResult<Article>>(
   options?: Partial<
-    UseQueryOptions<PaginatedResult<Article>, FetchError, Result>
+    UseInfiniteQueryOptions<PaginatedResult<Article>, FetchError, Result>
   >
 ) {
   const { tagName } = useParams();
 
   const { blog } = useApiClient();
-  return useQuery<PaginatedResult<Article>, FetchError, Result>(
+  return useInfiniteQuery<PaginatedResult<Article>, FetchError, Result>(
     blogQueryKeys.blogArticles(tagName),
-    () => blog.getArticles({ tagName: tagName }),
-    options
-  ) as QueryObserverSuccessResult<Article[]>;
+    (options) =>
+      blog.getArticles({ tagName: tagName, nextResultsUrl: options.pageParam }),
+    {
+      getNextPageParam: (lastPage) => lastPage.next ?? undefined,
+      ...options,
+    }
+  );
 }

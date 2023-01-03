@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
