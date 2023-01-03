@@ -1,10 +1,6 @@
 import { Box, IconButton } from "@mui/material";
 import * as React from "react";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import GitHubIcon from "@mui/icons-material/GitHub";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default React.memo(function SocialMedias(): JSX.Element {
@@ -25,16 +21,21 @@ export default React.memo(function SocialMedias(): JSX.Element {
     <Box className="socialMedias">
       {socialMedias.map((socialMedia) => {
         return (
-          <IconButton
-            edge="end"
-            href="#"
-            size="large"
-            aria-label="github"
-            onClick={() => (window.location.href = socialMedia.href)}
-            key={socialMedia.name}
+          <a
+            title={`Navigate to ${socialMedia.name}`}
+            target="_blank"
+            href={socialMedia.href}
+            rel="noopener noreferrer"
           >
-            {socialMedia.iconElement}
-          </IconButton>
+            <IconButton
+              edge="end"
+              size="large"
+              aria-label="github"
+              key={socialMedia.name}
+            >
+              {socialMedia.iconElement}
+            </IconButton>
+          </a>
         );
       })}
     </Box>
