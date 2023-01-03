@@ -19,7 +19,8 @@ export default React.memo(function ArticleList(): JSX.Element {
   });
   const { ref, inView } = useInView();
   const theme = useTheme();
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteArticlesList();
+  const { data, fetchNextPage, isFetchingNextPage } =
+    useInfiniteArticlesList(tagName);
 
   React.useEffect(() => {
     if (inView) {

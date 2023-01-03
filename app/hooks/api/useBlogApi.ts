@@ -26,12 +26,11 @@ export function useGetBlogArticleBySlug<Result = Article>(
 }
 
 export function useInfiniteArticlesList<Result = PaginatedResult<Article>>(
+  tagName?: string,
   options?: Partial<
     UseInfiniteQueryOptions<PaginatedResult<Article>, FetchError, Result>
   >
 ) {
-  const { tagName } = useParams();
-
   const { blog } = useApiClient();
   return useInfiniteQuery<PaginatedResult<Article>, FetchError, Result>(
     blogQueryKeys.blogArticles(tagName),
