@@ -7,18 +7,16 @@ import {
 } from "@tanstack/react-query";
 import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
 import { Article } from "@/services/api/types/blog.js";
-import { useParams } from "react-router-dom";
 import { PaginatedResult } from "@/services/api/types/base";
-
-type FetchError = {};
+import { AxiosError } from "axios";
 
 export function useGetBlogArticleBySlug<Result = Article>(
   slug: string,
-  options?: Partial<UseQueryOptions<Article, FetchError, Result>>
+  options?: Partial<UseQueryOptions<Article, AxiosError, Result>>
 ) {
   const { blog } = useApiClient();
 
-  return useQuery<Article, FetchError, Result>(
+  return useQuery<Article, AxiosError, Result>(
     blogQueryKeys.blogArticle(slug),
     () => blog.getArticleBySlug(slug),
     options
@@ -28,11 +26,11 @@ export function useGetBlogArticleBySlug<Result = Article>(
 export function useInfiniteArticlesList<Result = PaginatedResult<Article>>(
   tagName?: string,
   options?: Partial<
-    UseInfiniteQueryOptions<PaginatedResult<Article>, FetchError, Result>
+    UseInfiniteQueryOptions<PaginatedResult<Article>, AxiosError, Result>
   >
 ) {
   const { blog } = useApiClient();
-  return useInfiniteQuery<PaginatedResult<Article>, FetchError, Result>(
+  return useInfiniteQuery<PaginatedResult<Article>, AxiosError, Result>(
     blogQueryKeys.blogArticles(tagName),
     (options) =>
       blog.getArticles({ tagName: tagName, nextResultsUrl: options.pageParam }),
