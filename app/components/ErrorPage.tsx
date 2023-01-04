@@ -23,7 +23,8 @@ const _theme = responsiveFontSizes(
 function ErrorPage(): JSX.Element {
   const error = useRouteError() as ErrorResponse;
   const errorStatus = error.status ?? 500;
-  const statusText = error.statusText ?? "Server internal error";
+  const statusText =
+    error.statusText ?? error.message ?? "Server internal error";
   usePageEffect({ title: statusText });
 
   return (

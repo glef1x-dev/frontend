@@ -1,4 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
+import axios from "axios";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -8,6 +9,7 @@ export const queryClient = new QueryClient({
       retry: false,
       refetchOnWindowFocus: false,
       suspense: true,
+      useErrorBoundary: true,
     },
   },
 });

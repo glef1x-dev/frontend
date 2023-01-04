@@ -76,8 +76,20 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
   const client: ApiClient = useMemo(() => {
     return {
       blog: {
-        getArticleBySlug: (slug: string) =>
-          api.get(`/blog/articles/${slug}/`).then((response) => response.data),
+        getArticleBySlug: (slug: string) => {
+          return api
+            .get(`/blog/articles/${slug}/`)
+            .then((response) => response.data)
+            .catch((error) => {
+              if (axios.isAxiosError(error)) {
+                if (error.response?.status === 404) {
+                  return Promise.reject(
+                    new Error("Article not found", { cause: { slug: slug } })
+                  );
+                }
+              }
+            });
+        },
         getArticles: (options?: GetArticlesOptions) => {
           const params: Record<string, string> = {};
           if (options?.tagName) {
