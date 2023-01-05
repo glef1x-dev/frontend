@@ -1,7 +1,6 @@
 import { DarkMode, LightMode } from "@mui/icons-material";
 import { IconButton, IconButtonProps } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { useToggleTheme } from "@/core/ui/mui/theme.js";
+import { useTheme, useToggleTheme } from "@/core/ui/mui/theme.js";
 import { memo } from "react";
 
 function ThemeButton(props: ThemeButtonProps): JSX.Element {
@@ -10,7 +9,17 @@ function ThemeButton(props: ThemeButtonProps): JSX.Element {
   const theme = useTheme();
 
   return (
-    <IconButton onClick={toggleTheme} {...other}>
+    <IconButton
+      onClick={toggleTheme}
+      aria-live="polite"
+      aria-label="auto"
+      title="Toggles light & dark"
+      sx={{
+        touchAction: "manipulation",
+        WebkitTapHighlightColor: "transparent",
+      }}
+      {...other}
+    >
       {theme.palette.mode === "light" ? <DarkMode /> : <LightMode />}
     </IconButton>
   );
