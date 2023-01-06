@@ -1,8 +1,8 @@
 import react from "@vitejs/plugin-react";
 import envars from "envars";
-import { defineConfig } from "vite";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { fileURLToPath, URL } from "url";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
+import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 // Load environment variables for the target environment
 envars.config();
@@ -28,7 +28,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom", "react-router-dom"],
+          essentials: [
+            "react",
+            "react-dom",
+            "react-router-dom",
+            "@tanstack/react-query",
+          ],
         },
       },
     },
@@ -53,6 +58,7 @@ export default defineConfig({
       // Whether to polyfill `node:` protocol imports.
       protocolImports: true,
     }),
+    splitVendorChunkPlugin(),
   ],
 
   server: {

@@ -1,18 +1,29 @@
 {
-  "files.autoSave": "onFocusChange",
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "search.exclude": {
+    ".awcache": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/out": true,
+    "app/test/fixtures": true,
+    "vendor": true
+  },
   "files.exclude": {
-    "**/.git": true, // this is a default value
-    "**/.DS_Store": true, // this is a default value
-    "**/.idea": true, // this is a default value,
-    "**/.cache": true, // this is a default value
-
-    "**/node_modules": true, // this excludes all folders
-    // named "node_modules" from
-    // the explore tree
-
-    // alternative version
-    "node_modules": true // this excludes the folder
-    // only from the root of
-    // your workspace
-  }
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/out": true,
+    ".awcache": true,
+    ".eslintcache": true
+  },
+  "files.insertFinalNewline": true,
+  "editor.tabSize": 2,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "editor.formatOnSave": true,
+  "prettier.ignorePath": ".prettierignore"
 }

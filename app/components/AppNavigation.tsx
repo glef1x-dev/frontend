@@ -1,24 +1,25 @@
-import * as React from "react";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import CoPresentIcon from "@mui/icons-material/CoPresent";
 import MenuIcon from "@mui/icons-material/Menu";
+import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
 import {
-  Link,
   AppBar,
-  Menu,
-  MenuItem,
+  Box,
+  Button,
   Container,
   IconButton,
-  Typography,
-  Button,
+  Link,
+  Menu,
+  MenuItem,
   Toolbar,
-  Box,
+  Typography,
 } from "@mui/material";
+import * as React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import AvatarLink from "./AvatarLink.js";
 import SocialMedias from "./SocialMedias.js";
 import ThemeButton from "./ThemeButton.js";
-import CoPresentIcon from "@mui/icons-material/CoPresent";
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
-import AvatarLink from "./AvatarLink.js";
+import avatarImage from "/my-avatar.webp";
 
 type Route = {
   name: string;
@@ -57,7 +58,7 @@ function AppNavigation() {
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters>
-          <AvatarLink alt="avatar" src="/my-avatar.webp" to="/" />
+          <AvatarLink alt="avatar" src={avatarImage} to="/" />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -137,4 +138,4 @@ function AppNavigation() {
   );
 }
 
-export default AppNavigation;
+export default React.memo(AppNavigation);

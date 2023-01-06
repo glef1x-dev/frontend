@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { LinearProgressProps } from "@mui/material/LinearProgress/LinearProgress.js";
+import { useEffect, useState } from "react";
 
 export default function ScrollProgressBar(
   props: LinearProgressProps

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { useGetStarsCount } from "@/hooks/api/useGithubApi.js";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew.js";
 import {
   Button,
   Card,
@@ -10,10 +12,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useSnackbar } from "notistack";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew.js";
-import { useGetStarsCount } from "@/hooks/api/useGithubApi.js";
 
-export default React.memo(function OpenSourceProjectCard({
+export default function OpenSourceProjectCard({
   icon,
   title,
   description,
@@ -101,7 +101,7 @@ export default React.memo(function OpenSourceProjectCard({
       </CardActions>
     </Card>
   );
-});
+}
 
 type OpenSourceProjectCardProps = {
   icon?: string;

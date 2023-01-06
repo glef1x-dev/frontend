@@ -1,4 +1,5 @@
 import { Box, Container, Link, Typography } from "@mui/material";
+import { memo } from "react";
 
 function Copyright() {
   return (
@@ -16,7 +17,7 @@ interface FooterProps {
   description: string;
 }
 
-export default function Footer(props: FooterProps) {
+export default memo(function Footer(props: FooterProps) {
   const { description } = props;
 
   return (
@@ -42,4 +43,4 @@ export default function Footer(props: FooterProps) {
       </Container>
     </Box>
   );
-}
+});

@@ -1,15 +1,15 @@
-import { Container } from "@mui/material";
-import { usePageEffect } from "@/hooks/page.js";
-import ArticleCard from "./ArticleCard.js";
 import PageHeader from "@/components/PageHeader.js";
-import * as React from "react";
 import { useTheme } from "@/core/ui/mui/theme.js";
+import { useInfiniteArticlesList } from "@/hooks/api/useBlogApi.js";
+import { usePageEffect } from "@/hooks/page.js";
+import { capitalizeFirstLetter } from "@/utils/strings.js";
+import { Container } from "@mui/material";
+import * as React from "react";
 import { useInView } from "react-intersection-observer";
+import { useParams } from "react-router-dom";
 import UseAnimations from "react-useanimations";
 import infinity from "react-useanimations/lib/infinity";
-import { useParams } from "react-router-dom";
-import { capitalizeFirstLetter } from "@/utils/strings.js";
-import { useInfiniteArticlesList } from "@/hooks/api/useBlogApi.js";
+import ArticleCard from "./ArticleCard.js";
 
 export default React.memo(function ArticleList(): JSX.Element {
   const { tagName } = useParams();

@@ -1,13 +1,13 @@
 import { useApiClient } from "@/services/api/index.js";
-import {
-  UseInfiniteQueryOptions,
-  UseQueryOptions,
-  useInfiniteQuery,
-  useQuery,
-} from "@tanstack/react-query";
-import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
-import { Article } from "@/services/api/types/blog.js";
 import { PaginatedResult } from "@/services/api/types/base";
+import { Article } from "@/services/api/types/blog.js";
+import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
+import {
+  useInfiniteQuery,
+  UseInfiniteQueryOptions,
+  useQuery,
+  UseQueryOptions,
+} from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 export function useGetBlogArticleBySlug<Result = Article>(

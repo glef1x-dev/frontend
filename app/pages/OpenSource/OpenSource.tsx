@@ -1,10 +1,8 @@
-import * as React from "react";
-
+import PageHeader from "@/components/PageHeader.js";
+import { useTheme } from "@/core/ui/mui/theme.js";
+import { usePageEffect } from "@/hooks/page.js";
 import { Container } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
-import { usePageEffect } from "@/hooks/page.js";
-import { useTheme } from "@/core/ui/mui/theme.js";
-import PageHeader from "@/components/PageHeader.js";
 
 type OpenSourceProject = {
   title: string;
@@ -50,7 +48,7 @@ const openSourceProjects: OpenSourceProject[] = [
   },
 ];
 
-export default React.memo(function OpenSource() {
+export default function OpenSource() {
   usePageEffect({ title: "Opensource" });
   const theme = useTheme();
 
@@ -86,4 +84,4 @@ export default React.memo(function OpenSource() {
       </Container>
     </>
   );
-});
+}

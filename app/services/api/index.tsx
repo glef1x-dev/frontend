@@ -1,3 +1,7 @@
+import { getRepositoryStarsCount, useOctokit } from "@/services/api/github";
+import { Article } from "@/services/api/types/blog.js";
+import axios from "axios";
+import { useSnackbar } from "notistack";
 import {
   createContext,
   ReactNode,
@@ -5,10 +9,6 @@ import {
   useContext,
   useMemo,
 } from "react";
-import axios from "axios";
-import { Article } from "@/services/api/types/blog.js";
-import { getRepositoryStarsCount, useOctokit } from "@/services/api/github";
-import { useSnackbar } from "notistack";
 import { PaginatedResult } from "./types/base";
 
 export const ApiContext = createContext<ApiClient | null>(null);
@@ -66,7 +66,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
     });
     client.interceptors.response.use(
       (response) => response,
-      (error) => handleError(error, notifyOnError)
+      (error) => new Response(error.message, { ...error })
     );
     return client;
   }, []);
@@ -83,9 +83,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
             .catch((error) => {
               if (axios.isAxiosError(error)) {
                 if (error.response?.status === 404) {
-                  return Promise.reject(
-                    new Error("Article not found", { cause: { slug: slug } })
-                  );
+                  return Promise.reject();
                 }
               }
             });

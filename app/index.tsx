@@ -9,11 +9,10 @@ const container = document.getElementById("root") as HTMLElement;
 // TODO: Initialize local store (Relay, Apollo, Redux, etc.)
 // const store = createRelay({ data: JSON.parse(data) });
 
-// Render the top-level React component
 ReactDOM.createRoot(container).render(
-  <RecoilRoot>
-    <React.StrictMode>
+  <React.StrictMode>
+    <RecoilRoot>
       <App />
-    </React.StrictMode>
-  </RecoilRoot>
+    </RecoilRoot>
+  </React.StrictMode>
 );

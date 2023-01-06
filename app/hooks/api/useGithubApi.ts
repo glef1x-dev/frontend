@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { githubQueryKeys } from "@/services/queryClient/queryKeys.js";
-import { useApiClient } from "@/services/api/index.js";
 import { extractRepoNameAndOwnerFromGithubLink } from "@/services/api/github.js";
+import { useApiClient } from "@/services/api/index.js";
+import { githubQueryKeys } from "@/services/queryClient/queryKeys.js";
+import { useQuery } from "@tanstack/react-query";
 
 export const useGetStarsCount = (sourceCodeLink: string) => {
   const { github } = useApiClient();

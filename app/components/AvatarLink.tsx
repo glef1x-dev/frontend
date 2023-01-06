@@ -1,11 +1,11 @@
-import * as React from "react";
 import { Avatar, Link } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
-import { AvatarClasses } from "@mui/material/Avatar/avatarClasses.js";
-import { SxProps } from "@mui/system";
-import { Theme } from "@mui/material/styles";
-import { OverridableStringUnion } from "@mui/types";
 import { AvatarPropsVariantOverrides } from "@mui/material/Avatar/Avatar.js";
+import { AvatarClasses } from "@mui/material/Avatar/avatarClasses.js";
+import { Theme } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
+import { OverridableStringUnion } from "@mui/types";
+import * as React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 type AvatarLinkProps = {
   /**

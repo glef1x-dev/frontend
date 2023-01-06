@@ -1,4 +1,3 @@
-import { capitalizeFirstLetter } from "@/utils/strings";
 import { DependencyList, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 

@@ -1,6 +1,4 @@
-import { memo } from "react";
-
-export default memo(function MiddleDot() {
+export default function MiddleDot() {
   return (
     <span
       className="middle-dot"
@@ -11,4 +9,4 @@ export default memo(function MiddleDot() {
       •
     </span>
   );
-});
+}

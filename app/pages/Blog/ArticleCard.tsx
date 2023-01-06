@@ -1,8 +1,8 @@
+import { Article } from "@/services/api/types/blog.js";
 import { Box, Card, CardContent, Typography } from "@mui/material";
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import BlogArticleMetadata from "./BlogArticle/BlogArticleMetadata.js";
-import { Article } from "@/services/api/types/blog.js";
-import { RefObject, memo } from "react";
 
 interface ArticleCardProps {
   article: Article;

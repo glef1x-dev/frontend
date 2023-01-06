@@ -1,8 +1,7 @@
-import * as React from "react";
 import { usePageEffect } from "@/hooks/page.js";
-import { Box, Paper, Typography, Container } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 
-export default React.memo(function AboutMe(): JSX.Element {
+export default function AboutMe(): JSX.Element {
   usePageEffect({ title: "About Me" });
 
   return (
@@ -80,4 +79,4 @@ export default React.memo(function AboutMe(): JSX.Element {
       </Box>
     </Container>
   );
-});
+}
