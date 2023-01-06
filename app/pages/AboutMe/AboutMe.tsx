@@ -1,5 +1,6 @@
 import { usePageEffect } from "@/hooks/page.js";
 import { Box, Container, Paper, Typography } from "@mui/material";
+import personalImage from "/personal-image.webp";
 
 export default function AboutMe(): JSX.Element {
   usePageEffect({ title: "About Me" });
@@ -71,7 +72,7 @@ export default function AboutMe(): JSX.Element {
                   maxWidth: "100%",
                   padding: "1.5rem",
                 }}
-                src="/personal-image.webp"
+                src={personalImage}
               />
             </Paper>
           </aside>
