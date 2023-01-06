@@ -1,7 +1,7 @@
+import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary.js";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { withSuspense } from "../utils/HOC/withSuspense.js";
-import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary.js";
 
 const Layout = withSuspense(
   React.lazy(() => import("../components/Layout.js"))

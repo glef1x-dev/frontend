@@ -1,9 +1,9 @@
 import { Button, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import { Link, isRouteErrorResponse, useRouteError } from "react-router-dom";
+import axios from "axios";
+import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 import Emoji from "../Emoji/Emoji";
 import errorImage from "/error.png";
-import axios from "axios";
 
 type ErrorBoundaryProps = {
   defaultErrorMessage: string;
