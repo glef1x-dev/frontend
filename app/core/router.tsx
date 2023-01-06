@@ -1,7 +1,7 @@
-import { NotFoundErrorPage } from "@/components/ErrorPage/NotFoundErrorPage.js";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { withSuspense } from "../utils/HOC/suspense.js";
+import { withSuspense } from "../utils/HOC/withSuspense.js";
+import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary.js";
 
 const Layout = withSuspense(
   React.lazy(() => import("../components/Layout.js"))
@@ -23,11 +23,8 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorBoundary />,
     children: [
-      {
-        path: "*",
-        element: <NotFoundErrorPage />,
-      },
       {
         path: "/",
         element: <About />,

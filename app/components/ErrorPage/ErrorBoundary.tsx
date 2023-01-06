@@ -1,10 +1,38 @@
 import { Button, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import { Link } from "react-router-dom";
+import { Link, isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Emoji from "../Emoji/Emoji";
 import errorImage from "/error.png";
+import axios from "axios";
 
-function NotFoundErrorPage() {
+type ErrorBoundaryProps = {
+  defaultErrorMessage: string;
+};
+
+export default function ErrorBoundary({
+  defaultErrorMessage,
+}: Partial<ErrorBoundaryProps>) {
+  const error = useRouteError() as any;
+  let statusCode: number = 500;
+  let errorMessage = defaultErrorMessage;
+
+  if (axios.isAxiosError(error)) {
+    if (error?.response?.status) {
+      statusCode = error?.response?.status;
+    }
+  } else if (isRouteErrorResponse(error)) {
+    statusCode = error.status;
+  }
+
+  switch (statusCode) {
+    case 404:
+      errorMessage = error.message ?? "Page not found";
+      break;
+    case 500:
+      errorMessage = "Internal server error";
+      break;
+  }
+
   return (
     <Container
       maxWidth="md"
@@ -20,10 +48,10 @@ function NotFoundErrorPage() {
         gap="1rem"
       >
         <Typography variant="h2" fontWeight="600">
-          404
+          {statusCode}
         </Typography>
         <Typography variant="h4" fontWeight="300">
-          Page not found <Emoji label="neutral face" symbol="🙁" />
+          {errorMessage} <Emoji label="neutral face" symbol="🙁" />
         </Typography>
         <img src={errorImage} width="100%" />
         <Button
@@ -41,5 +69,3 @@ function NotFoundErrorPage() {
     </Container>
   );
 }
-
-export { NotFoundErrorPage };
