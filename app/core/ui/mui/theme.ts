@@ -20,14 +20,12 @@ export const ThemeName = atom<PaletteMode>({
       const storageKey = "theme";
 
       if (ctx.trigger === "get") {
-        const name: PaletteMode =
-          localStorage?.getItem(storageKey) === "dark"
-            ? "dark"
-            : localStorage?.getItem(storageKey) === "light"
-            ? "light"
-            : matchMedia?.("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+        const name: PaletteMode = matchMedia?.("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : localStorage?.getItem(storageKey) === "dark"
+          ? "dark"
+          : "light";
         ctx.setSelf(name);
       }
 
@@ -78,7 +76,10 @@ export function useTheme(name?: PaletteMode) {
 /**
  * Switches between "light" and "dark" themes.
  */
-export function useToggleTheme(name?: PaletteMode) {
+export function useToggleTheme(
+  preferredDarkTheme: boolean = false,
+  name?: PaletteMode
+) {
   return useRecoilCallback(
     (ctx) => () => {
       ctx.set(
