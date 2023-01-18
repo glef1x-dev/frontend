@@ -26,7 +26,7 @@ export default React.memo(function ArticleList(): JSX.Element {
     if (inView) {
       fetchNextPage();
     }
-  }, [inView]);
+  }, [inView, fetchNextPage]);
 
   return (
     <>
