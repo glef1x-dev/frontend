@@ -26,6 +26,7 @@ function Markdown(props: MarkdownProps) {
       children={text}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
+      css={{fontSize: "16px"}}
       components={{
         code({ node, inline, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || "");
@@ -41,7 +42,7 @@ function Markdown(props: MarkdownProps) {
                   padding: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)",
                   fontFamily: "JetbrainsMonoNL, monospace",
                   fontWeight: "bold",
-                  fontSize: "0.9em",
+                  fontSize: "16px",
                 }}
                 PreTag="div"
                 codeTagProps={{
