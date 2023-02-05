@@ -16,6 +16,7 @@ body {
   src: local("JetBrainsMono"), local("JetBrainsMono-Regular"),
     url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
   font-weight: "regular";
+  font-display: swap;
 }
 
 @font-face {
@@ -28,6 +29,7 @@ body {
     url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf)
       format("truetype");
   font-weight: 100;
+  font-display: swap;
 }
 
 @font-face {
@@ -40,6 +42,7 @@ body {
     url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf)
       format("truetype");
   font-weight: 200;
+  font-display: swap;
 }
 
 @font-face {
@@ -52,6 +55,7 @@ body {
     url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf)
       format("truetype");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
@@ -64,6 +68,7 @@ body {
     url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf)
       format("truetype");
   font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
@@ -76,4 +81,5 @@ body {
     url(//c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf)
       format("truetype");
   font-weight: 700;
+  font-display: swap;
 }
