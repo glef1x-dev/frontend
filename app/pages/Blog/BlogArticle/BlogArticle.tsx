@@ -1,4 +1,4 @@
-import Markdown from "@/components/Markdown.js";
+import Markdown from "@/components/Markdown/Markdown.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
 import { usePageEffect } from "@/hooks/page.js";

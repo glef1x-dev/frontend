@@ -28,7 +28,7 @@ function Markdown(props: MarkdownProps) {
       rehypePlugins={[rehypeRaw]}
       css={{fontSize: "16px"}}
       components={{
-        code({ node, inline, className, children, ...props }) {
+        code({ className, children, ...other }) {
           const match = /language-(\w+)/.exec(className || "");
           return (
             match && (
@@ -44,16 +44,16 @@ function Markdown(props: MarkdownProps) {
                   fontWeight: "bold",
                   fontSize: "16px",
                 }}
-                PreTag="div"
+                lineProps={{style: {overflow: "scroll"}}}
                 codeTagProps={{
                   style: {
-                    fontSize: "inherit",
+                    fontSize: "13px",
                     letterSpacing: "inherit",
                     fontFamily: "inherit",
                     overscrollBehaviorX: "contain",
                   },
                 }}
-                {...props}
+                {...other}
               />
             )
           );
