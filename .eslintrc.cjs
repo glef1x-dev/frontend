@@ -38,12 +38,13 @@ module.exports = {
     "consistent-return": OFF,
     "dot-location": [ERROR, "property"],
     // We use console['error']() as a signal to not transform it:
-    "dot-notation": [ERROR, { allowPattern: "^(error|warn)$" }],
+    "dot-notation": [ERROR, {allowPattern: "^(error|warn)$"}],
     "eol-last": ERROR,
     eqeqeq: [ERROR, "allow-null"],
     indent: OFF,
+    "prettier/prettier": ["error", {"singleQuote": true}],
     "jsx-quotes": [ERROR, "prefer-double"],
-    "keyword-spacing": [ERROR, { after: true, before: true }],
+    "keyword-spacing": [ERROR, {after: true, before: true}],
     "no-bitwise": OFF,
     "no-console": OFF,
     "no-inner-declarations": [ERROR, "functions"],
@@ -52,17 +53,12 @@ module.exports = {
     "no-restricted-syntax": [ERROR, "WithStatement"],
     "no-shadow": ERROR,
     "no-unused-expressions": ERROR,
-    "no-unused-vars": [ERROR, { args: "none" }],
+    "no-unused-vars": [ERROR, {args: "none"}],
     "no-use-before-define": OFF,
     "no-useless-concat": OFF,
-    quotes: [
-      ERROR,
-      "single",
-      { avoidEscape: true, allowTemplateLiterals: true },
-    ],
     "space-before-blocks": ERROR,
     "space-before-function-paren": OFF,
-    "valid-typeof": [ERROR, { requireStringLiterals: true }],
+    "valid-typeof": [ERROR, {requireStringLiterals: true}],
     // Flow fails with non-string literal keys
     "no-useless-computed-key": OFF,
 
@@ -96,7 +92,7 @@ module.exports = {
     // We don't care to do this
     "react/jsx-wrap-multilines": [
       ERROR,
-      { declaration: false, assignment: false },
+      {declaration: false, assignment: false},
     ],
 
     // Prevent for...of loops because they require a Symbol polyfill.
@@ -111,7 +107,7 @@ module.exports = {
     "react-internal/no-primitive-constructors": ERROR,
     "react-internal/safe-string-coercion": [
       ERROR,
-      { isProductionUserAppCode: true },
+      {isProductionUserAppCode: true},
     ],
     "react-internal/no-to-warn-dev-within-to-throw": ERROR,
     "react-internal/warning-args": ERROR,
@@ -138,7 +134,7 @@ module.exports = {
     },
     {
       files: ["*.test.js"],
-      env: { jest: true },
+      env: {jest: true},
     },
     {
       files: [
@@ -148,11 +144,11 @@ module.exports = {
         "rollup.config.mjs",
         "scripts/**/*.js",
       ],
-      env: { node: true },
+      env: {node: true},
     },
     {
       files: ["*.cjs"],
-      parserOptions: { sourceType: "script" },
+      parserOptions: {sourceType: "script"},
     },
   ],
 
@@ -170,6 +166,11 @@ module.exports = {
       typescript: {
         alwaysTryTypes: true,
         project: ["app/tsconfig.json", "edge/tsconfig.json"],
+        alias: {
+          map: [
+            ['@', './src'],
+          ],
+        },
       },
     },
     "import/order": [
