@@ -31,10 +31,7 @@ export default function BlogArticle() {
     <>
       <ScrollProgressBar
         sx={{
-          "@media(min-width: 600px)": {
-            height: "0.1rem",
-          },
-          height: "0.07rem",
+          height: "0.15rem",
           position: "sticky",
           width: "100vw",
           marginLeft: "calc(-50vw + 50%)",
