@@ -1,15 +1,13 @@
 import { ArticleTag } from "@/services/api/types/blog.js";
-import { Chip, Stack } from "@mui/material";
+import { Chip, Link, Stack } from "@mui/material";
 import { memo } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 type BlogArticleTagsProps = {
   tags: Array<ArticleTag>;
 };
 
 export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
-  const navigate = useNavigate();
-
   return (
     <Stack
       sx={{
@@ -20,27 +18,34 @@ export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
       direction="row"
     >
       {tags.map((tag) => (
-        <Chip
-          color="primary"
-          variant="outlined"
-          label={tag.title}
-          size="medium"
+        <Link
+          to={`/blog/${tag.title}/`}
+          component={ReactRouterLink}
           key={tag.id}
-          onClick={() => navigate({ pathname: `/blog/tags/${tag.title}/` })}
           sx={{
-            fontWeight: "bold",
-            "&:hover": {
-              borderColor: "#3740ff",
-              background: "#3740ff",
-              color: "#ffffff",
-              cursor: "pointer",
-            },
+            textDecoration: "none",
             "&:visited": {
               color: "#6001ff",
             },
           }}
-          aria-label={tag.title}
-        />
+        >
+          <Chip
+            color="primary"
+            variant="outlined"
+            label={tag.title}
+            size="medium"
+            sx={{
+              fontWeight: "bold",
+              "&:hover": {
+                borderColor: "#3740ff",
+                background: "#3740ff",
+                color: "#ffffff",
+                cursor: "pointer",
+              },
+            }}
+            aria-label={tag.title}
+          />
+        </Link>
       ))}
     </Stack>
   );
