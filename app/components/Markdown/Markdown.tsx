@@ -44,10 +44,10 @@ function Markdown(props: MarkdownProps) {
                   fontWeight: "bold",
                   fontSize: "16px",
                 }}
-                lineProps={{style: {overflow: "scroll"}}}
+                wrapLongLines={true}
                 codeTagProps={{
                   style: {
-                    fontSize: "13px",
+                    fontSize: "12px",
                     letterSpacing: "inherit",
                     fontFamily: "inherit",
                     overscrollBehaviorX: "contain",
