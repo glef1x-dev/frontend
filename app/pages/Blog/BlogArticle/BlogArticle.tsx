@@ -45,7 +45,7 @@ export default function BlogArticle() {
       />
       <Container
         className="article-container"
-        maxWidth="md"
+        maxWidth="lg"
         disableGutters={true}
         sx={{
           padding: theme.spacing(2.5),
