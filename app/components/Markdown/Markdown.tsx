@@ -15,14 +15,14 @@ function Markdown(props: MarkdownProps) {
   const text = props.text;
   const theme = useTheme();
   const isDarkThemeEnabled = theme.palette.mode === "dark";
-  const syntaxHighlighterThemeStyle = isDarkThemeEnabled ? oneDark : oneLight
+  const syntaxHighlighterThemeStyle = isDarkThemeEnabled ? oneDark : oneLight;
 
   return (
     <ReactMarkdown
       children={text}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
-      css={{fontSize: "16px"}}
+      css={{ fontSize: "16px" }}
       components={{
         code({ className, children, ...other }) {
           const match = /language-(\w+)/.exec(className || "");
@@ -37,16 +37,16 @@ function Markdown(props: MarkdownProps) {
                   borderRadius: "10px",
                   padding: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)",
                   fontFamily: "JetbrainsMonoNL, monospace",
-                  fontWeight: "bold",
-                  fontSize: "16px",
+                  lineHeight: "1.5em",
+                  letterSpacing: ".9px"
                 }}
-                wrapLongLines={true}
                 codeTagProps={{
                   style: {
-                    fontSize: "12px",
                     letterSpacing: "inherit",
+                    fontSize: "14px",
                     fontFamily: "inherit",
                     overscrollBehaviorX: "contain",
+                    overflow: "auto"
                   },
                 }}
                 {...other}

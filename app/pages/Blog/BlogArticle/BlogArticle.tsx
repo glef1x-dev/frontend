@@ -45,7 +45,12 @@ export default function BlogArticle() {
         maxWidth="lg"
         disableGutters={true}
         sx={{
-          padding: theme.spacing(2.5),
+          [theme.breakpoints.down("md")]: {
+            padding: theme.spacing(1),
+          },
+          [theme.breakpoints.up("md")]: {
+            padding: theme.spacing(2.5),
+          },
         }}
       >
         <article
