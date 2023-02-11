@@ -6,12 +6,11 @@ export const OctokitContext = createContext<Octokit | null>(null);
 export const OctokitProvider = memo(
   ({
     children,
-    token = GITHUB_PERSONAL_TOKEN,
   }: {
     token?: string;
     children?: ReactNode;
   }) => {
-    const octokitInstance = new Octokit({ auth: token });
+    const octokitInstance = new Octokit();
     return (
       <OctokitContext.Provider value={octokitInstance}>
         {children}

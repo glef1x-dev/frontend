@@ -12,7 +12,6 @@ const defineVars = [
   "APP_ENV",
   "APP_NAME",
   "APP_HOSTNAME",
-  "GITHUB_PERSONAL_TOKEN",
   "BASE_API_URL",
   "UTTERNANCES_REPOSITORY_NAME",
 ];
