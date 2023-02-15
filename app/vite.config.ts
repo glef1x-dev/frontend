@@ -3,6 +3,7 @@ import envars from "envars";
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import {sentryVitePlugin} from "@sentry/vite-plugin";
 
 // Load environment variables for the target environment
 envars.config();
@@ -14,6 +15,7 @@ const defineVars = [
   "APP_HOSTNAME",
   "BASE_API_URL",
   "UTTERNANCES_REPOSITORY_NAME",
+  "SENTRY_DSN"
 ];
 
 /**
@@ -27,7 +29,9 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "./dist",
       emptyOutDir: true,
+      sourcemap: true
     },
+
 
     define: {
       ...Object.fromEntries(
@@ -47,7 +51,13 @@ export default defineConfig(({ mode }) => {
       nodePolyfills({
         // Whether to polyfill `node:` protocol imports.
         protocolImports: true,
-      })
+      }),
+      sentryVitePlugin({
+        org: "glef1x",
+        project: "glefix.dev",
+        include: "./dist",
+        authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+      }),
     ],
 
     server: {

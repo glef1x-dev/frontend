@@ -27,7 +27,7 @@ export default function useUtternances(
     script.setAttribute("theme", utterancesTheme);
 
     anchor.replaceChildren(script);
-  }, [repositoryName, issueTerm, utterancesTheme]);
+  }, [repositoryName, issueTerm, utterancesTheme, anchorIdForInjectingUtternances]);
 
   return anchorIdForInjectingUtternances;
 }
