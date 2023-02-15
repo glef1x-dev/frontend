@@ -1,7 +1,8 @@
 import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary.js";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { withSuspense } from "../utils/HOC/withSuspense.js";
+import { withSuspense } from "@/utils/HOC/withSuspense";
+import * as Sentry from "@sentry/react"
 
 const Layout = withSuspense(
   React.lazy(() => import("../components/Layout.js"))
@@ -19,7 +20,11 @@ const BlogArticle = withSuspense(
   React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticle.js"))
 );
 
-export const router = createBrowserRouter([
+const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(
+  createBrowserRouter
+);
+
+export const router = sentryCreateBrowserRouter([
   {
     path: "/",
     element: <Layout />,
