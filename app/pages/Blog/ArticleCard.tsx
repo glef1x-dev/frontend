@@ -46,8 +46,6 @@ export default memo(function ArticleCard({ article }: ArticleCardProps) {
         >
           <img
             height="205"
-            decoding="async"
-            loading="lazy"
             src={article.image}
             style={{
               width: "100%",
