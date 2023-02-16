@@ -53,8 +53,9 @@ export default defineConfig(({ mode }) => {
         protocolImports: true,
       }),
       sentryVitePlugin({
-        org: "glef1x",
-        project: "glefix.dev",
+        // TODO: probably organization name and project name should be environment variables
+        org: "educate-dz",
+        project: "glefix-frontend",
         include: "./dist",
         authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
       }),
