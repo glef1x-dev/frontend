@@ -35,5 +35,5 @@ RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store\
  # except pnpm emits a lot of warnings doing that, so here we filter out those warnings.
 
 COPY . .
-RUN NODE_ENV=production pnpm run app:build
+RUN NODE_OPTIONS=--max_old_space_size=8192 NODE_ENV=production pnpm run app:build
 
