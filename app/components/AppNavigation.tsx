@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
+import {Link as ReactRouterLink, useLocation} from "react-router-dom";
 import AvatarLink from "./AvatarLink.js";
 import SocialMedias from "./SocialMedias.js";
 import ThemeButton from "./ThemeButton.js";
@@ -45,6 +45,7 @@ function AppNavigation() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+  const {pathname: currentPath} = useLocation();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -84,7 +85,12 @@ function AppNavigation() {
               }}
             >
               {navigationRoutes.map((route) => (
-                <MenuItem key={route.name} onClick={handleCloseNavMenu} divider>
+                <MenuItem
+                  key={route.name}
+                  onClick={handleCloseNavMenu}
+                  selected={route.path === currentPath}
+                  divider
+                >
                   <Link
                     href={route.path}
                     sx={{
