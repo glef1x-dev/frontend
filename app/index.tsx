@@ -5,7 +5,12 @@ import * as Sentry from "@sentry/react";
 import { App } from "./components/App.js";
 import "./index.css";
 import { BrowserTracing } from "@sentry/tracing";
-import {createRoutesFromChildren, matchRoutes, useLocation, useNavigationType} from "react-router-dom";
+import {
+  createRoutesFromChildren,
+  matchRoutes,
+  useLocation,
+  useNavigationType,
+} from "react-router-dom";
 
 const container = document.getElementById("root") as HTMLElement;
 
@@ -19,10 +24,10 @@ Sentry.init({
         useNavigationType,
         createRoutesFromChildren,
         matchRoutes
-      ),
+      )
     }),
   ],
-  tracesSampleRate: 1.0,
+  tracesSampleRate: 0.5,
   // TODO: add release parameter
 });
 
