@@ -34,7 +34,8 @@
     "react-useanimations": "^2.10.0",
     "recoil": "~0.7.6",
     "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.1"
+    "remark-gfm": "^3.0.1",
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@babel/runtime": "~7.19.4",

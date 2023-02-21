@@ -1,21 +1,22 @@
-import { PaginatedResult } from "./base";
+import createPaginatedResponseSchema from "./base";
+import { z } from "zod";
 
-export interface ArticleTag {
-  id: number;
-  title: string;
-}
+export const ArticleTag = z.object({
+  id: z.number(),
+  title: z.string(),
+});
 
-export interface Article {
-  id: number;
-  title: string;
-  description: string;
-  tags: Array<ArticleTag>;
-  created: string;
-  modified: string;
-  image: string;
-  body: string;
-  slug: string;
-  likesCount: number;
-}
+export const Article = z.object({
+  id: z.number().or(z.string().uuid()),
+  title: z.string(),
+  description: z.string(),
+  tags: z.array(ArticleTag),
+  created: z.string().datetime(),
+  modified: z.string().datetime().nullish(),
+  image: z.string().url(),
+  body: z.string(),
+  slug: z.string(),
+  likesCount: z.number().lte(0).optional(),
+});
 
-export type ArticleList = PaginatedResult<Article>;
+export const ArticleList = createPaginatedResponseSchema(Article);

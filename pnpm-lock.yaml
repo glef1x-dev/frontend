@@ -144,6 +144,7 @@ importers:
       typescript: ~4.8.4
       vite: ^4.1.1
       vite-plugin-node-polyfills: ^0.6.0
+      zod: ^3.20.6
     dependencies:
       '@emotion/react': 11.10.5_wkiylh6bncbdhwh6tncqb3s2nm
       '@emotion/styled': 11.10.5_cjinou6kcnbro54hfk33pnlsly
@@ -169,6 +170,7 @@ importers:
       recoil: 0.7.6_biqbaboplfbrettd7655fr4n2y
       rehype-raw: 6.1.1
       remark-gfm: 3.0.1
+      zod: 3.20.6
     devDependencies:
       '@babel/runtime': 7.19.4
       '@emotion/babel-plugin': 11.10.5_@babel+core@7.20.12
@@ -9631,6 +9633,10 @@ packages:
       mustache: 4.2.0
       stack-trace: 0.0.10
     dev: true
+
+  /zod/3.20.6:
+    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
+    dev: false
 
   /zwitch/2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}

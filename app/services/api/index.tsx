@@ -1,9 +1,9 @@
 import { getRepositoryStarsCount, useOctokit } from "@/services/api/github";
-import { Article } from "@/services/api/types/blog.js";
+import { Article, ArticleList } from "@/services/api/types/blog.js";
 import axios, { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { createContext, ReactNode, useCallback, useContext } from "react";
-import { PaginatedResult } from "./types/base";
+import { parseAs } from "@/services/api/types/parser";
 
 export const ApiContext = createContext<ApiClient | null>(null);
 
@@ -15,10 +15,8 @@ export type GetArticlesOptions = Partial<{
 
 export type ApiClient = {
   blog: {
-    getArticleBySlug: (slug: string) => Promise<Article>;
-    getArticles: (
-      options?: GetArticlesOptions
-    ) => Promise<PaginatedResult<Article>>;
+    getArticleBySlug: (slug: string) => Promise<typeof Article>;
+    getArticles: (options?: GetArticlesOptions) => Promise<typeof ArticleList>;
   };
   github: {
     getStarsCount: (
@@ -62,7 +60,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
   const octokitClient = useOctokit();
 
   const api = axios.create({
-    timeout: 10000,
+    timeout: 10_000,
     baseURL: BASE_API_URL,
   });
   api.interceptors.response.use((response) => response);
@@ -72,7 +70,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
       getArticleBySlug: (slug: string) => {
         return api
           .get(`/blog/articles/${slug}/`)
-          .then((response) => response.data)
+          .then((response) => parseAs(response.data, Article))
           .catch((error) =>
             rethrowOccurredDuringQueryError(error, {
               newMessage: "Article not found",
@@ -82,7 +80,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
       getArticles: (options?: GetArticlesOptions) => {
         const params: Record<string, string> = {};
         if (options?.tagName) {
-          params["tags__title"] = options.tagName;
+          params.tags__title = options.tagName;
         }
 
         let getBlogArticlesPromise;
@@ -98,8 +96,8 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
           });
         }
 
-        getBlogArticlesPromise = getBlogArticlesPromise.then(
-          (response) => response.data
+        getBlogArticlesPromise = getBlogArticlesPromise.then((response) =>
+          parseAs(response.data, ArticleList)
         );
 
         if (__DEV__) {
