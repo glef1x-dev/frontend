@@ -1,9 +1,13 @@
-import { getRepositoryStarsCount, useOctokit } from "@/services/api/github";
+import {
+  getRepository,
+  GithubRepository,
+  useOctokit,
+} from "@/services/api/github";
 import { Article, ArticleList } from "@/services/api/types/blog.js";
+import { CleanData, parseAs } from "@/services/api/types/parser";
 import axios, { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { createContext, ReactNode, useCallback, useContext } from "react";
-import { CleanData, parseAs } from "@/services/api/types/parser";
 
 export const ApiContext = createContext<ApiClient | null>(null);
 
@@ -21,10 +25,10 @@ export type ApiClient = {
     ) => Promise<CleanData<typeof ArticleList>>;
   };
   github: {
-    getStarsCount: (
+    getRepository: (
       repositoryName: string,
       repositoryOwner: string
-    ) => Promise<number>;
+    ) => Promise<GithubRepository>;
   };
 };
 
@@ -100,7 +104,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
 
         getBlogArticlesPromise = getBlogArticlesPromise.then((response) =>
           parseAs(response.data, ArticleList)
-        )
+        );
 
         if (__DEV__) {
           getBlogArticlesPromise = getBlogArticlesPromise.catch((error) => {
@@ -112,17 +116,21 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
       },
     },
     github: {
-      getStarsCount: (repositoryName: string, repositoryOwner: string) =>
-        getRepositoryStarsCount(
-          octokitClient,
-          repositoryOwner,
-          repositoryName
-        ).catch((error) => {
-          notifyOnError(
-            `Failed to load opensource project metadata from GitHub [${error.toString()}]`
-          );
-          return Promise.resolve(0);
-        }),
+      getRepository: (repositoryName: string, repositoryOwner: string) =>
+        getRepository(octokitClient, repositoryOwner, repositoryName).catch(
+          (error) => {
+            notifyOnError(
+              `Failed to load opensource project metadata from GitHub [${error.toString()}]`
+            );
+            return Promise.resolve(
+              new GithubRepository(
+                repositoryName + "/" + repositoryName,
+                0,
+                `https://github.com/${repositoryOwner}/${repositoryName}`
+              )
+            );
+          }
+        ),
     },
   };
 

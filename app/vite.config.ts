@@ -1,9 +1,9 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import react from "@vitejs/plugin-react";
 import envars from "envars";
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import {sentryVitePlugin} from "@sentry/vite-plugin";
 
 // Load environment variables for the target environment
 envars.config();
@@ -15,7 +15,7 @@ const defineVars = [
   "APP_HOSTNAME",
   "BASE_API_URL",
   "UTTERNANCES_REPOSITORY_NAME",
-  "SENTRY_DSN"
+  "SENTRY_DSN",
 ];
 
 /**
@@ -29,9 +29,8 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "./dist",
       emptyOutDir: true,
-      sourcemap: true
+      sourcemap: true,
     },
-
 
     define: {
       ...Object.fromEntries(

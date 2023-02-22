@@ -22,7 +22,7 @@
   border: 6px solid #ddf3ff;
   border-left: 6px solid #009ee2;
 
-  animation: spinner .5s infinite linear;
+  animation: spinner 0.5s infinite linear;
 }
 
 @keyframes spinner {

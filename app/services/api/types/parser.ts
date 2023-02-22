@@ -1,5 +1,5 @@
-import { ParseParams, z } from "zod";
 import * as Sentry from "@sentry/react";
+import { ParseParams, z } from "zod";
 
 export declare type CleanData<T extends z.ZodType> = z.infer<T>;
 

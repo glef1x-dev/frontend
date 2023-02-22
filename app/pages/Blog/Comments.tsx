@@ -6,5 +6,5 @@ export default memo(function Comments() {
     UTTERNANCES_REPOSITORY_NAME
   );
 
-  return <div id={anchorIdForInjectingUtternances}></div>;
+  return <div id={anchorIdForInjectingUtternances} />;
 });

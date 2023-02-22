@@ -1,6 +1,4 @@
-import * as React from "react";
-
-import { useGetStarsCount } from "@/hooks/api/useGithubApi.js";
+import { OpenSourceProject } from "@/services/api/types/opensourceProject";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew.js";
 import {
   Button,
@@ -12,19 +10,17 @@ import {
   Typography,
 } from "@mui/material";
 import { useSnackbar } from "notistack";
+import * as React from "react";
 
 export default function OpenSourceProjectCard({
-  icon,
-  title,
-  description,
-  sourceCodeLink,
-  documentationLink,
-}: OpenSourceProjectCardProps): JSX.Element {
+  project,
+}: {
+  project: OpenSourceProject;
+}): JSX.Element {
   const { enqueueSnackbar } = useSnackbar();
-  const { data: githubStarsCount } = useGetStarsCount(sourceCodeLink);
 
   const onDocumentationButtonClick = (event: React.MouseEvent) => {
-    if (documentationLink === undefined) {
+    if (project.documentationLink === undefined) {
       event.preventDefault();
       return enqueueSnackbar(
         "Documentation for this project is not available.",
@@ -41,7 +37,9 @@ export default function OpenSourceProjectCard({
         position: "relative",
       }}
     >
-      {icon && <CardMedia component="img" alt="project card" image={icon} />}
+      {project.icon && (
+        <CardMedia component="img" alt="project card" image={icon} />
+      )}
       <CardContent
         sx={{
           marginBottom: "3rem",
@@ -57,10 +55,10 @@ export default function OpenSourceProjectCard({
             }}
             component="div"
           >
-            {title}
+            {project.title}
           </Typography>
           <Typography variant="h5" color="text.secondary">
-            {githubStarsCount ?? 0} &#11088;
+            {project.stargazersCount ?? 0} &#11088;
           </Typography>
         </Grid>
         <Typography
@@ -70,7 +68,7 @@ export default function OpenSourceProjectCard({
             paddingY: "1rem",
           }}
         >
-          {description}
+          {project.description}
         </Typography>
       </CardContent>
       <CardActions
@@ -83,7 +81,7 @@ export default function OpenSourceProjectCard({
           size="medium"
           target="_blank"
           rel="noreferrer"
-          href={sourceCodeLink}
+          href={project.sourceCodeLink}
           startIcon={<OpenInNewIcon />}
         >
           Source code
@@ -92,7 +90,7 @@ export default function OpenSourceProjectCard({
           size="medium"
           target="_blank"
           rel="noreferrer"
-          href={documentationLink ?? "#"}
+          href={project.documentationLink ?? "#"}
           onClick={onDocumentationButtonClick}
           startIcon={<OpenInNewIcon />}
         >
@@ -102,12 +100,3 @@ export default function OpenSourceProjectCard({
     </Card>
   );
 }
-
-type OpenSourceProjectCardProps = {
-  icon?: string;
-  title: string;
-  description: string;
-  sourceCodeLink: string;
-  documentationLink?: string;
-  isMaintainer?: boolean;
-};

@@ -1,15 +1,30 @@
 import { Octokit } from "@octokit/rest";
 import { createContext, memo, ReactNode, useContext } from "react";
 
+export class GithubRepository {
+  protected readonly fullName: string;
+  public readonly stargazersCount: number;
+  public readonly url: string;
+
+  constructor(fullName: string, stargazersCount: number, url: string) {
+    this.fullName = fullName;
+    this.stargazersCount = stargazersCount;
+    this.url = url;
+  }
+
+  get owner() {
+    return this.fullName.split("/", 1)[0];
+  }
+
+  get author() {
+    return this.fullName.split("/", 1)[1];
+  }
+}
+
 export const OctokitContext = createContext<Octokit | null>(null);
 
 export const OctokitProvider = memo(
-  ({
-    children,
-  }: {
-    token?: string;
-    children?: ReactNode;
-  }) => {
+  ({ children }: { token?: string; children?: ReactNode }) => {
     const octokitInstance = new Octokit();
     return (
       <OctokitContext.Provider value={octokitInstance}>
@@ -37,17 +52,19 @@ export function extractRepoNameAndOwnerFromGithubLink(
   return [repoName, owner];
 }
 
-export async function getRepositoryStarsCount(
+export async function getRepository(
   instance: Octokit,
   owner: string,
   repo: string
-): Promise<number> {
-  const {
-    data: { stargazers_count },
-  } = await instance.rest.repos.get({
+): Promise<GithubRepository> {
+  const response = await instance.rest.repos.get({
     owner: owner,
     repo: repo,
   });
 
-  return stargazers_count;
+  return new GithubRepository(
+    response.data.full_name,
+    response.data.stargazers_count,
+    response.data.html_url
+  );
 }

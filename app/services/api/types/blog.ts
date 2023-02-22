@@ -1,5 +1,5 @@
-import createPaginatedResponseSchema from "./base";
 import { z } from "zod";
+import createPaginatedResponseSchema from "./base";
 
 export const ArticleTag = z.object({
   id: z.number(),

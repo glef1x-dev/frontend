@@ -1,10 +1,11 @@
 import { ArticleTag } from "@/services/api/types/blog.js";
+import { CleanData } from "@/services/api/types/parser";
 import { Chip, Link, Stack } from "@mui/material";
 import { memo } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 type BlogArticleTagsProps = {
-  tags: Array<ArticleTag>;
+  tags: Array<CleanData<typeof ArticleTag>>;
 };
 
 export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {

@@ -38,7 +38,7 @@ function Markdown(props: MarkdownProps) {
                   padding: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)",
                   fontFamily: "JetbrainsMonoNL, monospace",
                   lineHeight: "1.5em",
-                  letterSpacing: ".9px"
+                  letterSpacing: ".9px",
                 }}
                 codeTagProps={{
                   style: {
@@ -46,7 +46,7 @@ function Markdown(props: MarkdownProps) {
                     fontSize: "14px",
                     fontFamily: "inherit",
                     overscrollBehaviorX: "contain",
-                    overflow: "auto"
+                    overflow: "auto",
                   },
                 }}
                 {...other}

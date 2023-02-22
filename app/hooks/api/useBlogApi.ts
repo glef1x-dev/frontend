@@ -1,4 +1,6 @@
 import { useApiClient } from "@/services/api/index.js";
+import { Article, ArticleList } from "@/services/api/types/blog";
+import { CleanData } from "@/services/api/types/parser";
 import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
 import {
   useInfiniteQuery,
@@ -7,8 +9,6 @@ import {
   UseQueryOptions,
 } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { Article, ArticleList } from "@/services/api/types/blog";
-import { CleanData } from "@/services/api/types/parser";
 
 export function useGetBlogArticleBySlug<Result = CleanData<typeof Article>>(
   slug: string,

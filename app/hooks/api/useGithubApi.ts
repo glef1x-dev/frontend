@@ -1,18 +1,28 @@
-import { extractRepoNameAndOwnerFromGithubLink } from "@/services/api/github.js";
+import {
+  extractRepoNameAndOwnerFromGithubLink,
+  GithubRepository,
+} from "@/services/api/github.js";
 import { useApiClient } from "@/services/api/index.js";
-import { githubQueryKeys } from "@/services/queryClient/queryKeys.js";
-import { useQuery } from "@tanstack/react-query";
+import { githubQueryKeys } from "@/services/queryClient/queryKeys";
+import { useQueries } from "@tanstack/react-query";
 
-export const useGetStarsCount = (sourceCodeLink: string) => {
+export const useGetGithubRepositoriesInBulk = (
+  sourceCodeLinks: string[]
+): GithubRepository[] => {
   const { github } = useApiClient();
 
-  const [repositoryName, repositoryOwner] =
-    extractRepoNameAndOwnerFromGithubLink(sourceCodeLink);
+  const responses = useQueries({
+    queries: sourceCodeLinks.map((link) => {
+      const [repositoryName, repositoryOwner] =
+        extractRepoNameAndOwnerFromGithubLink(link);
+      return {
+        queryFn: () => {
+          return github.getRepository(repositoryName, repositoryOwner);
+        },
+        queryKey: githubQueryKeys.starsCount(repositoryOwner, repositoryName),
+      };
+    }),
+  });
 
-  return useQuery(
-    githubQueryKeys.starsCount(repositoryOwner, repositoryName),
-    () => {
-      return github.getStarsCount(repositoryName, repositoryOwner);
-    }
-  );
+  return responses.map((response) => response.data) as GithubRepository[];
 };

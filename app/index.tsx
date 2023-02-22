@@ -1,16 +1,16 @@
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import { RecoilRoot } from "recoil";
-import * as Sentry from "@sentry/react";
-import { App } from "./components/App.js";
-import "./index.css";
-import { BrowserTracing } from "@sentry/tracing";
 import {
   createRoutesFromChildren,
   matchRoutes,
   useLocation,
   useNavigationType,
 } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+import { App } from "./components/App.js";
+import "./index.css";
 
 const container = document.getElementById("root") as HTMLElement;
 
@@ -24,7 +24,7 @@ Sentry.init({
         useNavigationType,
         createRoutesFromChildren,
         matchRoutes
-      )
+      ),
     }),
   ],
   tracesSampleRate: 0.5,
