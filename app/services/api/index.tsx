@@ -120,7 +120,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
         getRepository(octokitClient, repositoryOwner, repositoryName).catch(
           (error) => {
             notifyOnError(
-              `Failed to load opensource project metadata from GitHub [${error.toString()}]`
+              `Failed to load ${repositoryName} repository metadata from GitHub`
             );
             return Promise.resolve(
               new GithubRepository(
