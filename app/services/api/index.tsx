@@ -3,7 +3,7 @@ import { Article, ArticleList } from "@/services/api/types/blog.js";
 import axios, { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { createContext, ReactNode, useCallback, useContext } from "react";
-import { parseAs } from "@/services/api/types/parser";
+import { CleanData, parseAs } from "@/services/api/types/parser";
 
 export const ApiContext = createContext<ApiClient | null>(null);
 
@@ -15,8 +15,10 @@ export type GetArticlesOptions = Partial<{
 
 export type ApiClient = {
   blog: {
-    getArticleBySlug: (slug: string) => Promise<typeof Article>;
-    getArticles: (options?: GetArticlesOptions) => Promise<typeof ArticleList>;
+    getArticleBySlug: (slug: string) => Promise<CleanData<typeof Article>>;
+    getArticles: (
+      options?: GetArticlesOptions
+    ) => Promise<CleanData<typeof ArticleList>>;
   };
   github: {
     getStarsCount: (
@@ -98,11 +100,11 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
 
         getBlogArticlesPromise = getBlogArticlesPromise.then((response) =>
           parseAs(response.data, ArticleList)
-        );
+        )
 
         if (__DEV__) {
           getBlogArticlesPromise = getBlogArticlesPromise.catch((error) => {
-            return Promise.resolve([]);
+            return Promise.resolve({} as CleanData<typeof ArticleList>);
           });
         }
 

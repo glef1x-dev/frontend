@@ -1,6 +1,4 @@
 import { useApiClient } from "@/services/api/index.js";
-import { PaginatedResult } from "@/services/api/types/base";
-import { Article } from "@/services/api/types/blog.js";
 import { blogQueryKeys } from "@/services/queryClient/queryKeys.js";
 import {
   useInfiniteQuery,
@@ -9,31 +7,35 @@ import {
   UseQueryOptions,
 } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import { Article, ArticleList } from "@/services/api/types/blog";
+import { CleanData } from "@/services/api/types/parser";
 
-export function useGetBlogArticleBySlug<Result = Article>(
+export function useGetBlogArticleBySlug<Result = CleanData<typeof Article>>(
   slug: string,
-  options?: Partial<UseQueryOptions<Article, AxiosError, Result>>
+  options?: Partial<
+    UseQueryOptions<CleanData<typeof Article>, AxiosError, Result>
+  >
 ) {
   const { blog } = useApiClient();
 
-  return useQuery<Article, AxiosError, Result>(
+  return useQuery<CleanData<typeof Article>, AxiosError, Result>(
     blogQueryKeys.blogArticle(slug),
     () => blog.getArticleBySlug(slug),
     options
   );
 }
 
-export function useInfiniteArticlesList<Result = PaginatedResult<Article>>(
+export function useInfiniteArticlesList<Result = CleanData<typeof ArticleList>>(
   tagName?: string,
   options?: Partial<
-    UseInfiniteQueryOptions<PaginatedResult<Article>, AxiosError, Result>
+    UseInfiniteQueryOptions<CleanData<typeof ArticleList>, AxiosError, Result>
   >
 ) {
   const { blog } = useApiClient();
-  return useInfiniteQuery<PaginatedResult<Article>, AxiosError, Result>(
+  return useInfiniteQuery<CleanData<typeof ArticleList>, AxiosError, Result>(
     blogQueryKeys.blogArticles(tagName),
-    (options) =>
-      blog.getArticles({ tagName: tagName, nextResultsUrl: options.pageParam }),
+    (opts) =>
+      blog.getArticles({ tagName: tagName, nextResultsUrl: opts.pageParam }),
     {
       getNextPageParam: (lastPage) => lastPage.next ?? undefined,
       ...options,
