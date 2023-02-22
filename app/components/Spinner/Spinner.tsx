@@ -1,5 +1,5 @@
 import { useTheme } from "@/core/ui/mui/theme";
-import "./Spinner.css";
+import styles from "./Spinner.module.css";
 
 type SpinnerProps = {
   color?: string;
@@ -10,13 +10,13 @@ export default function Spinner({ color }: SpinnerProps): JSX.Element {
   const spinnerColor = color ?? theme.palette.primary.main;
 
   return (
-    <div className="spinner-wrap">
+    <div className={styles.spinnerWrap}>
       <div
-        className="spinner"
+        className={styles.spinner}
         style={{
           borderLeft: `6px solid ${spinnerColor}`,
         }}
-      ></div>
+      />
     </div>
   );
 }

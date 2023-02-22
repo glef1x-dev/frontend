@@ -38,14 +38,14 @@ export default function OpenSourceProjectCard({
       }}
     >
       {project.icon && (
-        <CardMedia component="img" alt="project card" image={icon} />
+        <CardMedia component="img" alt="project card" image={project.icon} />
       )}
       <CardContent
         sx={{
           marginBottom: "3rem",
         }}
       >
-        <Grid container alignItems="center">
+        <Grid container={true} alignItems="center">
           <Typography
             variant="h5"
             fontWeight="bold"
