@@ -2,8 +2,8 @@ import {
   extractRepoNameAndOwnerFromGithubLink,
   GithubRepository,
 } from "@/services/api/github.js";
-import { useApiClient } from "@/services/api/index.js";
-import { githubQueryKeys } from "@/services/queryClient/queryKeys";
+import { useApiClient } from "@/services/api";
+import { githubQueryKeys } from "@/utils/queryKeys";
 import { useQueries } from "@tanstack/react-query";
 
 export const useGetGithubRepositoriesInBulk = (
