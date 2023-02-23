@@ -21,13 +21,7 @@ import SocialMedias from "./SocialMedias.js";
 import ThemeButton from "./ThemeButton.js";
 import avatarImage from "/my-avatar.webp";
 
-type Route = {
-  name: string;
-  path: string;
-  icon: JSX.Element;
-};
-
-const navigationRoutes: Route[] = [
+const NAVIGATION_ROUTES = [
   { name: "About Me", path: "/", icon: <CoPresentIcon fontSize="small" /> },
   {
     name: "Opensource",
@@ -39,7 +33,7 @@ const navigationRoutes: Route[] = [
     path: "/blog",
     icon: <NewspaperTwoToneIcon fontSize="small" />,
   },
-];
+] as const;
 
 function AppNavigation() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -84,7 +78,7 @@ function AppNavigation() {
                 },
               }}
             >
-              {navigationRoutes.map((route) => (
+              {NAVIGATION_ROUTES.map((route) => (
                 <MenuItem
                   key={route.name}
                   onClick={handleCloseNavMenu}
@@ -119,7 +113,7 @@ function AppNavigation() {
               ml: "2rem",
             }}
           >
-            {navigationRoutes.map((route) => (
+            {NAVIGATION_ROUTES.map((route) => (
               <Button
                 component={ReactRouterLink}
                 to={route.path}
