@@ -12,7 +12,6 @@ envars.config();
 const defineVars = [
   "APP_ENV",
   "APP_NAME",
-  "APP_HOSTNAME",
   "BASE_API_URL",
   "UTTERNANCES_REPOSITORY_NAME",
   "SENTRY_DSN",
