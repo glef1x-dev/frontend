@@ -1,8 +1,4 @@
-import {
-  getRepository,
-  GithubRepository,
-  useOctokit,
-} from "@/services/api/github.js";
+import { GithubRepository } from "@/services/api/github.js";
 import { Article, ArticleList } from "@/services/api/types/blog.js";
 import { CleanData, parseAs } from "@/services/api/types/parser.js";
 import axios, { AxiosError } from "axios";
@@ -64,7 +60,6 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
       }),
     [enqueueSnackbar],
   );
-  const octokitClient = useOctokit();
 
   const api = axios.create({
     timeout: 10_000,
@@ -118,8 +113,18 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
     },
     github: {
       getRepository: (repositoryName: string, repositoryOwner: string) =>
-        getRepository(octokitClient, repositoryOwner, repositoryName).catch(
-          (error) => {
+        api
+          .get(
+            `/third-party/github/repository/${repositoryOwner}/${repositoryName}/`,
+          )
+          .then((response) => {
+            return new GithubRepository(
+              response.data.full_name,
+              response.data.stargazers_count,
+              response.data.html_url,
+            );
+          })
+          .catch((error) => {
             notifyOnError(
               `Failed to load ${repositoryName} repository metadata from GitHub`,
             );
@@ -130,8 +135,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
                 `https://github.com/${repositoryOwner}/${repositoryName}`,
               ),
             );
-          },
-        ),
+          }),
     },
   };
 

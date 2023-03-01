@@ -3,7 +3,7 @@ import {
   extractRepoNameAndOwnerFromGithubLink,
   GithubRepository,
 } from "@/services/api/github.js";
-import { githubQueryKeys } from "@/utils/queryKeys";
+import { githubQueryKeys } from "@/utils/queryKeys.js";
 import { useQueries } from "@tanstack/react-query";
 
 export const useGetGithubRepositoriesInBulk = (

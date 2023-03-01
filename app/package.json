@@ -17,8 +17,6 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.10",
     "@mui/system": "^5.11.9",
-    "@octokit/auth-token": "^3.0.3",
-    "@octokit/rest": "^19.0.7",
     "@sentry/react": "^7.38.0",
     "@sentry/tracing": "^7.38.0",
     "@sentry/vite-plugin": "^0.4.0",
