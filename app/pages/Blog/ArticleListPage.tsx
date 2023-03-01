@@ -1,10 +1,10 @@
-import PageHeader from "@/components/PageHeader";
+import PageHeader from "@/components/PageHeader.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { capitalizeFirstLetter } from "@/utils/strings.js";
 import * as React from "react";
 import { useParams } from "react-router-dom";
-import ArticleList from "@/components/Blog/ArticleList";
-import ArticleCardsSkeleton from "@/components/Blog/ArticleCard/ArticleCardsSkeleton";
+import ArticleList from "@/components/Blog/ArticleList.js";
+import ArticleCardsSkeleton from "@/components/Blog/ArticleCard/ArticleCardsSkeleton.js";
 
 export default React.memo(function ArticleListPage(): JSX.Element {
   const { tagName } = useParams();

@@ -13,7 +13,12 @@
     ],
     "outDir": "../.cache/typescript-app",
     "moduleResolution": "NodeNext",
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
   },
   "include": [
     "**/*.ts",

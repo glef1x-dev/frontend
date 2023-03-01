@@ -60,7 +60,6 @@ module.exports = {
     "/.husky",
     "/.yarn",
     "/*/dist",
-    "/app/queries",
   ],
 
   settings: {
@@ -69,7 +68,6 @@ module.exports = {
         project: [
           "app/tsconfig.json",
           "edge/tsconfig.json",
-          "scripts/tsconfig.json",
         ],
       },
     },

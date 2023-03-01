@@ -1,8 +1,8 @@
-import MiddleDot from "@/components/MiddleDot";
+import MiddleDot from "@/components/MiddleDot.js";
 import useCalculateApproximateReadingTime from "@/hooks/reading-time.js";
-import BlogArticleTags from "@/components/Blog/ArticleTags";
+import BlogArticleTags from "@/components/Blog/ArticleTags.js";
 import { Article } from "@/services/api/types/blog.js";
-import { CleanData } from "@/services/api/types/parser";
+import { CleanData } from "@/services/api/types/parser.js";
 import { formatDate } from "@/utils/datetime.js";
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
 import { Box, Typography } from "@mui/material";
