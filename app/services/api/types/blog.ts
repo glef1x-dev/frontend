@@ -16,7 +16,7 @@ export const Article = z.object({
   image: z.string().url(),
   body: z.string(),
   slug: z.string(),
-  likesCount: z.number().lte(0).optional(),
+  likesCount: z.number().gte(0).optional(),
 });
 
 export const ArticleList = createPaginatedResponseSchema(Article);
