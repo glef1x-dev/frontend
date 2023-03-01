@@ -1,9 +1,9 @@
 import { Article } from "@/services/api/types/blog.js";
+import { CleanData } from "@/services/api/types/parser.js";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import BlogArticleMetadata from "../../../pages/Blog/BlogArticle/BlogArticleMetadata.js";
-import {CleanData} from "@/services/api/types/parser.js";
 
 interface ArticleCardProps {
   article: CleanData<typeof Article>;

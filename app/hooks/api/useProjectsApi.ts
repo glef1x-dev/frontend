@@ -42,19 +42,19 @@ const openSourceProjects: OpenSourceProject[] = [
 ];
 
 export function useGetOpensourceProjects<Result = OpenSourceProject>(
-  options?: Partial<UseQueryOptions<OpenSourceProject, AxiosError, Result>>
+  options?: Partial<UseQueryOptions<OpenSourceProject, AxiosError, Result>>,
 ) {
   const projectsSourceCodeLinks = openSourceProjects.map(
-    (p) => p.sourceCodeLink
+    (p) => p.sourceCodeLink,
   );
   const additionalInfoAboutOpensourceProjects = useGetGithubRepositoriesInBulk(
-    projectsSourceCodeLinks
+    projectsSourceCodeLinks,
   );
 
   return openSourceProjects
     .map((project) => {
       const additionalInfo = additionalInfoAboutOpensourceProjects.find(
-        (op) => op.url === project.sourceCodeLink
+        (op) => op.url === project.sourceCodeLink,
       );
       if (additionalInfo) {
         return { ...project, stargazersCount: additionalInfo.stargazersCount };

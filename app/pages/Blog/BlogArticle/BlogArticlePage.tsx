@@ -1,14 +1,14 @@
+import ArticleComments from "@/components/Blog/ArticleComments";
+import BlogArticleTags from "@/components/Blog/ArticleTags";
 import Markdown from "@/components/Markdown/Markdown";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
 import { usePageEffect } from "@/hooks/page.js";
-import BlogArticleTags from "@/components/Blog/ArticleTags";
 import { formatDate } from "@/utils/datetime.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
 import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
-import ArticleComments from "@/components/Blog/ArticleComments";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import "./css/BlogArticle.css";
 
@@ -18,7 +18,7 @@ export default function BlogArticlePage() {
   const { slug } = useParams();
   if (!slug) {
     throw new Error(
-      "Something went wrong: slug in path is empty. Contact developer if you see this message in console."
+      "Something went wrong: slug in path is empty. Contact developer if you see this message in console.",
     );
   }
 

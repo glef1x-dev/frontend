@@ -5,19 +5,19 @@ import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 const Layout = withSuspense(
-  React.lazy(() => import("../components/Layout.js"))
+  React.lazy(() => import("../components/Layout.js")),
 );
 const About = withSuspense(
-  React.lazy(() => import("../pages/AboutMe/AboutMe.js"))
+  React.lazy(() => import("../pages/AboutMe/AboutMe.js")),
 );
 const OpenSource = withSuspense(
-  React.lazy(() => import("../pages/OpenSource/OpenSource.js"))
+  React.lazy(() => import("../pages/OpenSource/OpenSource.js")),
 );
 const ArticleList = withSuspense(
-  React.lazy(() => import("../pages/Blog/ArticleListPage.js"))
+  React.lazy(() => import("../pages/Blog/ArticleListPage.js")),
 );
 const BlogArticle = withSuspense(
-  React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticlePage.js"))
+  React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticlePage.js")),
 );
 
 const sentryCreateBrowserRouter =

@@ -31,7 +31,7 @@ export const OctokitProvider = memo(
         {children}
       </OctokitContext.Provider>
     );
-  }
+  },
 );
 
 export const useOctokit = (): Octokit => {
@@ -43,7 +43,7 @@ export const useOctokit = (): Octokit => {
 };
 
 export function extractRepoNameAndOwnerFromGithubLink(
-  link: string
+  link: string,
 ): Array<string> {
   const [repoName, owner] = link.split("/").reverse().slice(0, 2);
   if (repoName === undefined || owner === undefined) {
@@ -55,7 +55,7 @@ export function extractRepoNameAndOwnerFromGithubLink(
 export async function getRepository(
   instance: Octokit,
   owner: string,
-  repo: string
+  repo: string,
 ): Promise<GithubRepository> {
   const response = await instance.rest.repos.get({
     owner: owner,
@@ -65,6 +65,6 @@ export async function getRepository(
   return new GithubRepository(
     response.data.full_name,
     response.data.stargazers_count,
-    response.data.html_url
+    response.data.html_url,
   );
 }

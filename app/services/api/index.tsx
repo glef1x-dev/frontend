@@ -22,13 +22,13 @@ export type ApiClient = {
   blog: {
     getArticleBySlug: (slug: string) => Promise<CleanData<typeof Article>>;
     getArticles: (
-      options?: GetArticlesOptions
+      options?: GetArticlesOptions,
     ) => Promise<CleanData<typeof ArticleList>>;
   };
   github: {
     getRepository: (
       repositoryName: string,
-      repositoryOwner: string
+      repositoryOwner: string,
     ) => Promise<GithubRepository>;
   };
 };
@@ -41,12 +41,12 @@ function rethrowOccurredDuringQueryError(
   originalError: Error,
   with_: {
     newMessage?: string;
-  }
+  },
 ): never {
   if (axios.isAxiosError(originalError)) {
     throw new AxiosError(
       with_.newMessage || originalError.message,
-      ...Object.values(originalError).slice(1)
+      ...Object.values(originalError).slice(1),
     );
   }
 
@@ -62,7 +62,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
         variant: "error",
         preventDuplicate: true,
       }),
-    [enqueueSnackbar]
+    [enqueueSnackbar],
   );
   const octokitClient = useOctokit();
 
@@ -81,7 +81,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
           .catch((error) =>
             rethrowOccurredDuringQueryError(error, {
               newMessage: "Article not found",
-            })
+            }),
           );
       },
       getArticles: (options?: GetArticlesOptions) => {
@@ -104,7 +104,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
         }
 
         getBlogArticlesPromise = getBlogArticlesPromise.then((response) =>
-          parseAs(response.data, ArticleList)
+          parseAs(response.data, ArticleList),
         );
 
         if (__DEV__) {
@@ -121,16 +121,16 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
         getRepository(octokitClient, repositoryOwner, repositoryName).catch(
           (error) => {
             notifyOnError(
-              `Failed to load ${repositoryName} repository metadata from GitHub`
+              `Failed to load ${repositoryName} repository metadata from GitHub`,
             );
             return Promise.resolve(
               new GithubRepository(
                 repositoryName + "/" + repositoryName,
                 0,
-                `https://github.com/${repositoryOwner}/${repositoryName}`
-              )
+                `https://github.com/${repositoryOwner}/${repositoryName}`,
+              ),
             );
-          }
+          },
         ),
     },
   };
@@ -142,7 +142,7 @@ export const useApiClient = () => {
   const apiClient = useContext(ApiContext);
   if (apiClient === null) {
     throw new Error(
-      "Unable to use API client without provided instance in context."
+      "Unable to use API client without provided instance in context.",
     );
   }
   return apiClient;

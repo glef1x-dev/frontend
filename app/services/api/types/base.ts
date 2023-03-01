@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export default function createPaginatedResponseSchema<
-  ItemType extends z.ZodTypeAny
+  ItemType extends z.ZodTypeAny,
 >(itemSchema: ItemType) {
   return z.object({
     results: z.array(itemSchema),

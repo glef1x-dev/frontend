@@ -26,7 +26,7 @@ export default function OpenSourceProjectCard({
         "Documentation for this project is not available.",
         {
           variant: "error",
-        }
+        },
       );
     }
   };

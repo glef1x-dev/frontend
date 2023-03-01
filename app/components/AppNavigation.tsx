@@ -37,7 +37,7 @@ const NAVIGATION_ROUTES = [
 
 function AppNavigation() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
+    null,
   );
   const { pathname: currentPath } = useLocation();
 

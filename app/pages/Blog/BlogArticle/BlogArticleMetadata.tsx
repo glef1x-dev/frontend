@@ -1,6 +1,6 @@
+import BlogArticleTags from "@/components/Blog/ArticleTags.js";
 import MiddleDot from "@/components/MiddleDot.js";
 import useCalculateApproximateReadingTime from "@/hooks/reading-time.js";
-import BlogArticleTags from "@/components/Blog/ArticleTags.js";
 import { Article } from "@/services/api/types/blog.js";
 import { CleanData } from "@/services/api/types/parser.js";
 import { formatDate } from "@/utils/datetime.js";

@@ -14,14 +14,14 @@ export function useGetBlogArticleBySlug<Result = CleanData<typeof Article>>(
   slug: string,
   options?: Partial<
     UseQueryOptions<CleanData<typeof Article>, AxiosError, Result>
-  >
+  >,
 ) {
   const { blog } = useApiClient();
 
   return useQuery<CleanData<typeof Article>, AxiosError, Result>(
     blogQueryKeys.blogArticle(slug),
     () => blog.getArticleBySlug(slug),
-    options
+    options,
   );
 }
 
@@ -29,7 +29,7 @@ export function useInfiniteArticlesList<Result = CleanData<typeof ArticleList>>(
   tagName?: string,
   options?: Partial<
     UseInfiniteQueryOptions<CleanData<typeof ArticleList>, AxiosError, Result>
-  >
+  >,
 ) {
   const { blog } = useApiClient();
   return useInfiniteQuery<CleanData<typeof ArticleList>, AxiosError, Result>(
@@ -39,6 +39,6 @@ export function useInfiniteArticlesList<Result = CleanData<typeof ArticleList>>(
     {
       getNextPageParam: (lastPage) => lastPage.next ?? undefined,
       ...options,
-    }
+    },
   );
 }

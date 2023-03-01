@@ -1,13 +1,13 @@
+import { useApiClient } from "@/services/api";
 import {
   extractRepoNameAndOwnerFromGithubLink,
   GithubRepository,
 } from "@/services/api/github.js";
-import { useApiClient } from "@/services/api";
 import { githubQueryKeys } from "@/utils/queryKeys";
 import { useQueries } from "@tanstack/react-query";
 
 export const useGetGithubRepositoriesInBulk = (
-  sourceCodeLinks: string[]
+  sourceCodeLinks: string[],
 ): GithubRepository[] => {
   const { github } = useApiClient();
 

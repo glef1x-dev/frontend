@@ -10,8 +10,8 @@ import {
 } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { App } from "./components/App.js";
-import "./index.css";
 import { config } from "./core/config.js";
+import "./index.css";
 
 const container = document.getElementById("root") as HTMLElement;
 

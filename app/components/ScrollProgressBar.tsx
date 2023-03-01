@@ -3,7 +3,7 @@ import { LinearProgressProps } from "@mui/material/LinearProgress/LinearProgress
 import { useEffect, useState } from "react";
 
 export default function ScrollProgressBar(
-  props: LinearProgressProps
+  props: LinearProgressProps,
 ): JSX.Element {
   const [progress, setProgress] = useState<number>(0);
 

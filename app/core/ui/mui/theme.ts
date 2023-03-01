@@ -57,8 +57,8 @@ export const Theme = selectorFamily({
           },
           {
             typography: typography.overrides,
-          }
-        )
+          },
+        ),
       );
     };
   },
@@ -83,9 +83,9 @@ export function useToggleTheme(name?: PaletteMode) {
     (ctx) => () => {
       ctx.set(
         ThemeName,
-        name ?? ((prev) => (prev === "dark" ? "light" : "dark"))
+        name ?? ((prev) => (prev === "dark" ? "light" : "dark")),
       );
     },
-    []
+    [],
   );
 }

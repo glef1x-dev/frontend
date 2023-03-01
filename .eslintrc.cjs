@@ -54,21 +54,12 @@ module.exports = {
     },
   ],
 
-  ignorePatterns: [
-    "/.cache",
-    "/.git",
-    "/.husky",
-    "/.yarn",
-    "/*/dist",
-  ],
+  ignorePatterns: ["/.cache", "/.git", "/.husky", "/.yarn", "/*/dist"],
 
   settings: {
     "import/resolver": {
       typescript: {
-        project: [
-          "app/tsconfig.json",
-          "edge/tsconfig.json",
-        ],
+        project: ["app/tsconfig.json", "edge/tsconfig.json"],
       },
     },
     "import/core-modules": ["__STATIC_CONTENT_MANIFEST"],

@@ -14,7 +14,7 @@ import Spinner from "../../components/Spinner/Spinner.js";
  */
 export function withSuspense<P extends object>(
   WrappedComponent: ComponentType<P>,
-  fallback: SuspenseProps["fallback"] | null = null
+  fallback: SuspenseProps["fallback"] | null = null,
 ) {
   if (fallback === null) {
     fallback = <Spinner />;

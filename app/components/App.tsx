@@ -1,7 +1,7 @@
 import { router } from "@/core/router.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
-import { OctokitProvider } from "@/services/api/github.js";
 import { ApiProvider } from "@/services/api";
+import { OctokitProvider } from "@/services/api/github.js";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -14,8 +14,8 @@ const ReactQueryDevtoolsProduction = lazy(() =>
   import("@tanstack/react-query-devtools/build/lib/index.prod.js").then(
     (d) => ({
       default: d.ReactQueryDevtools,
-    })
-  )
+    }),
+  ),
 );
 
 export function App(): JSX.Element {

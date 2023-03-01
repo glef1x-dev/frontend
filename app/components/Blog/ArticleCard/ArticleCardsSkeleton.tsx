@@ -1,6 +1,6 @@
-import * as React from "react";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { Card, CardContent, Container, Skeleton } from "@mui/material";
+import * as React from "react";
 
 export default React.memo(function ArticleCardsSkeleton({
   numberOfCards,

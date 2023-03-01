@@ -1,11 +1,11 @@
-import * as React from "react";
+import ArticleCard from "@/components/Blog/ArticleCard/ArticleCard";
+import { useTheme } from "@/core/ui/mui/theme";
 import { useInfiniteArticlesList } from "@/hooks/api/useBlogApi";
 import { Container } from "@mui/material";
-import ArticleCard from "@/components/Blog/ArticleCard/ArticleCard";
+import * as React from "react";
+import { useInView } from "react-intersection-observer";
 import UseAnimations from "react-useanimations";
 import infinity from "react-useanimations/lib/infinity";
-import { useInView } from "react-intersection-observer";
-import { useTheme } from "@/core/ui/mui/theme";
 
 export default React.memo(function ArticleList({
   tagName,

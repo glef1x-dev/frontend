@@ -3,7 +3,7 @@ import { useEffect, useId } from "react";
 
 export default function useUtternances(
   repositoryName: string,
-  issueTerm = "pathname"
+  issueTerm = "pathname",
 ): string {
   const anchorIdForInjectingUtternances = useId();
   const theme = useTheme();
