@@ -2,13 +2,13 @@ import {
   getRepository,
   GithubRepository,
   useOctokit,
-} from "@/services/api/github";
+} from "@/services/api/github.js";
 import { Article, ArticleList } from "@/services/api/types/blog.js";
-import { CleanData, parseAs } from "@/services/api/types/parser";
+import { CleanData, parseAs } from "@/services/api/types/parser.js";
 import axios, { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { createContext, ReactNode, useCallback, useContext } from "react";
-import { config } from "../../core/config.js";
+import { config } from "@/core/config.js";
 
 export const ApiContext = createContext<ApiClient | null>(null);
 

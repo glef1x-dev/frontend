@@ -1,37 +1,34 @@
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 import react from "@vitejs/plugin-react";
-import envars from "envars";
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import { Config, EnvName } from "./core/config";
 
-const envNames: EnvName[] = ["prod", "test", "local"];
+function getEnvVariableOrThrow(variableName: string): string {
+  const value = process.env[variableName];
+  if (!value) {
+    throw new Error(`Environment variable ${variableName} was not provided.`);
+  }
+  return value;
+}
 
-// Bootstrap client-side configuration from environment variables
-const configs = envNames.map((envName): [EnvName, Config] => {
-  const env = envars.config({ env: envName, cwd: "../env" });
-  return [
-    envName,
-    {
-      app: {
-        env: envName,
-        name: env.APP_NAME,
-        baseAPIUrl: env.BASE_API_URL,
-      },
-      utternances: {
-        repositoryName: env.UTTERNANCES_REPOSITORY_NAME,
-      },
-      sentry: {
-        dsn: env.SENTRY_DSN,
-      },
-    },
-  ];
-});
+const config = {
+  app: {
+    name: process.env.APP_NAME,
+    baseAPIUrl: getEnvVariableOrThrow("BASE_API_URL"),
+  },
+  utternances: {
+    repositoryName: getEnvVariableOrThrow("UTTERNANCES_REPOSITORY_NAME"),
+  },
+  sentry: {
+    dsn: getEnvVariableOrThrow("SENTRY_DSN"),
+  },
+};
 
 // Pass client-side configuration to the web app
 // https://vitejs.dev/guide/env-and-mode.html#env-variables-and-modes
-process.env.VITE_CONFIG = JSON.stringify(Object.fromEntries(configs));
+process.env.VITE_CONFIG = JSON.stringify(config);
+
 /**
  * Vite configuration
  * https://vitejs.dev/config/
