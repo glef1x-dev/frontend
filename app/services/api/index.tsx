@@ -119,9 +119,9 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
           )
           .then((response) => {
             return new GithubRepository(
-              response.data.full_name,
-              response.data.stargazers_count,
-              response.data.html_url,
+              response.data.fullName,
+              response.data.stargazersCount,
+              response.data.htmlUrl,
             );
           })
           .catch((error) => {
