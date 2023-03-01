@@ -2,10 +2,11 @@ import { Article } from "@/services/api/types/blog.js";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import BlogArticleMetadata from "./BlogArticle/BlogArticleMetadata.js";
+import BlogArticleMetadata from "../../../pages/Blog/BlogArticle/BlogArticleMetadata.js";
+import {CleanData} from "@/services/api/types/parser";
 
 interface ArticleCardProps {
-  article: Article;
+  article: CleanData<typeof Article>;
   createdDateFormat?: string;
 }
 
@@ -62,7 +63,7 @@ export default memo(function ArticleCard({ article }: ArticleCardProps) {
             }}
           >
             <Typography
-              gutterBottom
+              gutterBottom={true}
               component="div"
               variant="h5"
               fontWeight="bold"

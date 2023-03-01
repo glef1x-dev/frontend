@@ -1,18 +1,18 @@
-import Markdown from "@/components/Markdown/Markdown.js";
+import Markdown from "@/components/Markdown/Markdown";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
 import { usePageEffect } from "@/hooks/page.js";
-import BlogArticleTags from "@/pages/Blog/ArticleTags.js";
+import BlogArticleTags from "@/components/Blog/ArticleTags";
 import { formatDate } from "@/utils/datetime.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
 import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
-import Comments from "../Comments.js";
+import ArticleComments from "@/components/Blog/ArticleComments";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import "./css/BlogArticle.css";
 
-export default function BlogArticle() {
+export default function BlogArticlePage() {
   const theme = useTheme();
 
   const { slug } = useParams();
@@ -90,7 +90,7 @@ export default function BlogArticle() {
               marginTop: "0.5rem",
             }}
           >
-            <Comments />
+            <ArticleComments />
             <BlogArticleTags tags={article.tags} />
             {article.modified && (
               <Typography variant="body2" sx={{ mt: "1.5rem" }}>

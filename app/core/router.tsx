@@ -1,4 +1,4 @@
-import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary.js";
+import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary";
 import { withSuspense } from "@/utils/HOC/withSuspense";
 import * as Sentry from "@sentry/react";
 import * as React from "react";
@@ -14,10 +14,10 @@ const OpenSource = withSuspense(
   React.lazy(() => import("../pages/OpenSource/OpenSource.js"))
 );
 const ArticleList = withSuspense(
-  React.lazy(() => import("../pages/Blog/ArticleList.js"))
+  React.lazy(() => import("../pages/Blog/ArticleListPage.js"))
 );
 const BlogArticle = withSuspense(
-  React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticle.js"))
+  React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticlePage.js"))
 );
 
 const sentryCreateBrowserRouter =
