@@ -1,5 +1,6 @@
 import { DependencyList, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { config } from "../core/config.js";
 
 export function usePageEffect(options?: Options, deps?: DependencyList) {
   const { pathname } = useLocation();
@@ -10,10 +11,10 @@ export function usePageEffect(options?: Options, deps?: DependencyList) {
 
     document.title =
       location.pathname === "/"
-        ? options?.title ?? APP_NAME
+        ? options?.title ?? config.app.name
         : options?.title
         ? `${options.title} | Hlib Haranin`
-        : APP_NAME;
+        : config.app.name;
 
     return function () {
       document.title = previousTitle;

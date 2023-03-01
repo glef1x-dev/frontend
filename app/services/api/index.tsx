@@ -8,6 +8,7 @@ import { CleanData, parseAs } from "@/services/api/types/parser";
 import axios, { AxiosError } from "axios";
 import { useSnackbar } from "notistack";
 import { createContext, ReactNode, useCallback, useContext } from "react";
+import { config } from "../../core/config.js";
 
 export const ApiContext = createContext<ApiClient | null>(null);
 
@@ -67,7 +68,7 @@ export const ApiProvider = ({ children }: ApiProviderProps) => {
 
   const api = axios.create({
     timeout: 10_000,
-    baseURL: BASE_API_URL,
+    baseURL: config.app.baseAPIUrl,
   });
   api.interceptors.response.use((response) => response);
 

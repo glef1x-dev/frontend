@@ -52,7 +52,7 @@ function AppNavigation() {
   return (
     <AppBar position="static">
       <Container>
-        <Toolbar disableGutters>
+        <Toolbar disableGutters={true}>
           <AvatarLink alt="avatar" src={avatarImage} to="/" />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -83,7 +83,7 @@ function AppNavigation() {
                   key={route.name}
                   onClick={handleCloseNavMenu}
                   selected={route.path === currentPath}
-                  divider
+                  divider={true}
                 >
                   <Link
                     href={route.path}

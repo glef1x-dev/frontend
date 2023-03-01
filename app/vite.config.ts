@@ -4,19 +4,34 @@ import envars from "envars";
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import { Config, EnvName } from "./core/config";
 
-// Load environment variables for the target environment
-envars.config();
+const envNames: EnvName[] = ["prod", "test", "local"];
 
-// The list of environment variables required by the app
-const defineVars = [
-  "APP_ENV",
-  "APP_NAME",
-  "BASE_API_URL",
-  "UTTERNANCES_REPOSITORY_NAME",
-  "SENTRY_DSN",
-];
+// Bootstrap client-side configuration from environment variables
+const configs = envNames.map((envName): [EnvName, Config] => {
+  const env = envars.config({ env: envName, cwd: "../env" });
+  return [
+    envName,
+    {
+      app: {
+        env: envName,
+        name: env.APP_NAME,
+        baseAPIUrl: env.BASE_API_URL,
+      },
+      utternances: {
+        repositoryName: env.UTTERNANCES_REPOSITORY_NAME,
+      },
+      sentry: {
+        dsn: env.SENTRY_DSN,
+      },
+    },
+  ];
+});
 
+// Pass client-side configuration to the web app
+// https://vitejs.dev/guide/env-and-mode.html#env-variables-and-modes
+process.env.VITE_CONFIG = JSON.stringify(Object.fromEntries(configs));
 /**
  * Vite configuration
  * https://vitejs.dev/config/
@@ -25,16 +40,21 @@ export default defineConfig(({ mode }) => {
   const generatedScopedName =
     mode === "production" ? "[hash:base64:2]" : "[local]_[hash:base64:2]";
   return {
+    cacheDir: `../.cache/vite-app`,
     build: {
       outDir: "./dist",
       emptyOutDir: true,
       sourcemap: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom", "react-router-dom", "recoil"],
+          },
+        },
+      },
     },
 
     define: {
-      ...Object.fromEntries(
-        defineVars.map((key) => [key, JSON.stringify(process.env[key])])
-      ),
       __DEV__: process.env.NODE_ENV === "development",
     },
     resolve: {
@@ -45,7 +65,13 @@ export default defineConfig(({ mode }) => {
 
     plugins: [
       // https://github.com/vitejs/vite/tree/main/packages/plugin-react
-      react(),
+      react({
+        jsxRuntime: "classic",
+        jsxImportSource: "@emotion/react",
+        babel: {
+          plugins: ["@emotion/babel-plugin"],
+        },
+      }),
       nodePolyfills({
         // Whether to polyfill `node:` protocol imports.
         protocolImports: true,

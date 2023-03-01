@@ -11,11 +11,12 @@ import {
 import { RecoilRoot } from "recoil";
 import { App } from "./components/App.js";
 import "./index.css";
+import { config } from "./core/config.js";
 
 const container = document.getElementById("root") as HTMLElement;
 
 Sentry.init({
-  dsn: SENTRY_DSN,
+  dsn: config.sentry.dsn,
   integrations: [
     new BrowserTracing({
       routingInstrumentation: Sentry.reactRouterV6Instrumentation(
@@ -23,7 +24,7 @@ Sentry.init({
         useLocation,
         useNavigationType,
         createRoutesFromChildren,
-        matchRoutes
+        matchRoutes,
       ),
     }),
   ],
@@ -39,5 +40,5 @@ ReactDOM.createRoot(container).render(
     <RecoilRoot>
       <App />
     </RecoilRoot>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

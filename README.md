@@ -1,4 +1,4 @@
-# Frontend source code of `glefix.xyz`
+# Frontend source code of `glefix.dev`
 
 ## Features
 

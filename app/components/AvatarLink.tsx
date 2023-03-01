@@ -60,7 +60,7 @@ type AvatarLinkProps = {
 
 export default React.memo(function AvatarLink(props: AvatarLinkProps) {
   return (
-    <Link reloadDocument component={RouterLink} to={props.to}>
+    <Link reloadDocument={true} component={RouterLink} to={props.to}>
       <Avatar
         sx={{
           maxWidth: 40,

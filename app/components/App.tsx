@@ -49,7 +49,7 @@ export function App(): JSX.Element {
             <ApiProvider>
               <CssBaseline />
               <RouterProvider router={router} fallbackElement={<Spinner />} />
-              <ReactQueryDevtools initialIsOpen />
+              <ReactQueryDevtools initialIsOpen={true} />
               {showDevtools && (
                 <Suspense fallback={null}>
                   <ReactQueryDevtoolsProduction />

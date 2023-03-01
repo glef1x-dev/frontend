@@ -1,7 +1,16 @@
-/.cache
-/.husky
-/.yarn
+# Compiled & generated output
 /*/dist/
-/app/queries/
+
+# Cache
+/.cache
+
+# Yarn
+/.yarn
 /.pnp.*
+
+# TypeScript
 /tsconfig.base.json
+
+# Misc
+/.husky
+*.hbs

@@ -24,7 +24,7 @@ FROM base AS builder
 COPY pnpm-lock.yaml .npmrc package.json pnpm-workspace.yaml ./
 COPY app/package.json ./app/package.json
 RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store\
- pnpm install --filter "app" --frozen-lockfile\
+ pnpm install --filter "app" --frozen-lockfile \
  --unsafe-perm\
  # ↑ Docker runs pnpm as root and then pnpm won't run package scripts unless we pass this arg
  | grep -v "cross-device link not permitted\|Falling back to copying packages from store"

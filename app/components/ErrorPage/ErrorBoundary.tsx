@@ -13,7 +13,7 @@ export default function ErrorBoundary({
   defaultErrorMessage,
 }: Partial<ErrorBoundaryProps>) {
   const error = useRouteError() as any;
-  let statusCode: number = 500;
+  let statusCode = 500;
   let errorMessage = defaultErrorMessage;
 
   if (axios.isAxiosError(error)) {
