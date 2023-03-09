@@ -19,4 +19,11 @@ export const Article = z.object({
   likesCount: z.number().gte(0).optional(),
 });
 
-export const ArticleList = createPaginatedResponseSchema(Article);
+export const ArticleList = createPaginatedResponseSchema(
+  Article.merge(
+    z.object({
+      description: z.string().nullish(),
+      body: z.string().nullish(),
+    }),
+  ),
+);
