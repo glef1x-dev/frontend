@@ -16,14 +16,16 @@ export const Article = z.object({
   image: z.string().url(),
   body: z.string(),
   slug: z.string(),
-  likesCount: z.number().gte(0).optional(),
+  likesCount: z.number().gte(0),
+  readingTimeInMinutes: z.number(),
 });
 
 export const ArticleList = createPaginatedResponseSchema(
   Article.merge(
     z.object({
-      description: z.string().nullish(),
-      body: z.string().nullish(),
+      description: z.string().optional(),
+      body: z.string().optional(),
+      readingTimeInMinutes: z.number().gte(0),
     }),
   ),
 );

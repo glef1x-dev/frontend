@@ -1,11 +1,11 @@
 import BlogArticleTags from "@/components/Blog/ArticleTags.js";
 import MiddleDot from "@/components/MiddleDot.js";
-import useCalculateApproximateReadingTime from "@/hooks/reading-time.js";
 import { Article } from "@/services/api/types/blog.js";
 import { CleanData } from "@/services/api/types/parser.js";
 import { formatDate } from "@/utils/datetime.js";
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
 import { Box, Typography } from "@mui/material";
+import { formatReadingTime } from "@/utils/strings.js";
 
 type BlogArticleMetadataProps = {
   article: CleanData<typeof Article>;
@@ -17,7 +17,7 @@ export default function BlogArticleMetadata({
   showTags = true,
 }: BlogArticleMetadataProps) {
   const formattedDateOfCreation = formatDate(article.created);
-  const readingTime = useCalculateApproximateReadingTime(article.body);
+  const readingTime = formatReadingTime(article.readingTimeInMinutes);
 
   return (
     <Box
