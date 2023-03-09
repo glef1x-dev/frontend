@@ -1,12 +1,20 @@
 import { usePageEffect } from "@/hooks/page.js";
 import { Box, Container, Paper, Typography } from "@mui/material";
 import personalImage from "/personal-image.webp";
+import SEO from "@/components/SEO.js";
 
 export default function AboutMe(): JSX.Element {
   usePageEffect({ title: "About Me" });
+  const descriptionAboutMe =
+    'Hey, I\'m Hlib, but I usually go by Glib or Gleb ("Гліб" in\n' +
+    "Ukrainian)! I'm a software developer from\n" +
+    "Ukraine&#x1F1FA;&#x1F1E6;. Although currently, I live in the\n" +
+    "United States due to the war that has been started by Putin and\n" +
+    "his entourage.";
 
   return (
     <Container maxWidth="lg">
+      <SEO description={descriptionAboutMe} />
       <Box
         sx={{
           m: "0 auto",
@@ -31,11 +39,7 @@ export default function AboutMe(): JSX.Element {
               About me
             </Typography>
             <Typography sx={{ mt: "1rem" }} variant="body1">
-              Hey, I'm Hlib, but I usually go by Glib or Gleb ("Гліб" in
-              Ukrainian)! I'm a software developer from
-              Ukraine&#x1F1FA;&#x1F1E6;. Although currently, I live in the
-              United States due to the war that has been started by Putin and
-              his entourage.
+              {descriptionAboutMe}
             </Typography>
             <Typography sx={{ mt: "1rem" }} variant="body1">
               Check out the projects page to see a highlight of the open-source

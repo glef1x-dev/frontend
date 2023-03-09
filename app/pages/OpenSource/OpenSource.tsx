@@ -4,6 +4,7 @@ import { useGetOpensourceProjects } from "@/hooks/api/useProjectsApi.js";
 import { usePageEffect } from "@/hooks/page.js";
 import { Container } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
+import SEO from "@/components/SEO.js";
 
 export default function OpenSource() {
   usePageEffect({ title: "Opensource" });
@@ -12,6 +13,7 @@ export default function OpenSource() {
 
   return (
     <>
+      <SEO description="The open source projects that I am involved with, either as the author or as a maintainer" />
       <PageHeader
         title="Opensource"
         description="These are the open source projects that I am involved with, either as the author or as a maintainer"

@@ -5,6 +5,7 @@ import { usePageEffect } from "@/hooks/page.js";
 import { capitalizeFirstLetter } from "@/utils/strings.js";
 import * as React from "react";
 import { useParams } from "react-router-dom";
+import SEO from "@/components/SEO.js";
 
 export default React.memo(function ArticleListPage(): JSX.Element {
   const { tagName } = useParams();
@@ -15,6 +16,7 @@ export default React.memo(function ArticleListPage(): JSX.Element {
 
   return (
     <>
+      <SEO description="List of articles" />
       <PageHeader
         title={pageName}
         description="My latest news, updates, and stories for developers"

@@ -11,6 +11,8 @@ import { Link, useParams } from "react-router-dom";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import "./css/BlogArticle.css";
+import SEO from "@/components/SEO.js";
+import * as React from "react";
 
 export default function BlogArticlePage() {
   const theme = useTheme();
@@ -53,6 +55,7 @@ export default function BlogArticlePage() {
           },
         }}
       >
+        <SEO description={article.description} imageUrl={article.image} />
         <article
           style={{
             display: "flex",
