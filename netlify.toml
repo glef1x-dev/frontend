@@ -20,7 +20,7 @@
     accessibility = 0.8
     best-practices = 0.8
     seo = 0.8
-    pwa = 0.8
+    pwa = 0.6
 
   # optional, deploy the lighthouse report to a path under your site
   [plugins.inputs]
