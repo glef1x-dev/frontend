@@ -53,7 +53,12 @@ function AppNavigation() {
     <AppBar position="static">
       <Container>
         <Toolbar disableGutters={true}>
-          <AvatarLink alt="avatar" src={avatarImage} to="/" />
+          <AvatarLink
+            sx={{ width: "2.5rem", height: "2.5rem" }}
+            alt="avatar"
+            src={avatarImage}
+            to="/"
+          />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
