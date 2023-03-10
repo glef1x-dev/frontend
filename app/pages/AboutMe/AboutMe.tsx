@@ -76,9 +76,6 @@ export default function AboutMe(): JSX.Element {
                   maxWidth: "100%",
                   padding: "1.5rem"
                 }}
-                loading="lazy"
-                width="400"
-                height="300"
                 src={personalImage}
               />
             </Paper>
