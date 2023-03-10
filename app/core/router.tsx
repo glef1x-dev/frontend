@@ -1,4 +1,4 @@
-import ErrorBoundary from "@/components/ErrorPage/ErrorBoundary";
+import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 import { withSuspense } from "@/utils/HOC/withSuspense";
 import * as Sentry from "@sentry/react";
 import * as React from "react";
