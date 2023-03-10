@@ -1,5 +1,5 @@
 import { usePageEffect } from "@/hooks/page.js";
-import { Box, Container, Paper, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography, useMediaQuery } from "@mui/material";
 import personalImage from "/personal-image.webp";
 import SEO from "@/components/SEO.js";
 
@@ -8,7 +8,7 @@ export default function AboutMe(): JSX.Element {
   const descriptionAboutMe =
     'Hey, I\'m Hlib, but I usually go by Glib or Gleb ("Гліб" in\n' +
     "Ukrainian)! I'm a software developer from\n" +
-    "Ukraine&#x1F1FA;&#x1F1E6;. Although currently, I live in the\n" +
+    "Ukraine🇺🇦. Although currently, I live in the\n" +
     "United States due to the war that has been started by Putin and\n" +
     "his entourage.";
 
@@ -74,8 +74,11 @@ export default function AboutMe(): JSX.Element {
                 alt="personal-photo"
                 style={{
                   maxWidth: "100%",
-                  padding: "1.5rem",
+                  padding: "1.5rem"
                 }}
+                loading="lazy"
+                width="400"
+                height="300"
                 src={personalImage}
               />
             </Paper>
