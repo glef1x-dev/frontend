@@ -4,16 +4,15 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
-    "types": ["vite/client"],
     "outDir": "../.cache/typescript-app",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Node",
     "noEmit": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.json"],
-  "exclude": ["dist/**/*", "vite.config.ts"],
+  "exclude": ["dist/**/*", "vite.config.ts", "core/config.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

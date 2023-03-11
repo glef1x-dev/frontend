@@ -3,7 +3,6 @@ import BlogArticleTags from "@/components/Blog/ArticleTags";
 import Markdown from "@/components/Markdown/Markdown";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
-import { usePageEffect } from "@/hooks/page.js";
 import { formatDate } from "@/utils/datetime.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
 import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
@@ -26,8 +25,6 @@ export default function BlogArticlePage() {
 
   const { data } = useGetBlogArticleBySlug(slug);
   const article = data!;
-
-  usePageEffect({ title: article.title });
 
   return (
     <>
@@ -55,7 +52,7 @@ export default function BlogArticlePage() {
           },
         }}
       >
-        <SEO description={article.description} imageUrl={article.image} />
+        <SEO title={article.title} description={article.description} imageUrl={article.image} />
         <article
           style={{
             display: "flex",

@@ -4,16 +4,21 @@ import { useTheme } from "@/core/ui/mui/theme.js";
 type MetaProps = {
   description: string;
   imageUrl?: string;
+  title?: string;
 };
 
-export default function SEO({ description, imageUrl }: MetaProps) {
+export default function SEO({ title, description, imageUrl }: MetaProps) {
   const theme = useTheme();
   const openGraphUrl = window.location.origin + window.location.pathname;
 
   return (
     <Helmet>
       <meta name="description" content={description} />
-      <title lang="en">The best opensource blog you've ever seen.</title>
+      <title lang="en">
+        {title
+          ? `${title} | Hlib Haranin`
+          : "The best opensource blog you've ever seen."}
+      </title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta content={theme.palette.background.default} name="theme-color" />
       <meta

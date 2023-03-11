@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import BlogArticleMetadata from "../../../pages/Blog/BlogArticle/BlogArticleMetadata.js";
 
 interface ArticleCardProps {
-  article: CleanData<typeof Article>;
+  article: CleanData<typeof Article> & {description?: string};
   createdDateFormat?: string;
 }
 

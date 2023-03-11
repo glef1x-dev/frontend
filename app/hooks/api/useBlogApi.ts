@@ -1,7 +1,7 @@
 import { useApiClient } from "@/services/api";
 import { Article, ArticleList } from "@/services/api/types/blog";
 import { CleanData } from "@/services/api/types/parser";
-import { blogQueryKeys } from "@/utils/queryKeys.js";
+import { blogQueryKeys } from "@/utils/query-keys.js";
 import {
   useInfiniteQuery,
   UseInfiniteQueryOptions,

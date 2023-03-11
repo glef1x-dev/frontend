@@ -12,17 +12,18 @@ import {
 import { useSnackbar } from "notistack";
 import * as React from "react";
 
-export default function OpenSourceProjectCard({
-  project,
-  loading,
-}: {
+type OpenSourceProjectCardProps = {
   project?: OpenSourceProject;
-  loading?: boolean;
-}): JSX.Element {
+  loading?: true;
+} & ({ loading: true } | { project: OpenSourceProject });
+
+export default function OpenSourceProjectCard(
+  {project, loading}: OpenSourceProjectCardProps,
+): JSX.Element {
   const { enqueueSnackbar } = useSnackbar();
 
   const onDocumentationButtonClick = (event: React.MouseEvent) => {
-    if (project.documentationLink === undefined) {
+    if (project && project.documentationLink === undefined) {
       event.preventDefault();
       return enqueueSnackbar(
         "Documentation for this project is not available.",

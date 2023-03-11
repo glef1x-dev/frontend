@@ -2,7 +2,7 @@ import { OpenSourceProject } from "@/services/api/types/opensourceProject";
 import { useQueries, UseQueryOptions } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { extractRepoNameAndOwnerFromGithubLink } from "@/services/api/github.js";
-import { githubQueryKeys } from "@/utils/queryKeys.js";
+import { githubQueryKeys } from "@/utils/query-keys.js";
 import { useApiClient } from "@/services/api/index.js";
 
 const openSourceProjects: OpenSourceProject[] = [

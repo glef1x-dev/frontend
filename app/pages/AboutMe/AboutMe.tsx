@@ -1,10 +1,8 @@
-import { usePageEffect } from "@/hooks/page.js";
 import { Box, Container, Paper, Typography } from "@mui/material";
 import personalImage from "/personal-image.webp";
-import SEO from "@/components/SEO.js";
+import SEO from "@/components/SEO";
 
 export default function AboutMe(): JSX.Element {
-  usePageEffect({ title: "About Me" });
   const descriptionAboutMe =
     'Hey, I\'m Hlib, but I usually go by Glib or Gleb ("Гліб" in\n' +
     "Ukrainian)! I'm a software developer from\n" +
@@ -14,7 +12,7 @@ export default function AboutMe(): JSX.Element {
 
   return (
     <Container maxWidth="lg">
-      <SEO description={descriptionAboutMe} />
+      <SEO title="About me" description={descriptionAboutMe} />
       <Box
         sx={{
           m: "0 auto",
