@@ -3,6 +3,7 @@ import { withSuspense } from "@/utils/HOC/withSuspense";
 import * as Sentry from "@sentry/react";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { config } from "@/core/config.js";
 
 const Layout = withSuspense(
   React.lazy(() => import("../components/Layout.js")),
@@ -20,10 +21,14 @@ const BlogArticle = withSuspense(
   React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticlePage.js")),
 );
 
-const sentryCreateBrowserRouter =
-  Sentry.wrapCreateBrowserRouter(createBrowserRouter);
+let createBrowserRouter1: typeof createBrowserRouter;
+if (config.app.env === "production") {
+  createBrowserRouter1 = Sentry.wrapCreateBrowserRouter(createBrowserRouter);
+} else {
+  createBrowserRouter1 = createBrowserRouter;
+}
 
-export const router = sentryCreateBrowserRouter([
+export const router = createBrowserRouter1([
   {
     path: "/",
     element: <Layout />,

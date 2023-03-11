@@ -15,22 +15,25 @@ import "./index.css";
 
 const container = document.getElementById("root") as HTMLElement;
 
-Sentry.init({
-  dsn: config.sentry.dsn,
-  integrations: [
-    new BrowserTracing({
-      routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-        React.useEffect,
-        useLocation,
-        useNavigationType,
-        createRoutesFromChildren,
-        matchRoutes,
-      ),
-    }),
-  ],
-  tracesSampleRate: 0.5,
-  // TODO: add release parameter
-});
+if (config.app.env === "production") {
+  Sentry.init({
+    dsn: config.sentry.dsn,
+    integrations: [
+      new BrowserTracing({
+        routingInstrumentation: Sentry.reactRouterV6Instrumentation(
+          React.useEffect,
+          useLocation,
+          useNavigationType,
+          createRoutesFromChildren,
+          matchRoutes,
+        ),
+      }),
+    ],
+    tracesSampleRate: 0.5,
+    // TODO: add release parameter
+  });
+}
+
 
 // TODO: Initialize local store (Relay, Apollo, Redux, etc.)
 // const store = createRelay({ data: JSON.parse(data) });

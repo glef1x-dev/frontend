@@ -5,8 +5,8 @@ import {
   Card,
   CardActions,
   CardContent,
-  CardMedia,
   Grid,
+  Skeleton,
   Typography,
 } from "@mui/material";
 import { useSnackbar } from "notistack";
@@ -14,8 +14,10 @@ import * as React from "react";
 
 export default function OpenSourceProjectCard({
   project,
+  loading,
 }: {
-  project: OpenSourceProject;
+  project?: OpenSourceProject;
+  loading?: boolean;
 }): JSX.Element {
   const { enqueueSnackbar } = useSnackbar();
 
@@ -37,66 +39,73 @@ export default function OpenSourceProjectCard({
         position: "relative",
       }}
     >
-      {project.icon && (
-        <CardMedia component="img" alt="project card" image={project.icon} />
-      )}
       <CardContent
         sx={{
           marginBottom: "3rem",
         }}
       >
-        <Grid container={true} alignItems="center">
+        {loading ? (
+          <Skeleton animation="wave" height={100} />
+        ) : (
+          <Grid container={true} alignItems="center">
+            <Typography
+              variant="h5"
+              fontWeight="bold"
+              sx={{
+                textDecoration: "underline",
+                paddingRight: "0.4rem",
+              }}
+              component="div"
+            >
+              {project.title}
+            </Typography>
+            <Typography variant="h5" color="text.secondary">
+              {project.stargazersCount ?? 0} &#11088;
+            </Typography>
+          </Grid>
+        )}
+        {loading ? (
+          <Skeleton animation="wave" variant="rounded" />
+        ) : (
           <Typography
-            variant="h5"
-            fontWeight="bold"
+            variant="caption"
+            color="text.secondary"
             sx={{
-              textDecoration: "underline",
-              paddingRight: "0.4rem",
+              paddingY: "1rem",
             }}
-            component="div"
           >
-            {project.title}
+            {project.description}
           </Typography>
-          <Typography variant="h5" color="text.secondary">
-            {project.stargazersCount ?? 0} &#11088;
-          </Typography>
-        </Grid>
-        <Typography
-          variant="caption"
-          color="text.secondary"
+        )}
+      </CardContent>
+      {loading ? null : (
+        <CardActions
           sx={{
-            paddingY: "1rem",
+            position: "absolute",
+            bottom: 0,
           }}
         >
-          {project.description}
-        </Typography>
-      </CardContent>
-      <CardActions
-        sx={{
-          position: "absolute",
-          bottom: 0,
-        }}
-      >
-        <Button
-          size="medium"
-          target="_blank"
-          rel="noreferrer"
-          href={project.sourceCodeLink}
-          startIcon={<OpenInNewIcon />}
-        >
-          Source code
-        </Button>
-        <Button
-          size="medium"
-          target="_blank"
-          rel="noreferrer"
-          href={project.documentationLink ?? "#"}
-          onClick={onDocumentationButtonClick}
-          startIcon={<OpenInNewIcon />}
-        >
-          Documentation
-        </Button>
-      </CardActions>
+          <Button
+            size="medium"
+            target="_blank"
+            rel="noreferrer"
+            href={project.sourceCodeLink}
+            startIcon={<OpenInNewIcon />}
+          >
+            Source code
+          </Button>
+          <Button
+            size="medium"
+            target="_blank"
+            rel="noreferrer"
+            href={project.documentationLink ?? "#"}
+            onClick={onDocumentationButtonClick}
+            startIcon={<OpenInNewIcon />}
+          >
+            Documentation
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 }

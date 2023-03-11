@@ -12,8 +12,20 @@ function getEnvVariableOrThrow(variableName: string): string {
   return value;
 }
 
+function getEnvVariableOrDefault(
+  variableName: string,
+  defaultValue: string,
+): string {
+  const value = process.env[variableName];
+  if (!value) {
+    return defaultValue;
+  }
+  return value;
+}
+
 const config = {
   app: {
+    env: getEnvVariableOrDefault("NODE_ENV", "development"),
     name: process.env.APP_NAME,
     baseAPIUrl: getEnvVariableOrThrow("BASE_API_URL"),
   },
@@ -21,7 +33,7 @@ const config = {
     repositoryName: getEnvVariableOrThrow("UTTERNANCES_REPOSITORY_NAME"),
   },
   sentry: {
-    dsn: getEnvVariableOrThrow("SENTRY_DSN"),
+    dsn: process.env.SENTRY_DSN,
   },
 };
 

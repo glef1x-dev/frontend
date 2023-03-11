@@ -1,8 +1,9 @@
-import { useGetGithubRepositoriesInBulk } from "@/hooks/api/useGithubApi";
 import { OpenSourceProject } from "@/services/api/types/opensourceProject";
-import { dynamicSort } from "@/utils/sorting";
-import { UseQueryOptions } from "@tanstack/react-query";
+import { useQueries, UseQueryOptions } from "@tanstack/react-query";
 import { AxiosError } from "axios";
+import { extractRepoNameAndOwnerFromGithubLink } from "@/services/api/github.js";
+import { githubQueryKeys } from "@/utils/queryKeys.js";
+import { useApiClient } from "@/services/api/index.js";
 
 const openSourceProjects: OpenSourceProject[] = [
   {
@@ -47,19 +48,34 @@ export function useGetOpensourceProjects<Result = OpenSourceProject>(
   const projectsSourceCodeLinks = openSourceProjects.map(
     (p) => p.sourceCodeLink,
   );
-  const additionalInfoAboutOpensourceProjects = useGetGithubRepositoriesInBulk(
-    projectsSourceCodeLinks,
-  );
+  const { github } = useApiClient();
 
-  return openSourceProjects
-    .map((project) => {
-      const additionalInfo = additionalInfoAboutOpensourceProjects.find(
-        (op) => op.url === project.sourceCodeLink,
-      );
-      if (additionalInfo) {
-        return { ...project, stargazersCount: additionalInfo.stargazersCount };
-      }
-      return project;
-    })
-    .sort(dynamicSort("-stargazersCount"));
+  return useQueries({
+    queries: projectsSourceCodeLinks.map((link) => {
+      const [repositoryName, repositoryOwner] =
+        extractRepoNameAndOwnerFromGithubLink(link);
+      return {
+        queryFn: () => {
+          return github
+            .getRepository(repositoryName, repositoryOwner)
+            .then((repository) => {
+              const openSourceProject = openSourceProjects.find(
+                (p) => p.sourceCodeLink === repository.url,
+              );
+              if (!openSourceProject) {
+                throw new Error(
+                  `Corresponding project ${repository.owner}/${repository.author} ` +
+                    `was not found in the list of opensource projects for the one from GitHub.`,
+                );
+              }
+              return {
+                ...openSourceProject,
+                stargazersCount: repository.stargazersCount,
+              };
+            });
+        },
+        queryKey: githubQueryKeys.starsCount(repositoryOwner, repositoryName)
+      };
+    }),
+  });
 }

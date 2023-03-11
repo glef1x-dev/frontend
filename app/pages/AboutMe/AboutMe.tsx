@@ -1,5 +1,5 @@
 import { usePageEffect } from "@/hooks/page.js";
-import { Box, Container, Paper, Typography, useMediaQuery } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 import personalImage from "/personal-image.webp";
 import SEO from "@/components/SEO.js";
 

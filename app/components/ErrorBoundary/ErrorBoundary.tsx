@@ -2,7 +2,7 @@ import { Button, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import axios from "axios";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
-import Emoji from "../Emoji/Emoji";
+import Emoji from "../Emoji/Emoji.js";
 import errorImage from "/error.png";
 
 type ErrorBoundaryProps = {

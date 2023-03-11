@@ -1,5 +1,7 @@
+export type EnvName = "development" | "production";
 export type Config = {
   app: {
+    env: EnvName;
     name?: string;
     baseAPIUrl: string;
   };
@@ -7,7 +9,7 @@ export type Config = {
     repositoryName: string;
   };
   sentry: {
-    dsn: string;
+    dsn?: string;
   };
 };
 

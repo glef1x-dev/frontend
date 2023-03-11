@@ -5,11 +5,49 @@ import { usePageEffect } from "@/hooks/page.js";
 import { Container } from "@mui/material";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 import SEO from "@/components/SEO.js";
+import * as React from "react";
+import { useLayoutEffect } from "react";
+import { dynamicSort } from "@/utils/sorting.js";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+
+function ProjectCardSkeletons({ numberOfCards }: { numberOfCards: number }) {
+  useLayoutEffect(() => {
+    disableBodyScroll(document.body);
+
+    return () => {
+      enableBodyScroll(document.body);
+    };
+  });
+
+  return (
+    <>
+      {Array(numberOfCards)
+        .fill(undefined)
+        .map((_, index) => (
+          <OpenSourceProjectCard key={index} loading={true} />
+        ))}
+    </>
+  );
+}
+
+function ProjectCards() {
+  const responses = useGetOpensourceProjects();
+
+  return (
+    <>
+      {responses
+        .map((response) => response.data)
+        .sort(dynamicSort("-stargazersCount"))
+        .map((project) => (
+          <OpenSourceProjectCard key={project.title} project={project} />
+        ))}
+    </>
+  );
+}
 
 export default function OpenSource() {
   usePageEffect({ title: "Opensource" });
   const theme = useTheme();
-  const projects = useGetOpensourceProjects();
 
   return (
     <>
@@ -30,9 +68,9 @@ export default function OpenSource() {
           gridAutoRows: "1fr",
         }}
       >
-        {projects.map((project) => (
-          <OpenSourceProjectCard key={project.title} project={project} />
-        ))}
+        <React.Suspense fallback={<ProjectCardSkeletons numberOfCards={4} />}>
+          <ProjectCards />
+        </React.Suspense>
       </Container>
     </>
   );
