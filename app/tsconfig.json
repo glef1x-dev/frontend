@@ -9,7 +9,7 @@
     "noEmit": true,
     "paths": {
       "@/*": ["./*"]
-    },
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.json"],
   "exclude": ["dist/**/*", "vite.config.ts", "core/config.ts"],

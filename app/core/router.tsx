@@ -1,9 +1,9 @@
+import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
+import { config } from "@/core/config.js";
 import { withSuspense } from "@/utils/HOC/withSuspense";
 import * as Sentry from "@sentry/react";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { config } from "@/core/config.js";
-import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
 
 const Layout = withSuspense(
   React.lazy(() => import("../components/Layout.js")),

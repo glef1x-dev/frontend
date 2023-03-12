@@ -1,6 +1,7 @@
 import ArticleComments from "@/components/Blog/ArticleComments";
 import BlogArticleTags from "@/components/Blog/ArticleTags";
 import Markdown from "@/components/Markdown/Markdown";
+import SEO from "@/components/SEO.js";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
 import { formatDate } from "@/utils/datetime.js";
@@ -10,8 +11,6 @@ import { Link, useParams } from "react-router-dom";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import "./css/BlogArticle.css";
-import SEO from "@/components/SEO.js";
-import * as React from "react";
 
 export default function BlogArticlePage() {
   const theme = useTheme();
@@ -52,7 +51,11 @@ export default function BlogArticlePage() {
           },
         }}
       >
-        <SEO title={article.title} description={article.description} imageUrl={article.image} />
+        <SEO
+          title={article.title}
+          description={article.description}
+          imageUrl={article.image}
+        />
         <article
           style={{
             display: "flex",

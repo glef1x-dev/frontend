@@ -1,5 +1,5 @@
-import { Helmet } from "react-helmet";
 import { useTheme } from "@/core/ui/mui/theme.js";
+import { Helmet } from "react-helmet";
 
 type MetaProps = {
   description: string;

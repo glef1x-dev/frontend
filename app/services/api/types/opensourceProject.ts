@@ -6,4 +6,3 @@ export type OpenSourceProject = {
   stargazersCount?: number;
   icon?: string;
 };
-

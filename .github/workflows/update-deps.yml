@@ -3,7 +3,7 @@ name: Update dependencies
 on:
   workflow_dispatch: # allow manual run
   schedule:
-    - cron: '0 0 * * 0' # every sunday at midnight
+    - cron: "0 0 * * 0" # every sunday at midnight
 
 jobs:
   upgrade-deps:

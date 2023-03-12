@@ -1,4 +1,5 @@
 import { OpenSourceProject } from "@/services/api/types/opensourceProject";
+import { formatStargazersCount } from "@/utils/formatting";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew.js";
 import {
   Button,
@@ -11,16 +12,16 @@ import {
 } from "@mui/material";
 import { useSnackbar } from "notistack";
 import * as React from "react";
-import { formatStargazersCount } from "@/utils/formatting";
 
 type OpenSourceProjectCardProps = {
   project?: OpenSourceProject;
   loading?: true;
 } & ({ loading: true } | { project: OpenSourceProject });
 
-export default function OpenSourceProjectCard(
-  {project, loading}: OpenSourceProjectCardProps,
-): JSX.Element {
+export default function OpenSourceProjectCard({
+  project,
+  loading,
+}: OpenSourceProjectCardProps): JSX.Element {
   const { enqueueSnackbar } = useSnackbar();
 
   const onDocumentationButtonClick = (event: React.MouseEvent) => {

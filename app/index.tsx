@@ -34,7 +34,6 @@ if (config.app.env === "production") {
   });
 }
 
-
 // TODO: Initialize local store (Relay, Apollo, Redux, etc.)
 // const store = createRelay({ data: JSON.parse(data) });
 

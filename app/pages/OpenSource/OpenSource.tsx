@@ -1,13 +1,13 @@
 import PageHeader from "@/components/PageHeader";
+import SEO from "@/components/SEO";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetOpensourceProjects } from "@/hooks/api/useProjectsApi.js";
+import { dynamicSort } from "@/utils/sorting.js";
 import { Container } from "@mui/material";
-import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
-import SEO from "@/components/SEO";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import * as React from "react";
 import { useLayoutEffect } from "react";
-import { dynamicSort } from "@/utils/sorting.js";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
 
 function ProjectCardSkeletons({ numberOfCards }: { numberOfCards: number }) {
   useLayoutEffect(() => {
@@ -49,7 +49,10 @@ export default function OpenSource() {
 
   return (
     <>
-      <SEO title="Opensource" description="The open source projects that I am involved with, either as the author or as a maintainer" />
+      <SEO
+        title="Opensource"
+        description="The open source projects that I am involved with, either as the author or as a maintainer"
+      />
       <PageHeader
         title="Opensource"
         description="These are the open source projects that I am involved with, either as the author or as a maintainer"

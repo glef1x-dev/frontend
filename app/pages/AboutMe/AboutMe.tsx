@@ -1,6 +1,6 @@
+import SEO from "@/components/SEO";
 import { Box, Container, Paper, Typography } from "@mui/material";
 import personalImage from "/personal-image.webp";
-import SEO from "@/components/SEO";
 
 export default function AboutMe(): JSX.Element {
   const descriptionAboutMe =
@@ -72,7 +72,7 @@ export default function AboutMe(): JSX.Element {
                 alt="personal-photo"
                 style={{
                   maxWidth: "100%",
-                  padding: "1.5rem"
+                  padding: "1.5rem",
                 }}
                 src={personalImage}
               />

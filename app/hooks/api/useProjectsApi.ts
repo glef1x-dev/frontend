@@ -1,9 +1,9 @@
+import { useApiClient } from "@/services/api";
+import { extractRepoNameAndOwnerFromGithubLink } from "@/services/api/github";
 import type { OpenSourceProject } from "@/services/api/types/opensourceProject";
+import { githubQueryKeys } from "@/utils/query-keys.js";
 import { useQueries, UseQueryOptions } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { extractRepoNameAndOwnerFromGithubLink } from "@/services/api/github";
-import { githubQueryKeys } from "@/utils/query-keys.js";
-import { useApiClient } from "@/services/api";
 
 const openSourceProjects: OpenSourceProject[] = [
   {
@@ -42,7 +42,7 @@ const openSourceProjects: OpenSourceProject[] = [
   },
 ];
 
-type QueryOptions<T> = UseQueryOptions<OpenSourceProject, AxiosError, T>
+type QueryOptions<T> = UseQueryOptions<OpenSourceProject, AxiosError, T>;
 
 export function useGetOpensourceProjects<Result = OpenSourceProject>(
   options?: Partial<QueryOptions<Result>>,
@@ -77,7 +77,7 @@ export function useGetOpensourceProjects<Result = OpenSourceProject>(
             });
         },
         queryKey: githubQueryKeys.starsCount(repositoryOwner, repositoryName),
-        ...options
+        ...options,
       };
     }),
   });
