@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useSnackbar } from "notistack";
 import * as React from "react";
+import { formatStargazersCount } from "@/utils/formatting";
 
 type OpenSourceProjectCardProps = {
   project?: OpenSourceProject;
@@ -61,7 +62,7 @@ export default function OpenSourceProjectCard(
               {project.title}
             </Typography>
             <Typography variant="h5" color="text.secondary">
-              {project.stargazersCount ?? 0} &#11088;
+              {formatStargazersCount(project.stargazersCount ?? 0)} &#11088;
             </Typography>
           </Grid>
         )}

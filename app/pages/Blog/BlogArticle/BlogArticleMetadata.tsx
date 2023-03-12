@@ -5,7 +5,7 @@ import { CleanData } from "@/services/api/types/parser.js";
 import { formatDate } from "@/utils/datetime.js";
 import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
 import { Box, Typography } from "@mui/material";
-import { formatReadingTime } from "@/utils/strings.js";
+import { formatReadingTime } from "@/utils/formatting";
 
 type BlogArticleMetadataProps = {
   article: CleanData<typeof Article>;
