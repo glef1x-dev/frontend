@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm exec prettier --plugin=prettier-plugin-organize-imports --check .
-pnpm exec tsc --build
+pnpm run prettier:check
+pnpm run typescript:build

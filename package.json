@@ -14,7 +14,10 @@
     "app:build": "pnpm --filter 'app' run build",
     "app:preview": "pnpm --filter 'app' run preview",
     "app:deploy": "pnpm --filter 'app' run deploy",
-    "format": "pnpm exec prettier --write . --plugin=prettier-plugin-organize-imports"
+    "prettier:base": "pnpm exec prettier --parser typescript",
+    "prettier:check": "pnpm run prettier:base --list-different app/**/*.{ts,tsx}",
+    "prettier:write": "pnpm run prettier:base --write app/**/*.{ts,tsx}",
+    "typescript:build": "pnpm exec tsc --build"
   },
   "devDependencies": {
     "@emotion/eslint-plugin": "^11.10.0",
