@@ -1,12 +1,21 @@
-export function dynamicSort(property: string) {
+export function dynamicSort<
+  T extends Record<string, string | number | symbol>,
+  Key extends string = Extract<keyof T, string>,
+>(property: Key | `-${Key}`) {
   let sortOrder = 1;
-  if (property[0] === "-") {
+
+  if (property.startsWith("-")) {
     sortOrder = -1;
-    property = property.slice(1);
+    property = property.slice(1) as Key;
   }
-  return function (a, b) {
+
+  return function (a: T, b: T): number {
     const result =
-      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+      <number>a[property] < <number>b[property]
+        ? -1
+        : <number>a[property] > <number>b[property]
+        ? 1
+        : 0;
     return result * sortOrder;
   };
 }
