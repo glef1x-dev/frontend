@@ -18,9 +18,8 @@ jobs:
           version: 7.17.1
       - name: Upgrade dependencies
         run: |
-          pnpm install
-          npm run upgrade
-          pnpm install --lockfile-only
+          pnpm upgrade
+          pnpm update
       - name: Create PR
         uses: peter-evans/create-pull-request@v4
         with:
