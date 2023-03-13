@@ -1,4 +1,4 @@
-import { responsiveFontSizes, type PaletteMode } from "@mui/material";
+import { type PaletteMode, responsiveFontSizes } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import {
   atom,

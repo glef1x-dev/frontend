@@ -1,9 +1,9 @@
 html {
-  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  font-size: clamp(0.9rem, 0.96rem + 0.1vw, 1.125rem);
 }
 
 body {
-  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.125rem) !important;
+  font-size: clamp(0.9rem, 0.96rem + 0.1vw, 1.125rem) !important;
   line-height: 1.7;
 }
 

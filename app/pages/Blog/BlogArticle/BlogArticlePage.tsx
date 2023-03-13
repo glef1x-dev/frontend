@@ -6,11 +6,21 @@ import { useTheme } from "@/core/ui/mui/theme.js";
 import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
 import { formatDate } from "@/utils/datetime.js";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
-import { Box, Button, CardMedia, Container, Typography } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
+import {
+  Box,
+  Breadcrumbs,
+  Button,
+  CardMedia,
+  Container,
+  Link,
+  Typography,
+} from "@mui/material";
+import { useParams } from "react-router-dom";
 import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import "./css/BlogArticle.css";
+import * as React from "react";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 export default function BlogArticlePage() {
   const theme = useTheme();
@@ -40,7 +50,7 @@ export default function BlogArticlePage() {
       />
       <Container
         className="article-container"
-        maxWidth="lg"
+        maxWidth="md"
         disableGutters={true}
         sx={{
           [theme.breakpoints.down("md")]: {
@@ -49,6 +59,7 @@ export default function BlogArticlePage() {
           [theme.breakpoints.up("md")]: {
             padding: theme.spacing(2.5),
           },
+          mt: theme.spacing(2.5),
         }}
       >
         <SEO
@@ -56,6 +67,27 @@ export default function BlogArticlePage() {
           description={article.description}
           imageUrl={article.image}
         />
+        <Breadcrumbs
+          aria-label="breadcrumb"
+          separator={<NavigateNextIcon fontSize="small" />}
+        >
+          <Link
+            underline="hover"
+            sx={{ display: "flex", alignItems: "center" }}
+            color="inherit"
+            href="/"
+          >
+            Home
+          </Link>
+          <Link
+            underline="hover"
+            sx={{ display: "flex", alignItems: "center" }}
+            color="inherit"
+            href="/blog"
+          >
+            All articles
+          </Link>
+        </Breadcrumbs>
         <article
           style={{
             display: "flex",
