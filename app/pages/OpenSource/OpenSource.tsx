@@ -8,6 +8,7 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import * as React from "react";
 import { useLayoutEffect } from "react";
 import OpenSourceProjectCard from "./OpenSourceProjectCard.js";
+import { OpenSourceProject } from "@/services/api/types/opensourceProject";
 
 function ProjectCardSkeletons({ numberOfCards }: { numberOfCards: number }) {
   useLayoutEffect(() => {
@@ -35,8 +36,8 @@ function ProjectCards() {
   return (
     <>
       {responses
-        .map((response) => response.data)
-        .sort(dynamicSort("-stargazersCount"))
+        .map((response) => response.data as OpenSourceProject)
+        .sort(dynamicSort<OpenSourceProject>("-stargazersCount"))
         .map((project) => (
           <OpenSourceProjectCard key={project.title} project={project} />
         ))}
