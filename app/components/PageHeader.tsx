@@ -1,16 +1,12 @@
 import { useTheme } from "@/core/ui/mui/theme";
 import { Box, Typography } from "@mui/material";
-import { memo } from "react";
 
 type PageHeaderProps = {
   title: string;
   description: string;
 };
 
-export default memo(function PageHeader({
-  title,
-  description,
-}: PageHeaderProps) {
+export default function PageHeader({ title, description }: PageHeaderProps) {
   const theme = useTheme();
   const pageHeaderBackgroundColor =
     theme.palette.mode === "light" ? "#f8f9fa" : "rgb(18,18,18)";
@@ -50,4 +46,4 @@ export default memo(function PageHeader({
       </Box>
     </header>
   );
-});
+}

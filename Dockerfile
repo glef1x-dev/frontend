@@ -11,6 +11,8 @@ ARG SENTRY_DSN
 ENV SENTRY_DSN=${SENTRY_DSN}
 ARG VITE_SENTRY_AUTH_TOKEN
 ENV VITE_SENTRY_AUTH_TOKEN=${VITE_SENTRY_AUTH_TOKEN}
+ARG MONOBANK_JAR_URL
+ENV MONOBANK_JAR_URL=${MONOBANK_JAR_URL}
 # I'm making it enviroment variable so that Sentry can automatically
 # determine a release name. Without this code on digital ocean it just crashes during build phase
 ARG CF_PAGES_COMMIT_SHA

@@ -63,10 +63,16 @@ export default function OpenSourceProjectCard({
             >
               {project.title}
             </Typography>
-            <Typography variant="h5" color="text.secondary">
-              {formatStargazersCount(project.stargazersCount ?? 0)}{" "}
-              <Emoji label="star" symbol="⭐" />
+            <Typography
+              variant="h5"
+              color="text.secondary"
+              sx={{
+                mr: "2px",
+              }}
+            >
+              {formatStargazersCount(project.stargazersCount ?? 0)}
             </Typography>
+            <Emoji label="glowing-star" symbol="🌟" />
           </Grid>
         )}
         {loading ? (

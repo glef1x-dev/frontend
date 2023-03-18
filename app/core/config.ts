@@ -11,6 +11,11 @@ export type Config = {
   sentry: {
     dsn?: string;
   };
+  donation: {
+    monobank: {
+      jarUrl: string;
+    };
+  };
 };
 
 export const config: Config = JSON.parse(import.meta.env.VITE_CONFIG);

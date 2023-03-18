@@ -28,7 +28,7 @@ export default React.memo(function SocialMedias(): JSX.Element {
             rel="noopener noreferrer"
             key={socialMedia.name}
           >
-            <IconButton edge="end" size="large" aria-label="github">
+            <IconButton edge="end" size="large" aria-label={socialMedia.name}>
               {socialMedia.iconElement}
             </IconButton>
           </a>

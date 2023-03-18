@@ -35,6 +35,11 @@ const config = {
   sentry: {
     dsn: process.env.SENTRY_DSN,
   },
+  donation: {
+    monobank: {
+      jarUrl: getEnvVariableOrThrow("MONOBANK_JAR_URL"),
+    },
+  },
 };
 
 // Pass client-side configuration to the web app

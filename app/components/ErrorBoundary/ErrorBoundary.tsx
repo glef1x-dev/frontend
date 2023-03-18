@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/system";
 import axios from "axios";
 import { isRouteErrorResponse, Link, useRouteError } from "react-router-dom";
 import Emoji from "../Emoji/Emoji.js";
-import errorImage from "/error.png";
+import errorImage from "/images/error.png";
 
 type ErrorBoundaryProps = {
   defaultErrorMessage: string;

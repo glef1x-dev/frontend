@@ -1,6 +1,6 @@
 import SEO from "@/components/SEO";
 import { Box, Container, Paper, Typography } from "@mui/material";
-import personalImage from "/personal-image.webp";
+import personalImage from "/images/personal-image.webp";
 
 export default function AboutMe(): JSX.Element {
   const descriptionAboutMe =

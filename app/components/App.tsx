@@ -1,4 +1,4 @@
-import { router } from "@/core/router.js";
+import { router } from "@/core/router";
 import { useTheme } from "@/core/ui/mui/theme.js";
 import { ApiProvider } from "@/services/api";
 import { CssBaseline, ThemeProvider } from "@mui/material";
