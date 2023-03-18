@@ -29,7 +29,7 @@ if (config.app.env === "production") {
         ),
       }),
     ],
-    tracesSampleRate: 0.5,
+    tracesSampleRate: 1.0,
     // TODO: add release parameter
   });
 }
