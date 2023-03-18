@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { useSnackbar } from "notistack";
 import * as React from "react";
+import Emoji from "@/components/Emoji/Emoji";
 
 type OpenSourceProjectCardProps = {
   project?: OpenSourceProject;
@@ -63,7 +64,8 @@ export default function OpenSourceProjectCard({
               {project.title}
             </Typography>
             <Typography variant="h5" color="text.secondary">
-              {formatStargazersCount(project.stargazersCount ?? 0)} &#11088;
+              {formatStargazersCount(project.stargazersCount ?? 0)}{" "}
+              <Emoji label="star" symbol="⭐" />
             </Typography>
           </Grid>
         )}
