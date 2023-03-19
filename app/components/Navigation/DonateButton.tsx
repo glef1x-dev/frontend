@@ -24,6 +24,7 @@ const tabsStyle = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 1,
+  borderRadius: "10px",
 };
 
 export default function DonateButton() {
@@ -77,6 +78,7 @@ export default function DonateButton() {
                 and motivate me to create even more large-scale open-source
                 applications.
               </Typography>
+
               <Button
                 size="large"
                 target="_blank"
