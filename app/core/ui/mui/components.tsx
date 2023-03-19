@@ -5,8 +5,9 @@ import {
   LinkProps as RouterLinkProps,
 } from "react-router-dom";
 import { LinkProps } from "@mui/material";
+import { forwardRef } from "react";
 
-const LinkBehavior = React.forwardRef<
+const LinkBehavior = forwardRef<
   HTMLAnchorElement,
   Omit<RouterLinkProps, "to"> & { href: RouterLinkProps["to"] }
 >((props, ref) => {

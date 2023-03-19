@@ -16,11 +16,14 @@
         "./*"
       ]
     },
+    "types": ["vite/client"],
+    "isolatedModules": true
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "**/*.json"
+    "**/*.json",
+    "global.d.ts"
   ],
   "exclude": [
     "dist/**/*",
