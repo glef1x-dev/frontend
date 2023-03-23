@@ -36,7 +36,7 @@ export default function DonateButton() {
     <>
       <Button
         startIcon={<MonetizationOnIcon />}
-        sx={{ color: "white" }}
+        sx={{ color: "white", fontSize: "19px" }}
         size="large"
         onClick={handleOpen}
       >

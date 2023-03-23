@@ -65,7 +65,7 @@ export default memo(function ArticleCard({ article }: ArticleCardProps) {
             <Typography
               gutterBottom={true}
               component="div"
-              variant="h5"
+              variant="h4"
               fontWeight="bold"
               sx={{
                 flex: 1,

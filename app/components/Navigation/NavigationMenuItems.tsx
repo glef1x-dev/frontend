@@ -113,6 +113,7 @@ export default function NavigationMenuItems() {
             sx={{
               mr: "1rem",
               color: "white",
+              fontSize: "19px",
             }}
           >
             {route.name}

@@ -47,10 +47,10 @@ export default function ErrorBoundary({
         justifyContent="center"
         gap="1rem"
       >
-        <Typography variant="h2" fontWeight="600">
+        <Typography variant="h1" fontWeight="600">
           {statusCode}
         </Typography>
-        <Typography variant="h4" fontWeight="300">
+        <Typography variant="h2" fontWeight="300">
           {errorMessage} <Emoji label="neutral face" symbol="🙁" />
         </Typography>
         <img src={errorImage} width="100%" />

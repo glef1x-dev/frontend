@@ -64,7 +64,7 @@ export default function OpenSourceProjectCard({
               {project.title}
             </Typography>
             <Typography
-              variant="h5"
+              variant="h4"
               color="text.secondary"
               sx={{
                 mr: "2px",

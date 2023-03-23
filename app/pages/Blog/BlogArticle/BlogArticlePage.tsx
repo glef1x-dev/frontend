@@ -98,7 +98,7 @@ export default function BlogArticlePage() {
         >
           <header>
             <Typography
-              variant="h3"
+              variant="h1"
               sx={{
                 marginTop: "2rem",
                 marginBottom: "1rem",

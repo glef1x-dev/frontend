@@ -1,6 +1,35 @@
 body {
-  font-size: clamp(1rem, 1.01rem + 0.19vw, 1.2rem) !important;
+  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.125rem) !important;
   line-height: 1.7;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 1.39rem + 1.79vw, 3rem) !important;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.29rem + 1.07vw, 2.25rem) !important;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 1.11rem + 0.71vw, 1.75rem) !important;
+}
+
+h4,
+h5,
+h6 {
+  font-size: clamp(1.125rem, 1.09rem + 0.18vw, 1.25rem) !important;
+}
+
+p,
+li {
+  max-width: 70ch;
+}
+
+h1,
+h2,
+h3 {
+  max-width: 30ch;
 }
 
 * {

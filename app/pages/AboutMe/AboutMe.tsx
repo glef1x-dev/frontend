@@ -31,7 +31,7 @@ export default function AboutMe(): JSX.Element {
           <Box>
             <Typography
               sx={{ marginTop: "2rem" }}
-              variant="h3"
+              variant="h1"
               fontWeight="bold"
             >
               About me

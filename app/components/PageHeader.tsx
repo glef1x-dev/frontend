@@ -32,11 +32,11 @@ export default function PageHeader({ title, description }: PageHeaderProps) {
           alignItems: "center",
         }}
       >
-        <Typography fontWeight="bold" variant="h4">
+        <Typography fontWeight="bold" variant="h1">
           {title}
         </Typography>
         <Typography
-          variant="body2"
+          variant="h5"
           sx={{
             py: 2,
           }}
