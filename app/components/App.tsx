@@ -21,8 +21,7 @@ export function App(): JSX.Element {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        cacheTime: 10 * 60 * 1000,
-        staleTime: 1000 * 20, // 20 seconds
+        staleTime: 1000 * 60, // 60 seconds
         retry: false,
         refetchOnWindowFocus: false,
         refetchOnMount: false,
