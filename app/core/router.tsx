@@ -4,12 +4,10 @@ import { withSuspense } from "@/utils/HOC/withSuspense";
 import * as Sentry from "@sentry/react";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
+import AboutMe from "@/pages/AboutMe/AboutMe";
 
 const Layout = withSuspense(
   React.lazy(() => import("../components/Layout.js")),
-);
-const About = withSuspense(
-  React.lazy(() => import("../pages/AboutMe/AboutMe.js")),
 );
 const OpenSource = withSuspense(
   React.lazy(() => import("../pages/OpenSource/OpenSource.js")),
@@ -36,7 +34,7 @@ export const router = createBrowserRouter1([
     children: [
       {
         path: "/",
-        element: <About />,
+        element: <AboutMe />,
       },
       {
         path: "/opensource/",
