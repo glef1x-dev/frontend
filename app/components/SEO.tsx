@@ -2,7 +2,7 @@ import { useTheme } from "@/core/ui/mui/theme.js";
 import { Helmet } from "react-helmet";
 
 type MetaProps = {
-  description: string;
+  description?: string;
   imageUrl?: string;
   title?: string;
 };
@@ -23,13 +23,16 @@ export default function SEO({ title, description, imageUrl }: MetaProps) {
       <meta content={theme.palette.background.default} name="theme-color" />
       <meta
         property="og:title"
-        content="The best opensource blog you've ever seen."
+        content={title ?? "The best opensource blog you've ever seen."}
       />
       <meta property="og:type" content="website.blog" />
       <meta property="og:url" content={openGraphUrl} />
       <meta
         property="og:description"
-        content="glefix.dev is an opensource project powered by React and Django"
+        content={
+          description ??
+          "glefix.dev is an opensource project powered by React and Django"
+        }
       />
       <meta
         property="og:image"
