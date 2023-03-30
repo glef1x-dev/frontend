@@ -15,11 +15,11 @@
     X-XSS-Protection = "1; mode=block"
     Content-Security-Policy = '''
     default-src 'none';
-    script-src 'self';
+    script-src 'self' https://utteranc.es/client.js;
     style-src 'self' 'unsafe-inline';
     img-src 'self' https://dyzdj8dlifcx0.cloudfront.net;
     connect-src 'self' https://c.s-microsoft.com https://o1430642.ingest.sentry.io https://api.glefix.dev;
-    child-src 'self';
+    child-src 'self' https://utteranc.es/;
     font-src 'self' https://c.s-microsoft.com;
     manifest-src 'self';
 
