@@ -16,7 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
-import ScrollProgressBar from "../../../components/ScrollProgressBar.js";
+import ScrollProgressBar from "../../../components/ScrollProgressBar/ScrollProgressBar.js";
 import BlogArticleMetadata from "./BlogArticleMetadata.js";
 import "./css/BlogArticle.css";
 import * as React from "react";
