@@ -5,10 +5,8 @@ import * as Sentry from "@sentry/react";
 import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import AboutMe from "@/pages/AboutMe/AboutMe";
+import Layout from "@/components/Layout";
 
-const Layout = withSuspense(
-  React.lazy(() => import("../components/Layout.js")),
-);
 const OpenSource = withSuspense(
   React.lazy(() => import("../pages/OpenSource/OpenSource.js")),
 );
