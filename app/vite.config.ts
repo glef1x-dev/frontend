@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "url";
 import { defineConfig } from "vite";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 function getEnvVariableOrThrow(variableName: string): string {
   const value = process.env[variableName];
@@ -56,6 +57,8 @@ export default defineConfig(({ mode }) => {
   return {
     cacheDir: `../.cache/vite-app`,
     build: {
+      target: ["es2021", "chrome100", "safari13"],
+      minify: "esbuild",
       outDir: "./dist",
       emptyOutDir: true,
       sourcemap: true,
@@ -63,6 +66,10 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             react: ["react", "react-dom", "react-router-dom", "recoil"],
+            rm: ["react-markdown"],
+            rsh: ["react-syntax-highlighter"],
+            mui: ["@mui/material"],
+            micon: ["@mui/icons-material"],
           },
         },
       },
@@ -86,6 +93,7 @@ export default defineConfig(({ mode }) => {
           plugins: ["@emotion/babel-plugin"],
         },
       }),
+      tsconfigPaths(),
       nodePolyfills({
         // Whether to polyfill `node:` protocol imports.
         protocolImports: true,
