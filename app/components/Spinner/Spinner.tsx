@@ -1,22 +1,20 @@
 import { useTheme } from '@/core/ui/mui/theme';
+import UseAnimations from 'react-useanimations';
+import loading from 'react-useanimations/lib/loading';
 import styles from './Spinner.module.css';
 
-type SpinnerProps = {
-  color?: string;
-};
-
-export default function Spinner({ color }: SpinnerProps): JSX.Element {
+export default function Spinner(): JSX.Element {
   const theme = useTheme();
-  const spinnerColor = color ?? theme.palette.primary.main;
+  const spinnerColor = theme.palette.primary.main;
 
   return (
-    <div className={styles.spinnerWrap}>
-      <div
-        className={styles.spinner}
-        style={{
-          borderLeft: `6px solid ${spinnerColor}`,
-        }}
-      />
+    <div className={styles.stage}>
+      <UseAnimations
+       className={styles.spinner} 
+       strokeColor={spinnerColor}
+      animation={loading}
+       size={70} 
+     />
     </div>
   );
 }
