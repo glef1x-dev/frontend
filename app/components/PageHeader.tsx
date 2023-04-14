@@ -13,8 +13,8 @@ const PageHeader: React.FC<PageHeaderProps> = function ({ title, description }: 
   return (
     <header
       style={{
-        paddingTop: 'clamp(3.75rem, 3.21rem + 2.68vw, 5.625rem)',
-        paddingBottom: 'clamp(3.75rem, 3.21rem + 2.68vw, 5.625rem)',
+        paddingTop: 'clamp(2.5rem, 2.5rem + 1.3vw, 3.625rem)',
+        paddingBottom: 'clamp(2.5rem, 2.5rem + 1.3vw, 3.625rem)',
         background: pageHeaderBackgroundColor,
         backgroundImage:
           theme.palette.mode === 'dark'
