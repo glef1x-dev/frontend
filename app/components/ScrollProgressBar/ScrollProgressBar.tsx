@@ -1,36 +1,31 @@
-import { useEffect, useRef, useState } from "react";
-import styles from "./ScrollProgressBar.module.css";
+import { useEffect, useRef, useState } from 'react';
+import styles from './ScrollProgressBar.module.css';
 
 export default function ScrollProgressBar(): JSX.Element {
   const ref = useRef<HTMLDivElement>(null);
-  const [progress, setProgress] = useState<number>(0);
+  const [progressState, setProgressState] = useState<number>(0);
 
   useEffect(() => {
-    const onScroll = () =>
-      requestAnimationFrame(() => {
-        const scrolled = document.documentElement.scrollTop;
-        const scrollLength =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const progress = (100 * scrolled) / scrollLength;
+    const onScroll = (): number => requestAnimationFrame(() => {
+      const scrolled = document.documentElement.scrollTop;
+      const scrollLength = document.documentElement.scrollHeight
+          - document.documentElement.clientHeight;
+      const progress = (100 * scrolled) / scrollLength;
 
-        setProgress(progress);
+      setProgressState(progress);
 
-        if (ref.current) {
-          ref.current.style.width = `${progress}%`;
-        }
-      });
+      if (ref.current) {
+        ref.current.style.width = `${progress}%`;
+      }
+    });
+    window.addEventListener('scroll', onScroll);
 
-    // Adding event listener on mounting
-    window.addEventListener("scroll", onScroll);
-
-    // Removing event listener upon unmounting
-    return () => window.removeEventListener("scroll", onScroll);
+    return (): void => window.removeEventListener('scroll', onScroll);
   }, [ref]);
 
   return (
     <div
-      aria-valuenow={progress}
+      aria-valuenow={progressState}
       aria-valuemin={0}
       ref={ref}
       aria-valuemax={100}

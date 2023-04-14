@@ -1,33 +1,32 @@
-import { type PaletteMode, responsiveFontSizes } from "@mui/material";
-import { createTheme } from "@mui/material/styles";
+import { type PaletteMode, responsiveFontSizes, Theme as MuiTheme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 import {
   atom,
   selectorFamily,
   useRecoilCallback,
   useRecoilValue,
-} from "recoil";
-import { components } from "./components.js";
-import palettes from "./palettes.js";
-import * as typography from "./typography.js";
+} from 'recoil';
+import { components } from './components.js';
+import palettes from './palettes.js';
+import * as typography from './typography.js';
 
 /**
  * The name of the selected UI theme.
  */
 export const ThemeName = atom<PaletteMode>({
-  key: "ThemeName",
+  key: 'ThemeName',
   effects: [
     (ctx) => {
-      const storageKey = "theme";
+      const storageKey = 'theme';
 
-      if (ctx.trigger === "get") {
-        const name: PaletteMode =
-          localStorage?.getItem(storageKey) === "dark"
-            ? "dark"
-            : localStorage?.getItem(storageKey) === "light"
-            ? "light"
-            : matchMedia?.("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+      if (ctx.trigger === 'get') {
+        const name: PaletteMode = localStorage?.getItem(storageKey) === 'dark'
+          ? 'dark'
+          : localStorage?.getItem(storageKey) === 'light'
+            ? 'light'
+            : matchMedia?.('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
         ctx.setSelf(name);
       }
 
@@ -43,10 +42,10 @@ export const ThemeName = atom<PaletteMode>({
  * @see https://next.material-ui.com/customization/default-theme/
  */
 export const Theme = selectorFamily({
-  key: "Theme",
+  key: 'Theme',
   dangerouslyAllowMutability: true,
   get(name: PaletteMode) {
-    return function () {
+    return function (): MuiTheme {
       const { palette } = createTheme({ palette: palettes[name] });
       return responsiveFontSizes(
         createTheme(
@@ -70,7 +69,7 @@ export const Theme = selectorFamily({
  * @param name - The name of the requested theme. Defaults to the
  *               auto-detected or user selected value.
  */
-export function useTheme(name?: PaletteMode) {
+export function useTheme(name?: PaletteMode): MuiTheme {
   const selected = useRecoilValue(ThemeName);
   return useRecoilValue(Theme(name ?? selected));
 }
@@ -78,12 +77,12 @@ export function useTheme(name?: PaletteMode) {
 /**
  * Switches between "light" and "dark" themes.
  */
-export function useToggleTheme(name?: PaletteMode) {
+export function useToggleTheme(name?: PaletteMode): () => void {
   return useRecoilCallback(
     (ctx) => () => {
       ctx.set(
         ThemeName,
-        name ?? ((prev) => (prev === "dark" ? "light" : "dark")),
+        name ?? ((prev): PaletteMode => (prev === 'dark' ? 'light' : 'dark')),
       );
     },
     [],

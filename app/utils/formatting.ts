@@ -1,10 +1,10 @@
-const formatter = Intl.NumberFormat("en-US", {
-  notation: "compact",
+const formatter = Intl.NumberFormat('en-US', {
+  notation: 'compact',
 });
 
 export function formatReadingTime(readingTimeInMinutes: number): string {
   if (readingTimeInMinutes < 1) {
-    return "less than a minute read";
+    return 'less than a minute read';
   }
 
   return `${Math.ceil(readingTimeInMinutes)} min read`;

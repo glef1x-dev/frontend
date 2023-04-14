@@ -1,9 +1,9 @@
-import { sentryVitePlugin } from "@sentry/vite-plugin";
-import react from "@vitejs/plugin-react";
-import { fileURLToPath, URL } from "url";
-import { defineConfig } from "vite";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { sentryVitePlugin } from '@sentry/vite-plugin';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath, URL } from 'url';
+import { defineConfig } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 function getEnvVariableOrThrow(variableName: string): string {
   const value = process.env[variableName];
@@ -26,19 +26,19 @@ function getEnvVariableOrDefault(
 
 const config = {
   app: {
-    env: getEnvVariableOrDefault("NODE_ENV", "development"),
+    env: getEnvVariableOrDefault('NODE_ENV', 'development'),
     name: process.env.APP_NAME,
-    baseAPIUrl: getEnvVariableOrThrow("BASE_API_URL"),
+    baseAPIUrl: getEnvVariableOrThrow('BASE_API_URL'),
   },
   utternances: {
-    repositoryName: getEnvVariableOrThrow("UTTERNANCES_REPOSITORY_NAME"),
+    repositoryName: getEnvVariableOrThrow('UTTERNANCES_REPOSITORY_NAME'),
   },
   sentry: {
     dsn: process.env.SENTRY_DSN,
   },
   donation: {
     monobank: {
-      jarUrl: getEnvVariableOrThrow("MONOBANK_JAR_URL"),
+      jarUrl: getEnvVariableOrThrow('MONOBANK_JAR_URL'),
     },
   },
 };
@@ -52,45 +52,45 @@ process.env.VITE_CONFIG = JSON.stringify(config);
  * https://vitejs.dev/config/
  */
 export default defineConfig(({ mode }) => {
-  const generatedScopedName =
-    mode === "production" ? "[hash:base64:2]" : "[local]_[hash:base64:2]";
+  const generatedScopedName = mode === 'production' ? '[hash:base64:2]' : '[local]_[hash:base64:2]';
   return {
-    cacheDir: `../.cache/vite-app`,
+    root: './',
+    cacheDir: '../.cache/vite-app',
     build: {
-      target: ["es2021", "chrome100", "safari13"],
-      minify: "esbuild",
-      outDir: "./dist",
+      target: ['es2021', 'chrome100', 'safari13'],
+      minify: 'esbuild',
+      outDir: './dist',
       emptyOutDir: true,
       sourcemap: true,
       rollupOptions: {
         output: {
           manualChunks: {
-            react: ["react", "react-dom", "react-router-dom", "recoil"],
-            rm: ["react-markdown"],
-            rsh: ["react-syntax-highlighter"],
-            mui: ["@mui/material"],
-            micon: ["@mui/icons-material"],
+            react: ['react', 'react-dom', 'react-router-dom', 'recoil'],
+            rm: ['react-markdown'],
+            rsh: ['react-syntax-highlighter'],
+            mui: ['@mui/material'],
+            micon: ['@mui/icons-material'],
           },
         },
       },
     },
 
     define: {
-      __DEV__: process.env.NODE_ENV === "development",
+      __DEV__: process.env.NODE_ENV === 'development',
     },
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL(".", import.meta.url)),
+        '@': fileURLToPath(new URL('.', import.meta.url)),
       },
     },
 
     plugins: [
       // https://github.com/vitejs/vite/tree/main/packages/plugin-react
       react({
-        jsxRuntime: "classic",
-        jsxImportSource: "@emotion/react",
+        jsxRuntime: 'classic',
+        jsxImportSource: '@emotion/react',
         babel: {
-          plugins: ["@emotion/babel-plugin"],
+          plugins: ['@emotion/babel-plugin'],
         },
       }),
       tsconfigPaths(),
@@ -100,16 +100,16 @@ export default defineConfig(({ mode }) => {
       }),
       sentryVitePlugin({
         // TODO: probably organization name and project name should be environment variables
-        org: "educate-dz",
-        project: "glefix-frontend",
-        include: "./dist",
+        org: 'educate-dz',
+        project: 'glefix-frontend',
+        include: './dist',
         authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
       }),
     ],
 
     server: {
       proxy: {
-        "/api": {
+        '/api': {
           target: process.env.BASE_API_URL,
           changeOrigin: true,
           secure: false,
@@ -118,7 +118,7 @@ export default defineConfig(({ mode }) => {
     },
     css: {
       modules: {
-        localsConvention: "camelCase",
+        localsConvention: 'camelCase',
         generatedScopedName,
       },
     },

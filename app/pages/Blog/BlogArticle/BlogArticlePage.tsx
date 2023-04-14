@@ -1,11 +1,10 @@
-import ArticleComments from "@/components/Blog/ArticleComments";
-import BlogArticleTags from "@/components/Blog/ArticleTags";
-import Markdown from "@/components/Markdown/Markdown";
-import SEO from "@/components/SEO.js";
-import { useTheme } from "@/core/ui/mui/theme.js";
-import { useGetBlogArticleBySlug } from "@/hooks/api/useBlogApi.js";
-import { formatDate } from "@/utils/datetime.js";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack.js";
+import ArticleComments from '@/components/Blog/ArticleComments';
+import BlogArticleTags from '@/components/Blog/ArticleTags';
+import Markdown from '@/components/Markdown/Markdown';
+import { useTheme } from '@/core/ui/mui/theme.js';
+import { useGetBlogArticleBySlug } from '@/hooks/api/useBlogApi.js';
+import { formatDate } from '@/utils/datetime.js';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {
   Box,
   Breadcrumbs,
@@ -14,49 +13,52 @@ import {
   Container,
   Link,
   Typography,
-} from "@mui/material";
-import { useParams } from "react-router-dom";
-import ScrollProgressBar from "../../../components/ScrollProgressBar/ScrollProgressBar.js";
-import BlogArticleMetadata from "./BlogArticleMetadata.js";
-import "./css/BlogArticle.css";
-import * as React from "react";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+} from '@mui/material';
+import { useParams } from 'react-router-dom';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import SEO from '@/components/SEO';
+import ScrollProgressBar from '@/components/ScrollProgressBar/ScrollProgressBar';
+import BlogArticleMetadata from './BlogArticleMetadata.js';
+import './css/BlogArticle.css';
 
-export default function BlogArticlePage() {
+export default function BlogArticlePage(): JSX.Element | null {
   const theme = useTheme();
 
   const { slug } = useParams();
   if (!slug) {
     throw new Error(
-      "Something went wrong: slug in path is empty. Contact developer if you see this message in console.",
+      'Something went wrong: slug in path is empty. Contact developer if you see this message in console.',
     );
   }
 
   const { data } = useGetBlogArticleBySlug(slug);
-  const article = data!;
+  if (!data) {
+    return null;
+  }
+  const article = data;
 
   return (
     <>
       <ScrollProgressBar
         sx={{
-          height: "0.15rem",
-          position: "sticky",
-          width: "100vw",
-          marginLeft: "calc(-50vw + 50%)",
-          maxWidth: "none",
+          height: '0.15rem',
+          position: 'sticky',
+          width: '100vw',
+          marginLeft: 'calc(-50vw + 50%)',
+          maxWidth: 'none',
           top: 0,
-          overflow: "unset",
+          overflow: 'unset',
         }}
       />
       <Container
         className="article-container"
         maxWidth="md"
-        disableGutters={true}
+        disableGutters
         sx={{
-          [theme.breakpoints.down("md")]: {
+          [theme.breakpoints.down('md')]: {
             padding: theme.spacing(1),
           },
-          [theme.breakpoints.up("md")]: {
+          [theme.breakpoints.up('md')]: {
             padding: theme.spacing(2.5),
           },
           mt: theme.spacing(2.5),
@@ -73,7 +75,7 @@ export default function BlogArticlePage() {
         >
           <Link
             underline="hover"
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ display: 'flex', alignItems: 'center' }}
             color="inherit"
             href="/"
           >
@@ -81,7 +83,7 @@ export default function BlogArticlePage() {
           </Link>
           <Link
             underline="hover"
-            sx={{ display: "flex", alignItems: "center" }}
+            sx={{ display: 'flex', alignItems: 'center' }}
             color="inherit"
             href="/blog"
           >
@@ -90,18 +92,18 @@ export default function BlogArticlePage() {
         </Breadcrumbs>
         <article
           style={{
-            display: "flex",
-            flexDirection: "column",
-            wordWrap: "break-word",
-            justifyContent: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            wordWrap: 'break-word',
+            justifyContent: 'center',
           }}
         >
           <header>
             <Typography
               variant="h1"
               sx={{
-                marginTop: "2rem",
-                marginBottom: "1rem",
+                marginTop: '2rem',
+                marginBottom: '1rem',
               }}
               fontWeight="bold"
             >
@@ -113,8 +115,8 @@ export default function BlogArticlePage() {
               image={article.image}
               alt="article-image-preview"
               sx={{
-                paddingTop: "1rem",
-                paddingBottom: "1rem",
+                paddingTop: '1rem',
+                paddingBottom: '1rem',
               }}
             />
           </header>
@@ -122,13 +124,13 @@ export default function BlogArticlePage() {
           <Box
             className="article-ending"
             sx={{
-              marginTop: "0.5rem",
+              marginTop: '0.5rem',
             }}
           >
             <ArticleComments />
             <BlogArticleTags tags={article.tags} />
             {article.modified && (
-              <Typography variant="body2" sx={{ mt: "1.5rem" }}>
+              <Typography variant="body2" sx={{ mt: '1.5rem' }}>
                 Last updated: {formatDate(article.created)}
               </Typography>
             )}
@@ -138,9 +140,9 @@ export default function BlogArticlePage() {
               variant="outlined"
               startIcon={<ArrowBackIcon />}
               sx={{
-                padding: "1rem",
-                fontWeight: "bold",
-                marginTop: "2rem",
+                padding: '1rem',
+                fontWeight: 'bold',
+                marginTop: '2rem',
               }}
               component={Link}
               to="/blog"

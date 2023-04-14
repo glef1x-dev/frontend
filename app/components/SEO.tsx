@@ -1,5 +1,5 @@
-import { useTheme } from "@/core/ui/mui/theme.js";
-import { Helmet } from "react-helmet";
+import { useTheme } from '@/core/ui/mui/theme.js';
+import { Helmet } from 'react-helmet';
 
 type MetaProps = {
   description?: string;
@@ -7,7 +7,7 @@ type MetaProps = {
   title?: string;
 };
 
-export default function SEO({ title, description, imageUrl }: MetaProps) {
+const SEO: React.FC<MetaProps> = function ({ title, description, imageUrl }) {
   const theme = useTheme();
   const openGraphUrl = window.location.origin + window.location.pathname;
 
@@ -30,17 +30,17 @@ export default function SEO({ title, description, imageUrl }: MetaProps) {
       <meta
         property="og:description"
         content={
-          description ??
-          "glefix.dev is an opensource project powered by React and Django"
+          description
+          ?? 'glefix.dev is an opensource project powered by React and Django'
         }
       />
       <meta
         property="og:image"
-        content={imageUrl ?? "https://glefix.dev/my-avatar.webp"}
+        content={imageUrl ?? 'https://glefix.dev/my-avatar.webp'}
       />
       <meta
         property="og:image:secure_url"
-        content={imageUrl ?? "https://glefix.dev/my-avatar.webp"}
+        content={imageUrl ?? 'https://glefix.dev/my-avatar.webp'}
       />
       <meta property="og:image:type" content="image/webp" />
       <meta property="og:image:width" content="314" />
@@ -48,4 +48,6 @@ export default function SEO({ title, description, imageUrl }: MetaProps) {
       <meta property="og:image:alt" content="The GLEF1X's avatar" />
     </Helmet>
   );
-}
+};
+
+export default SEO;

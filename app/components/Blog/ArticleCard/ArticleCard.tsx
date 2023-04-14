@@ -1,69 +1,71 @@
-import { Article } from "@/services/api/types/blog.js";
-import { CleanData } from "@/services/api/types/parser.js";
-import { Box, Card, CardContent, Typography } from "@mui/material";
-import { memo } from "react";
-import { Link } from "react-router-dom";
-import BlogArticleMetadata from "../../../pages/Blog/BlogArticle/BlogArticleMetadata.js";
+import { Article } from '@/services/api/types/blog.js';
+import { CleanData } from '@/services/api/types/parser.js';
+import {
+  Box, Card, CardContent, Typography,
+} from '@mui/material';
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import BlogArticleMetadata from '../../../pages/Blog/BlogArticle/BlogArticleMetadata.js';
 
 interface ArticleCardProps {
   article: CleanData<typeof Article> & { description?: string };
-  createdDateFormat?: string;
 }
 
-export default memo(function ArticleCard({ article }: ArticleCardProps) {
+function ArticleCard({ article }: ArticleCardProps): JSX.Element {
   return (
     <Box
       sx={{
-        "&:hover": {
-          transform: "translateY(-4px)",
-          boxShadow: "rgb(11 43 158 / 35%) 0px 10px 20px",
+        '&:hover': {
+          transform: 'translateY(-4px)',
+          boxShadow: 'rgb(11 43 158 / 35%) 0px 10px 20px',
         },
-        transition: "box-shadow 0.4s ease 0s, transform 0.4s ease 0s",
-        willChange: "box-shadow, transform",
-        borderRadius: "12px",
+        transition: 'box-shadow 0.4s ease 0s, transform 0.4s ease 0s',
+        willChange: 'box-shadow, transform',
+        borderRadius: '12px',
       }}
       className="article-preview-card"
     >
       <Link
         to={`/blog/article/${article.slug}/`}
         style={{
-          textDecoration: "none",
-          color: "inherit",
-          WebkitTapHighlightColor: "transparent",
-          WebkitTouchCallout: "none",
-          WebkitUserSelect: "none",
-          MozUserSelect: "none",
-          userSelect: "none",
+          textDecoration: 'none',
+          color: 'inherit',
+          WebkitTapHighlightColor: 'transparent',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          MozUserSelect: 'none',
+          userSelect: 'none',
         }}
       >
         <Card
           sx={{
-            display: "flex",
+            display: 'flex',
             flex: 1,
-            flexDirection: "column",
-            height: "100%",
-            borderRadius: "12px",
+            flexDirection: 'column',
+            height: '100%',
+            borderRadius: '12px',
           }}
         >
           <img
             height="205"
             src={article.image}
             style={{
-              width: "100%",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              objectFit: "cover",
+              width: '100%',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              objectFit: 'cover',
             }}
+            alt={article.title}
           />
           <CardContent
             sx={{
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
               flex: 1,
             }}
           >
             <Typography
-              gutterBottom={true}
+              gutterBottom
               component="div"
               variant="h5"
               fontWeight="bold"
@@ -75,7 +77,7 @@ export default memo(function ArticleCard({ article }: ArticleCardProps) {
             </Typography>
             <Box
               sx={{
-                marginTop: "1.5rem",
+                marginTop: '1.5rem',
               }}
             >
               <BlogArticleMetadata article={article} />
@@ -85,4 +87,6 @@ export default memo(function ArticleCard({ article }: ArticleCardProps) {
       </Link>
     </Box>
   );
-});
+}
+
+export default memo(ArticleCard);

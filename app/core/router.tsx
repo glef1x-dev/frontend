@@ -1,24 +1,24 @@
-import ErrorBoundary from "@/components/ErrorBoundary/ErrorBoundary";
-import { config } from "@/core/config.js";
-import { withSuspense } from "@/utils/HOC/withSuspense";
-import * as Sentry from "@sentry/react";
-import * as React from "react";
-import { createBrowserRouter } from "react-router-dom";
-import AboutMe from "@/pages/AboutMe/AboutMe";
-import Layout from "@/components/Layout";
+import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
+import { config } from '@/core/config.js';
+import { withSuspense } from '@/utils/HOC/withSuspense';
+import * as Sentry from '@sentry/react';
+import * as React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import AboutMe from '@/pages/AboutMe/AboutMe';
+import Layout from '@/components/Layout';
 
 const OpenSource = withSuspense(
-  React.lazy(() => import("../pages/OpenSource/OpenSource.js")),
+  React.lazy(() => import('../pages/OpenSource/OpenSource.js')),
 );
 const ArticleList = withSuspense(
-  React.lazy(() => import("../pages/Blog/ArticleListPage.js")),
+  React.lazy(() => import('../pages/Blog/ArticleListPage.js')),
 );
 const BlogArticle = withSuspense(
-  React.lazy(() => import("../pages/Blog/BlogArticle/BlogArticlePage.js")),
+  React.lazy(() => import('../pages/Blog/BlogArticle/BlogArticlePage.js')),
 );
 
 let createBrowserRouter1: typeof createBrowserRouter;
-if (config.app.env === "production") {
+if (config.app.env === 'production') {
   createBrowserRouter1 = Sentry.wrapCreateBrowserRouter(createBrowserRouter);
 } else {
   createBrowserRouter1 = createBrowserRouter;
@@ -26,28 +26,28 @@ if (config.app.env === "production") {
 
 export const router = createBrowserRouter1([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <ErrorBoundary />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <AboutMe />,
       },
       {
-        path: "/opensource/",
+        path: '/opensource/',
         element: <OpenSource />,
       },
       {
-        path: "/blog/",
+        path: '/blog/',
         element: <ArticleList />,
       },
       {
-        path: "/blog/article/:slug/",
+        path: '/blog/article/:slug/',
         element: <BlogArticle />,
       },
       {
-        path: "/blog/:tagName/",
+        path: '/blog/:tagName/',
         element: <ArticleList />,
       },
     ],

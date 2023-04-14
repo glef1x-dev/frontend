@@ -1,32 +1,34 @@
-import { Box, Container, Link, Typography } from "@mui/material";
+import {
+  Box, Container, Link, Typography,
+} from '@mui/material';
 
-function Copyright() {
+const Copyright: React.FC = function () {
   return (
     <Typography variant="h6" color="text.secondary" align="center">
-      {"© "}
+      {'© '}
       <Link color="inherit" href="/">
         Hlib Haranin
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
     </Typography>
   );
-}
+};
 
 interface FooterProps {
   description: string;
 }
 
-export default function Footer(props: FooterProps) {
+const Footer: React.FC<FooterProps> = function (props) {
   const { description } = props;
 
   return (
     <Box
       component="footer"
       sx={{
-        maxHeight: "10vh",
-        display: "flex",
-        alignItems: "center",
-        paddingY: "2rem",
+        maxHeight: '10vh',
+        display: 'flex',
+        alignItems: 'center',
+        paddingY: '2rem',
       }}
     >
       <Container>
@@ -42,4 +44,6 @@ export default function Footer(props: FooterProps) {
       </Container>
     </Box>
   );
-}
+};
+
+export default Footer;

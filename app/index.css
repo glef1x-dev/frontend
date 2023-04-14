@@ -21,17 +21,6 @@ h6 {
   font-size: clamp(1.125rem, 1.09rem + 0.18vw, 1.25rem) !important;
 }
 
-p,
-li {
-  max-width: 70ch;
-}
-
-h1,
-h2,
-h3 {
-  max-width: 30ch;
-}
-
 * {
   -webkit-tap-highlight-color: transparent;
 }

@@ -19,10 +19,10 @@ const enum SortOrder {
 export function dynamicSort<
   T extends Partial<Record<Key, unknown>>,
   Key extends string = Extract<keyof T, string>,
->(property: Key | `-${Key}`) {
+>(property: Key | `-${Key}`): (a: T, b: T) => number {
   let sortOrder = SortOrder.ascending;
 
-  if (property.startsWith("-")) {
+  if (property.startsWith('-')) {
     sortOrder = SortOrder.descending;
     property = property.slice(1) as Key;
   }

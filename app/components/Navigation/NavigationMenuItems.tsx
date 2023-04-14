@@ -6,46 +6,46 @@ import {
   Menu,
   MenuItem,
   Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import { Link as ReactRouterLink, useLocation } from "react-router-dom";
-import DonateButton from "@/components/Navigation/DonateButton";
-import * as React from "react";
-import CoPresentIcon from "@mui/icons-material/CoPresent";
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Link as ReactRouterLink, useLocation } from 'react-router-dom';
+import DonateButton from '@/components/Navigation/DonateButton';
+import * as React from 'react';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import NewspaperTwoToneIcon from '@mui/icons-material/NewspaperTwoTone';
 
 const NAVIGATION_ROUTES = [
-  { name: "About Me", path: "/", icon: <CoPresentIcon fontSize="small" /> },
+  { name: 'About Me', path: '/', icon: <CoPresentIcon fontSize="small" /> },
   {
-    name: "Opensource",
-    path: "/opensource",
+    name: 'Opensource',
+    path: '/opensource',
     icon: <AccountTreeIcon fontSize="small" />,
   },
   {
-    name: "Blog",
-    path: "/blog",
+    name: 'Blog',
+    path: '/blog',
     icon: <NewspaperTwoToneIcon fontSize="small" />,
   },
 ] as const;
 
-export default function NavigationMenuItems() {
+export default function NavigationMenuItems(): JSX.Element {
   const { pathname: currentPath } = useLocation();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null,
   );
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (): void => {
     setAnchorElNav(null);
   };
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -62,8 +62,8 @@ export default function NavigationMenuItems() {
           open={Boolean(anchorElNav)}
           onClose={handleCloseNavMenu}
           sx={{
-            display: { xs: "block", md: "none" },
-            "& ul": {
+            display: { xs: 'block', md: 'none' },
+            '& ul': {
               paddingBottom: 0,
             },
           }}
@@ -73,18 +73,18 @@ export default function NavigationMenuItems() {
               key={route.name}
               onClick={handleCloseNavMenu}
               selected={route.path === currentPath}
-              divider={true}
+              divider
             >
               <Link
                 href={route.path}
                 sx={{
-                  textDecoration: "none",
+                  textDecoration: 'none',
                 }}
               >
                 {route.icon}
                 <Typography
                   sx={{
-                    display: "inline-block",
+                    display: 'inline-block',
                   }}
                   textAlign="center"
                 >
@@ -98,8 +98,8 @@ export default function NavigationMenuItems() {
       <Box
         sx={{
           flexGrow: 1,
-          display: { xs: "none", md: "flex" },
-          ml: "2rem",
+          display: { xs: 'none', md: 'flex' },
+          ml: '2rem',
         }}
       >
         {NAVIGATION_ROUTES.map((route) => (
@@ -111,9 +111,9 @@ export default function NavigationMenuItems() {
             size="large"
             onClick={handleCloseNavMenu}
             sx={{
-              mr: "1rem",
-              color: "white",
-              fontSize: "19px",
+              mr: '1rem',
+              color: 'white',
+              fontSize: '19px',
             }}
           >
             {route.name}

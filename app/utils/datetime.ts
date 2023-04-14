@@ -1,6 +1,6 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
-const DEFAULT_DATETIME_FORMAT = "MMM DD YYYY";
+const DEFAULT_DATETIME_FORMAT = 'MMM DD YYYY';
 
 export function formatDate(
   date: string,

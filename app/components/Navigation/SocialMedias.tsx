@@ -1,18 +1,18 @@
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Box, IconButton } from "@mui/material";
-import * as React from "react";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Box, IconButton } from '@mui/material';
+import * as React from 'react';
 
-export default React.memo(function SocialMedias(): JSX.Element {
+function SocialMedias(): JSX.Element {
   const socialMedias: Array<SocialMedia> = [
     {
-      name: "github",
-      href: "https://github.com/GLEF1X",
+      name: 'github',
+      href: 'https://github.com/GLEF1X',
       iconElement: <GitHubIcon />,
     },
     {
-      name: "linkedin",
-      href: "https://www.linkedin.com/in/glef1x/",
+      name: 'linkedin',
+      href: 'https://www.linkedin.com/in/glef1x/',
       iconElement: <LinkedInIcon />,
     },
   ];
@@ -36,7 +36,9 @@ export default React.memo(function SocialMedias(): JSX.Element {
       })}
     </Box>
   );
-});
+}
+
+export default React.memo(SocialMedias);
 
 export interface SocialMedia {
   name: string;

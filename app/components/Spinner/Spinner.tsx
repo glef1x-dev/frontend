@@ -1,5 +1,5 @@
-import { useTheme } from "@/core/ui/mui/theme";
-import styles from "./Spinner.module.css";
+import { useTheme } from '@/core/ui/mui/theme';
+import styles from './Spinner.module.css';
 
 type SpinnerProps = {
   color?: string;

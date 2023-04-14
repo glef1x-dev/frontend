@@ -1,20 +1,20 @@
-import { ArticleTag } from "@/services/api/types/blog.js";
-import { CleanData } from "@/services/api/types/parser";
-import { Chip, Link, Stack } from "@mui/material";
-import { memo } from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { ArticleTag } from '@/services/api/types/blog.js';
+import { CleanData } from '@/services/api/types/parser';
+import { Chip, Link, Stack } from '@mui/material';
+import { memo } from 'react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 type BlogArticleTagsProps = {
   tags: Array<CleanData<typeof ArticleTag>>;
 };
 
-export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
+function ArticleTags({ tags }: BlogArticleTagsProps): JSX.Element {
   return (
     <Stack
       sx={{
-        mt: "0.2rem",
-        flexWrap: "wrap",
-        gap: "0.3rem",
+        mt: '0.2rem',
+        flexWrap: 'wrap',
+        gap: '0.3rem',
       }}
       direction="row"
     >
@@ -24,9 +24,9 @@ export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
           component={ReactRouterLink}
           key={tag.id}
           sx={{
-            textDecoration: "none",
-            "&:visited": {
-              color: "#6001ff",
+            textDecoration: 'none',
+            '&:visited': {
+              color: '#6001ff',
             },
           }}
         >
@@ -36,12 +36,12 @@ export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
             label={tag.title}
             size="medium"
             sx={{
-              fontWeight: "bold",
-              "&:hover": {
-                borderColor: "#3740ff",
-                background: "#3740ff",
-                color: "#ffffff",
-                cursor: "pointer",
+              fontWeight: 'bold',
+              '&:hover': {
+                borderColor: '#3740ff',
+                background: '#3740ff',
+                color: '#ffffff',
+                cursor: 'pointer',
               },
             }}
             aria-label={tag.title}
@@ -50,4 +50,6 @@ export default memo(function BlogArticleTags({ tags }: BlogArticleTagsProps) {
       ))}
     </Stack>
   );
-});
+}
+
+export default memo(ArticleTags);

@@ -1,4 +1,4 @@
-export type EnvName = "development" | "production";
+export type EnvName = 'development' | 'production';
 export type Config = {
   app: {
     env: EnvName;

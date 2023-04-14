@@ -1,5 +1,5 @@
-import * as Sentry from "@sentry/react";
-import { ParseParams, z } from "zod";
+import * as Sentry from '@sentry/react';
+import { ParseParams, z } from 'zod';
 
 export declare type CleanData<T extends z.ZodType> = z.infer<T>;
 
@@ -13,12 +13,13 @@ export const parseAs = <T extends z.ZodType>(
   } catch (e) {
     Sentry.withScope((scope) => {
       scope.setTags({
-        stage: "validation",
-        validationLibrary: "zod",
+        stage: 'validation',
+        validationLibrary: 'zod',
         handled: true,
       });
-      scope.setLevel("error");
+      scope.setLevel('error');
       Sentry.captureException(e);
     });
+    throw e;
   }
 };

@@ -1,42 +1,49 @@
-import Button from "@mui/material/Button";
-import Backdrop from "@mui/material/Backdrop";
+import Button from '@mui/material/Button';
+import Backdrop from '@mui/material/Backdrop';
 
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
-import Box from "@mui/material/Box";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import { useState } from "react";
-import TabPanel from "@/components/Navigation/TabPanel";
-import { config } from "@/core/config";
-import monobankLogo from "/images/monobank-logo.jpeg";
-import monobankJar from "/images/monobank-jar.png";
-import { Typography } from "@mui/material";
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import Box from '@mui/material/Box';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { useState } from 'react';
+import TabPanel from '@/components/Navigation/TabPanel';
+import { config } from '@/core/config';
+import { Typography } from '@mui/material';
+import monobankLogo from '/images/monobank-logo.jpeg';
+import monobankJar from '/images/monobank-jar.png';
 
 const tabsStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 350,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
   boxShadow: 24,
   p: 1,
-  borderRadius: "10px",
+  borderRadius: '10px',
 };
 
-export default function DonateButton() {
+function a11yProps(index: number): Record<string, string> {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+export default function DonateButton(): JSX.Element {
   const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
+  const handleClose = (): void => setOpen(false);
+  const handleOpen = (): void => setOpen(true);
 
   return (
     <>
       <Button
         startIcon={<MonetizationOnIcon />}
-        sx={{ color: "white", fontSize: "19px" }}
+        sx={{ color: 'white', fontSize: '19px' }}
         size="large"
         onClick={handleOpen}
       >
@@ -59,14 +66,14 @@ export default function DonateButton() {
           <Box sx={tabsStyle}>
             <Tabs variant="fullWidth" value={0}>
               <Tab
-                icon={
+                icon={(
                   <img
                     width="24"
                     height="24"
                     alt="monobank logo"
                     src={monobankLogo}
                   />
-                }
+                )}
                 iconPosition="start"
                 label="Monobank"
                 {...a11yProps(0)}
@@ -83,14 +90,14 @@ export default function DonateButton() {
                 size="large"
                 target="_blank"
                 href={config.donation.monobank.jarUrl}
-                endIcon={
+                endIcon={(
                   <img
                     width="30"
                     height="30"
                     alt="monobank jar logo"
                     src={monobankJar}
                   />
-                }
+                )}
               >
                 Donate through a jar
               </Button>
@@ -100,11 +107,4 @@ export default function DonateButton() {
       </Modal>
     </>
   );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
 }

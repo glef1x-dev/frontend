@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-export default function ScrollToTop() {
+const ScrollToTop: React.FC = function () {
   const { pathname } = useLocation();
 
   useEffect(() => {
     document.documentElement.scrollTo({
       top: 0,
       left: 0,
-      // @ts-expect-error
-      // Still a bug in Typescript so just ignore the error
-      behavior: "instant",
+      behavior: 'instant',
     });
   }, [pathname]);
 
   return null;
-}
+};
+
+export default ScrollToTop;

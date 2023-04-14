@@ -1,21 +1,21 @@
-import * as Sentry from "@sentry/react";
-import { BrowserTracing } from "@sentry/tracing";
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+import * as Sentry from '@sentry/react';
+import { BrowserTracing } from '@sentry/tracing';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 import {
   createRoutesFromChildren,
   matchRoutes,
   useLocation,
   useNavigationType,
-} from "react-router-dom";
-import { RecoilRoot } from "recoil";
-import { App } from "./components/App.js";
-import { config } from "./core/config.js";
-import "./index.css";
+} from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import { App } from './components/App.js';
+import { config } from './core/config.js';
+import './index.css';
 
-const container = document.getElementById("root") as HTMLElement;
+const container = document.getElementById('root') as HTMLElement;
 
-if (config.app.env === "production") {
+if (config.app.env === 'production') {
   Sentry.init({
     dsn: config.sentry.dsn,
     integrations: [

@@ -1,6 +1,6 @@
-import { OpenSourceProject } from "@/services/api/types/opensourceProject";
-import { formatStargazersCount } from "@/utils/formatting";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew.js";
+import { OpenSourceProject } from '@/services/api/types/opensourceProject';
+import { formatStargazersCount } from '@/utils/formatting';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import {
   Button,
   Card,
@@ -9,10 +9,10 @@ import {
   Grid,
   Skeleton,
   Typography,
-} from "@mui/material";
-import { useSnackbar } from "notistack";
-import * as React from "react";
-import Emoji from "@/components/Emoji/Emoji";
+} from '@mui/material';
+import { SnackbarKey, useSnackbar } from 'notistack';
+import * as React from 'react';
+import Emoji from '@/components/Emoji/Emoji';
 
 type OpenSourceProjectCardProps = {
   project?: OpenSourceProject;
@@ -25,39 +25,41 @@ export default function OpenSourceProjectCard({
 }: OpenSourceProjectCardProps): JSX.Element {
   const { enqueueSnackbar } = useSnackbar();
 
-  const onDocumentationButtonClick = (event: React.MouseEvent) => {
+  const onDocumentationButtonClick = (event: React.MouseEvent): SnackbarKey | null => {
     if (project && project.documentationLink === undefined) {
       event.preventDefault();
       return enqueueSnackbar(
-        "Documentation for this project is not available.",
+        'Documentation for this project is not available.',
         {
-          variant: "error",
+          variant: 'error',
         },
       );
     }
+
+    return null;
   };
 
   return (
     <Card
       sx={{
-        position: "relative",
+        position: 'relative',
       }}
     >
       <CardContent
         sx={{
-          marginBottom: "3rem",
+          marginBottom: '3rem',
         }}
       >
         {loading ? (
           <Skeleton animation="wave" height={100} />
         ) : (
-          <Grid container={true} alignItems="center">
+          <Grid container alignItems="center">
             <Typography
               variant="h5"
               fontWeight="bold"
               sx={{
-                textDecoration: "underline",
-                paddingRight: "0.4rem",
+                textDecoration: 'underline',
+                paddingRight: '0.4rem',
               }}
               component="div"
             >
@@ -67,7 +69,7 @@ export default function OpenSourceProjectCard({
               variant="h4"
               color="text.secondary"
               sx={{
-                mr: "2px",
+                mr: '2px',
               }}
             >
               {formatStargazersCount(project.stargazersCount ?? 0)}
@@ -82,7 +84,7 @@ export default function OpenSourceProjectCard({
             variant="caption"
             color="text.secondary"
             sx={{
-              paddingY: "1rem",
+              paddingY: '1rem',
             }}
           >
             {project.description}
@@ -92,7 +94,7 @@ export default function OpenSourceProjectCard({
       {loading ? null : (
         <CardActions
           sx={{
-            position: "absolute",
+            position: 'absolute',
             bottom: 0,
           }}
         >
@@ -109,7 +111,7 @@ export default function OpenSourceProjectCard({
             size="medium"
             target="_blank"
             rel="noreferrer"
-            href={project.documentationLink ?? "#"}
+            href={project.documentationLink ?? '#'}
             onClick={onDocumentationButtonClick}
             startIcon={<OpenInNewIcon />}
           >

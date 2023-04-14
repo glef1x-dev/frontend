@@ -1,11 +1,11 @@
-import BlogArticleTags from "@/components/Blog/ArticleTags.js";
-import MiddleDot from "@/components/MiddleDot.js";
-import { Article } from "@/services/api/types/blog.js";
-import { CleanData } from "@/services/api/types/parser.js";
-import { formatDate } from "@/utils/datetime.js";
-import { formatReadingTime } from "@/utils/formatting";
-import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
-import { Box, Typography } from "@mui/material";
+import { Article } from '@/services/api/types/blog.js';
+import { CleanData } from '@/services/api/types/parser.js';
+import { formatDate } from '@/utils/datetime.js';
+import { formatReadingTime } from '@/utils/formatting';
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+import { Box, Typography } from '@mui/material';
+import MiddleDot from '@/components/MiddleDot';
+import BlogArticleTags from '@/components/Blog/ArticleTags';
 
 type BlogArticleMetadataProps = {
   article: CleanData<typeof Article>;
@@ -15,7 +15,7 @@ type BlogArticleMetadataProps = {
 export default function BlogArticleMetadata({
   article,
   showTags = true,
-}: BlogArticleMetadataProps) {
+}: BlogArticleMetadataProps): JSX.Element {
   const formattedDateOfCreation = formatDate(article.created);
   const readingTime = formatReadingTime(article.readingTimeInMinutes);
 
@@ -23,18 +23,18 @@ export default function BlogArticleMetadata({
     <Box
       display="flex"
       sx={{
-        flexDirection: "column",
+        flexDirection: 'column',
       }}
     >
       <Box
         display="flex"
         sx={{
-          alignItems: "center",
+          alignItems: 'center',
         }}
       >
         <CalendarMonthTwoToneIcon fontSize="small" />
         <Typography
-          sx={{ wordWrap: "break-word" }}
+          sx={{ wordWrap: 'break-word' }}
           variant="caption"
           fontWeight="bold"
         >

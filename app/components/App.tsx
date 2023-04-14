@@ -1,21 +1,20 @@
-import { router } from "@/core/router";
-import { useTheme } from "@/core/ui/mui/theme.js";
-import { ApiProvider } from "@/services/api";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { SnackbarProvider } from "notistack";
-import { lazy, Suspense, useEffect, useState } from "react";
-import { RouterProvider } from "react-router-dom";
-import Spinner from "./Spinner/Spinner.js";
+import { router } from '@/core/router';
+import { useTheme } from '@/core/ui/mui/theme.js';
+import { ApiProvider } from '@/services/api';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { SnackbarProvider } from 'notistack';
+import { lazy, Suspense, useEffect } from 'react';
+import { RouterProvider } from 'react-router-dom';
+import useToggle from '@/hooks/use-toggle';
+import Spinner from './Spinner/Spinner.js';
 
-const ReactQueryDevtoolsProduction = lazy(() =>
-  import("@tanstack/react-query-devtools/build/lib/index.prod.js").then(
-    (d) => ({
-      default: d.ReactQueryDevtools,
-    }),
-  ),
-);
+const ReactQueryDevtoolsProduction = lazy(() => import('@tanstack/react-query-devtools/build/lib/index.prod.js').then(
+  (d) => ({
+    default: d.ReactQueryDevtools,
+  }),
+));
 
 export function App(): JSX.Element {
   const queryClient = new QueryClient({
@@ -31,13 +30,11 @@ export function App(): JSX.Element {
     },
   });
   const theme = useTheme();
-  const [showDevtools, setShowDevtools] = useState(false);
+  const [showDevtools, switchDevtools] = useToggle(false);
 
   useEffect(() => {
-    // @ts-expect-error export global variable in order to give an opportunity
-    // to enable devtools by calling this function
-    window.toggleDevtools = () => setShowDevtools((old) => !old);
-  }, []);
+    window.toggleDevtools = (): void => switchDevtools();
+  }, [switchDevtools]);
 
   return (
     <SnackbarProvider>
@@ -46,7 +43,7 @@ export function App(): JSX.Element {
           <ApiProvider>
             <CssBaseline />
             <RouterProvider router={router} fallbackElement={<Spinner />} />
-            <ReactQueryDevtools initialIsOpen={true} />
+            <ReactQueryDevtools initialIsOpen />
             {showDevtools && (
               <Suspense fallback={null}>
                 <ReactQueryDevtoolsProduction />
