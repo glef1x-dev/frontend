@@ -1,13 +1,16 @@
+import { Typography } from '@mui/material';
+
 const MiddleDot: React.FC = function () {
   return (
-    <span
+    <Typography
       className="middle-dot"
       style={{
-        margin: '0px 8px',
+        margin: '0px 6px',
       }}
+      variant="caption"
     >
       •
-    </span>
+    </Typography>
   );
 };
 

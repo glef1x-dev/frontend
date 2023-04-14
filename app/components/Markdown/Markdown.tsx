@@ -21,7 +21,7 @@ function Markdown({ text }: MarkdownProps): JSX.Element {
       children={text}
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
-      css={{ fontSize: '16px' }}
+      css={{ fontSize: '20px' }}
       components={{
         /* eslint-disable react/no-unstable-nested-components */
         code({ className, children, ...other }) {
@@ -37,13 +37,12 @@ function Markdown({ text }: MarkdownProps): JSX.Element {
                   borderRadius: '10px',
                   padding: 'clamp(1rem, 0.96rem + 0.18vw, 1.125rem)',
                   fontFamily: 'JetbrainsMonoNL, monospace',
-                  lineHeight: '1.5em',
                   letterSpacing: '.9px',
                 }}
                 codeTagProps={{
                   style: {
                     letterSpacing: 'inherit',
-                    fontSize: '14px',
+                    fontSize: '18px',
                     fontFamily: 'inherit',
                     overscrollBehaviorX: 'contain',
                     overflow: 'auto',

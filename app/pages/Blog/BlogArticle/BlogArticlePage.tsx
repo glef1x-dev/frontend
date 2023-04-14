@@ -58,10 +58,7 @@ export default function BlogArticlePage(): JSX.Element | null {
           [theme.breakpoints.down('md')]: {
             padding: theme.spacing(1),
           },
-          [theme.breakpoints.up('md')]: {
-            padding: theme.spacing(2.5),
-          },
-          mt: theme.spacing(2.5),
+          mt: theme.spacing(3.5),
         }}
       >
         <SEO
