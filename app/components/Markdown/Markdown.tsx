@@ -37,7 +37,6 @@ function Markdown({ text }: MarkdownProps): JSX.Element {
                   borderRadius: '10px',
                   padding: 'clamp(1rem, 0.96rem + 0.18vw, 1.125rem)',
                   fontFamily: 'JetbrainsMonoNL, monospace',
-                  letterSpacing: '.9px',
                 }}
                 codeTagProps={{
                   style: {

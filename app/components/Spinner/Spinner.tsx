@@ -10,11 +10,11 @@ export default function Spinner(): JSX.Element {
   return (
     <div className={styles.stage}>
       <UseAnimations
-       className={styles.spinner} 
-       strokeColor={spinnerColor}
-      animation={loading}
-       size={70} 
-     />
+        className={styles.spinner}
+        strokeColor={spinnerColor}
+        animation={loading}
+        size={70}
+      />
     </div>
   );
 }

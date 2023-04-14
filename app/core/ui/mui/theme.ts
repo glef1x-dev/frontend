@@ -53,6 +53,15 @@ export const Theme = selectorFamily({
             palette,
             typography: typography.options,
             components: components(palette),
+            breakpoints: {
+              values: {
+                xs: 0,
+                sm: 640,
+                md: 1024,
+                lg: 1250,
+                xl: 1600,
+              },
+            }
           },
           {
             typography: typography.overrides,
