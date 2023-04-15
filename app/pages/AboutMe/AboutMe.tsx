@@ -42,14 +42,14 @@ export default function AboutMe(): JSX.Element {
             </Typography>
             <Typography sx={{ mt: '1rem' }} variant="body1">
               Check out the projects page to see a highlight of the open-source
-              projects I&quot;ve made, and articles to see everything I&quot;ve written.
-              I&quot;ve also written external publications for the educational
+              projects I&#39;ve made, and articles to see everything I&#39;ve written.
+              I&#39;ve also written external publications for the educational
               platform called &rdquo;botfather.dev&rdquo;.
             </Typography>
             <Typography sx={{ mt: '1rem' }} variant="body1">
               My site has no ads, affiliate links, tracking or analytics,
               sponsored posts, or paywall. My only motivation for this site is
-              to share what I&quot;ve learned with the world, document my notes, and
+              to share what I&#39;ve learned with the world, document my notes, and
               connect with a few people.
             </Typography>
           </Box>
