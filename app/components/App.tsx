@@ -8,7 +8,6 @@ import { SnackbarProvider } from 'notistack';
 import { lazy, Suspense, useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import useToggle from '@/hooks/use-toggle';
-import Spinner from './Spinner/Spinner.js';
 
 const ReactQueryDevtoolsProduction = lazy(() => import('@tanstack/react-query-devtools/build/lib/index.prod.js').then(
   (d) => ({
@@ -42,7 +41,7 @@ export function App(): JSX.Element {
         <QueryClientProvider client={queryClient}>
           <ApiProvider>
             <CssBaseline />
-            <RouterProvider router={router} fallbackElement={<Spinner />} />
+            <RouterProvider router={router} />
             <ReactQueryDevtools initialIsOpen />
             {showDevtools && (
               <Suspense fallback={null}>

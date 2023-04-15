@@ -1,20 +1,16 @@
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
 import { config } from '@/core/config.js';
-import { withSuspense } from '@/utils/HOC/withSuspense';
 import * as Sentry from '@sentry/react';
-import * as React from 'react';
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import AboutMe from '@/pages/AboutMe/AboutMe';
 import Layout from '@/components/Layout';
+import OpenSource from '@/pages/OpenSource/OpenSource';
+import ArticleListPage from '@/pages/Blog/ArticleListPage';
+import { withSuspense } from '@/utils/HOC/withSuspense';
 
-const OpenSource = withSuspense(
-  React.lazy(() => import('../pages/OpenSource/OpenSource.js')),
-);
-const ArticleList = withSuspense(
-  React.lazy(() => import('../pages/Blog/ArticleListPage.js')),
-);
-const BlogArticle = withSuspense(
-  React.lazy(() => import('../pages/Blog/BlogArticle/BlogArticlePage.js')),
+const BlogArticlePage = withSuspense(
+  lazy(() => import('../pages/Blog/BlogArticle/BlogArticlePage.js')),
 );
 
 let createBrowserRouter1: typeof createBrowserRouter;
@@ -40,15 +36,15 @@ export const router = createBrowserRouter1([
       },
       {
         path: '/blog/',
-        element: <ArticleList />,
+        element: <ArticleListPage />,
       },
       {
         path: '/blog/article/:slug/',
-        element: <BlogArticle />,
+        element: <BlogArticlePage />,
       },
       {
         path: '/blog/:tagName/',
-        element: <ArticleList />,
+        element: <ArticleListPage />,
       },
     ],
   },
