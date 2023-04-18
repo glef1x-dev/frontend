@@ -73,6 +73,9 @@ importers:
       date-fns:
         specifier: ^2.29.3
         version: 2.29.3
+      dayjs:
+        specifier: ^1.11.7
+        version: 1.11.7
       emoji-regex:
         specifier: ^10.2.1
         version: 10.2.1
@@ -1208,6 +1211,10 @@ packages:
   /date-fns@2.29.3:
     resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
     engines: {node: '>=0.11'}
+    dev: false
+
+  /dayjs@1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
     dev: false
 
   /debug@3.2.7:
