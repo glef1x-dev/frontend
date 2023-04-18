@@ -19,7 +19,6 @@ import { colors } from "~/lib";
 import { wrapper } from "~/lib/state/store";
 import Init from "~/components/Init.component";
 import { PersistGate } from "redux-persist/integration/react";
-import { ApiProvider } from "~/services/api";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -30,7 +29,7 @@ NProgress.configure({
   speed: 800,
 });
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = unknown, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: React.ReactElement, pageProps: P) => React.ReactNode;
 };
 
@@ -43,7 +42,7 @@ export default function App({
   ...rest
 }: AppPropsWithLayout): JSX.Element {
   const router = useRouter();
-  const { store, props: pageProps } = wrapper.useWrappedStore(rest);
+  const { store, props } = wrapper.useWrappedStore(rest);
 
   useEffectOnce(() => {
     router.events.on("routeChangeStart", () => NProgress.start());
@@ -61,28 +60,26 @@ export default function App({
 
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={store.__persistor}>
-        <ApiProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme={Theme.SYSTEM}
-            themes={Object.values(Theme)}
-          >
-            <Init />
-            <Analytics />
-            <div className={`${inter.variable}`}>
-              {getLayout(<Component {...pageProps} />, pageProps)}
-            </div>
-            <style jsx global>
-              {`
-                #nprogress .bar {
-                  height: 0.25rem;
-                  background-color: ${colors.primary[500]};
-                }
-              `}
-            </style>
-          </ThemeProvider>
-        </ApiProvider>
+      <PersistGate loading={null} persistor={store["__persistor"]}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme={Theme.SYSTEM}
+          themes={Object.values(Theme)}
+        >
+          <Init />
+          <Analytics />
+          <div className={`${inter.variable}`}>
+            {getLayout(<Component {...props.pageProps} />, props.pageProps)}
+          </div>
+          <style jsx global>
+            {`
+              #nprogress .bar {
+                height: 0.25rem;
+                background-color: ${colors.primary[500]};
+              }
+            `}
+          </style>
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );

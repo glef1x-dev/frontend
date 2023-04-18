@@ -1,48 +1,46 @@
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote";
 
-import type { GetStaticPaths, GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 import type { ParsedUrlQuery } from "querystring";
 import { Blog, Pill } from "~/components";
-import { getPost, getAllPostSlugs } from "~/lib/post";
 import { Layout } from "~/layouts";
 
-import type { Post } from "~/types";
 import { ReactElement } from "react";
+import { apiClient, BlogPost } from "~/services/api";
 
 interface PathProps extends ParsedUrlQuery {
   slug: string;
 }
 
 interface BlogPostProps {
-  post: Post;
+  post: BlogPost;
 }
 
-export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
-  const posts = await getAllPostSlugs();
+export async function getStaticPaths() {
+  // TODO consider pagination
+  const posts = await apiClient.getBlogPosts();
 
   return {
-    paths: posts.map((post) => ({
+    paths: posts.results.map((post) => ({
       params: {
-        slug: post.replace(/\.md/, ""),
+        slug: post.slug,
       },
     })),
     fallback: false,
   };
-};
+}
 
 export const getStaticProps: GetStaticProps<BlogPostProps, PathProps> = async ({
   params,
 }) => {
-  const { frontmatter, source } = await getPost(params.slug);
+  const post = await apiClient.getPostBySlug(params.slug);
 
   return {
     props: {
-      post: {
-        frontmatter,
-        source,
-      },
+      post,
     },
+    revalidate: 3600,
   };
 };
 
@@ -50,45 +48,36 @@ export default function BlogPost({ post }: BlogPostProps): JSX.Element {
   return (
     <div className="relative px-4 py-16 overflow-hidden">
       <div className="relative px-4 sm:px-6 lg:px-8">
-        {post.frontmatter.banner && (post.frontmatter.banner_show ?? true) && (
-          <div className="relative sm:max-w-2xl lg:sm:max-w-6xl mx-auto my-2 sm:my-4">
-            <div className="w-full h-full h-64 lg:h-96 mb-8 bg-gray-200 dark:bg-gray-600 rounded-3xl motion-safe:animate-pulse" />
-            <Image
-              alt={post.frontmatter.banner_alt ?? post.frontmatter.title}
-              className="absolute top-0 left-0 w-full h-auto max-h-64 lg:max-h-96 mb-8 rounded-3xl object-cover select-none shadow-xl default-transition"
-              draggable={false}
-              layout="fill"
-              src={post.frontmatter.banner}
-            />
-          </div>
-        )}
+        <div className="relative sm:max-w-2xl lg:sm:max-w-6xl mx-auto my-2 sm:my-4">
+          <div className="w-full h-full h-64 lg:h-96 mb-8 bg-gray-200 dark:bg-gray-600 rounded-3xl motion-safe:animate-pulse" />
+          <Image
+            alt={post.title}
+            className="absolute top-0 left-0 w-full h-auto max-h-64 lg:max-h-96 mb-8 rounded-3xl object-cover select-none shadow-xl default-transition"
+            draggable={false}
+            src={post.image}
+            width={1700}
+            height={900}
+          />
+        </div>
 
         <div className="flex flex-col space-y-4 max-w-prose mx-auto my-4 text-lg text-center">
           <div>
-            {post.frontmatter.title_prefix && (
-              <span className="block text-primary-600 font-semibold tracking-wide uppercase text-base text-center">
-                {post.frontmatter.title_prefix}
-              </span>
-            )}
             <span className="text-gray-900 dark:text-white sm:text-4xl text-3xl text-center leading-8 font-extrabold tracking-tight">
-              {post.frontmatter.title}
+              {post.title}
             </span>
           </div>
 
           <span className="flex justify-center items-center">
-            <Pill.Date>{post.frontmatter.date}</Pill.Date>
+            <Pill.Date>{post.created}</Pill.Date>
           </span>
 
-          {post.frontmatter.description &&
-            post.frontmatter.description_show && (
-              <p className="mt-8 text-xl text-gray-400 leading-8">
-                {post.frontmatter.description}
-              </p>
-            )}
+          <p className="mt-8 text-xl text-gray-400 leading-8">
+            {post.description}
+          </p>
         </div>
 
         <article className="max-w-prose prose prose-primary prose-lg text-gray-500 mx-auto">
-          <MDXRemote {...post.source} components={Blog.X} />
+          <MDXRemote {...post.body} components={Blog.X} />
         </article>
       </div>
     </div>
@@ -103,14 +92,14 @@ BlogPost.getLayout = function getLayout(
     <>
       <Layout.Blog
         seo={{
-          title: `${post.frontmatter.title} ─ blog ─ GLEF1X`,
-          description: post.frontmatter.description ?? undefined,
+          title: `${post.title} ─ blog ─ GLEF1X`,
+          description: post.description ?? undefined,
           openGraph: {
-            title: post.frontmatter.title,
+            title: post.title,
             images: [
               {
-                url: post.frontmatter.banner ?? "/banner.png",
-                alt: post.frontmatter.description,
+                url: post.image ?? "/banner.png",
+                alt: post.description,
                 width: 1280,
                 height: 720,
               },

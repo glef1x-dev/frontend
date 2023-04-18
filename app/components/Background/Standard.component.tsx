@@ -41,7 +41,6 @@ export function Standard(): JSX.Element {
     }
 
     try {
-      console.log("append");
       containerRef.current.appendChild(gl.canvas);
       gl.clearColor(0, 0, 0, 0);
       window.addEventListener("resize", handleResize, false);
