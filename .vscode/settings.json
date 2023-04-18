@@ -20,14 +20,10 @@
     ".eslintcache": true
   },
   "files.insertFinalNewline": true,
-  "editor.tabSize": 2,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
   "editor.formatOnSave": true,
-  "prettier.ignorePath": ".prettierignore",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript"]
+  "eslint.validate": ["javascript"],
+  "eslint.format.enable": true,
 }
