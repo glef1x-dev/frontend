@@ -14,7 +14,7 @@ const ContentSecurityPolicy = `
 `;
 
 /**
- * @type {import('next').NextConfig}
+ * @type {import("next").NextConfig}
  */
 const config = {
   images: {
@@ -34,6 +34,14 @@ const config = {
       // Unsplash
       "source.unsplash.com",
       "images.unsplash.com",
+      "dyzdj8dlifcx0.cloudfront.net",
+    ],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "8000",
+      },
     ],
   },
   // Inspired by: https://github.com/leerob/leerob.io/blob/main/next.config.js#L44-L81
