@@ -52,21 +52,21 @@ export default function HomePage(): JSX.Element {
     <Layout.Default>
       {isBirthday && <Event event={EventType.BIRTHDAY} />}
       <div className="min-h-screen flex items-center justify-center py-12">
-        <div className="max-w-md sm:max-w-lg md:sm:max-w-2xl lg:sm:max-w-3xl w-full space-y-8 text-center">
+        <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full space-y-8 text-center">
           <Animate
             as="h1"
             animation={{
               opacity: [0, 1],
               scale: [0.75, 1],
             }}
-            className="text-gray-500 dark:text-white text-5xl sm:text-6xl md:text-6xl lg:text-8xl tracking-tight font-extrabold"
+            className="text-gray-500 dark:text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight font-extrabold"
           >
             Hey{" "}
             <span className="inline-block origin-70 hover:(animate-wave)">
               👋
             </span>{" "}
             I&apos;m Hlib, <br className="hidden sm:block" />a{" "}
-            <Pill.Standard className="mt-4">developer</Pill.Standard>
+            <Pill.Standard className="mt-4">software developer</Pill.Standard>
           </Animate>
 
           <Animate
