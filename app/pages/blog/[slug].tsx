@@ -102,7 +102,7 @@ BlogPost.getLayout = function getLayout(
             title: post.title,
             images: [
               {
-                url: post.image ?? "/banner.png",
+                url: post.image,
                 alt: post.description,
                 width: 1280,
                 height: 720,

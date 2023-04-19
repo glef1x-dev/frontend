@@ -23,7 +23,7 @@ export function useSeoProps(
       type: "website",
       images: [
         {
-          url: "https://glefix.dev/banner.png",
+          url: "https://glefix.dev/banner.jpeg",
           alt: description,
           width: 1280,
           height: 720,
