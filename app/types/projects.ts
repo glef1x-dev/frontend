@@ -114,18 +114,5 @@ export interface Project {
   post?: string;
   template?: boolean;
   url: string;
+  stargazersCount: number;
 }
-
-export interface ProjectPost {
-  post: string;
-  repository: string;
-}
-
-export type OpenSourceProject = {
-  title: string;
-  description: string;
-  sourceCodeLink: string;
-  documentationLink?: string;
-  stargazersCount?: number;
-  icon?: string;
-};
