@@ -1,0 +1,20 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"version": 2,
+	"alias": "glefix.dev",
+	"cleanUrls": true,
+	"public": true,
+	"regions": ["lhr1"],
+	"redirects": [
+		{ "source": "/cv", "destination": "https://read.cv/GLEF1X" },
+		{ "source": "/github", "destination": "https://github.com/GLEF1X" },
+		{ "source": "/linkedin", "destination": "https://www.linkedin.com/in/glef1x/" },
+		{ "source": "/portfolio", "destination": "/projects" },
+		{ "source": "/resume", "destination": "https://read.cv/GLEF1X" },
+		{ "source": "/twitter", "destination": "https://twitter.com/GLEF1X" },
+		{
+			"source": "/contact",
+			"destination": "https://twitter.com/direct_messages/create/GLEF1X"
+		}
+	]
+}

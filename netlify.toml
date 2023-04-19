@@ -1,26 +1,2 @@
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Strict-Transport-Security = '''
-    max-age=63072000;
-    includeSubDomains;
-    preload'''
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    Content-Security-Policy = '''
-    default-src 'none';
-    script-src 'self' https://utteranc.es/client.js;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    img-src 'self' https://dyzdj8dlifcx0.cloudfront.net;
-    connect-src 'self' https://c.s-microsoft.com https://o1430642.ingest.sentry.io https://api.glefix.dev;
-    child-src 'self' https://utteranc.es/;
-    font-src 'self' https://c.s-microsoft.com https://fonts.gstatic.com;
-    manifest-src 'self';
-
-    '''
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"

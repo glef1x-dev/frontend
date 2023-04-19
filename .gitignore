@@ -45,3 +45,7 @@ yarn-error.log*
 # macOS
 # https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
 .DS_Store
+
+app/.next/*
+app/.env.local
+app/.env

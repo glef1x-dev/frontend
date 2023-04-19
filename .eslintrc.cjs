@@ -12,21 +12,17 @@ module.exports = {
   },
 
   extends: [
-    "eslint:recommended",
-    "plugin:import/recommended",
     "plugin:import/typescript",
-    "prettier",
   ],
 
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2021,
     sourceType: "module",
   },
 
   overrides: [
     {
       files: ["*.ts", "*.tsx"],
-      excludedFiles: ["vite.config.ts"],
       parser: "@typescript-eslint/parser",
       settings: {
         "import/resolver": {
@@ -34,63 +30,36 @@ module.exports = {
             "extensions": [".js", ".jsx", ".ts", ".tsx"],
             "alias": {
               map: [
-                ["@", "./app"]
-              ]
-            }
+                ["~", "./app"],
+              ],
+            },
           },
-        }
+        },
+      },
+      env: {
+        node: true,
+        browser: true,
+        es2021: true
       },
       extends: [
         "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "airbnb",
-        "airbnb/hooks",
-        "plugin:react/recommended",
+        "plugin:@next/next/recommended",
       ],
-      env: {
-        browser: true,
-      },
       rules: {
-        "no-unused-vars": "off",
-        "no-undef": "off",
-        "@typescript-eslint/no-unused-vars": ["error"],
-        "react/no-children-prop": "off",
-        "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off",
-        "@typescript-eslint/ban-ts-ignore": "off",
-        "import/prefer-default-export": "off",
-        "arrow-body-style": "off",
-        "react/require-default-props": "off",
-        "no-useless-return": "off",
-        "no-use-before-define": "off",
-        "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/no-use-before-define": "error",
-        "no-shadow": "off",
-        "react/jsx-props-no-spreading": "off",
-        "react/no-danger": "off",
-        "@typescript-eslint/explicit-function-return-type": "warn",
-        "camelcase": "off",
-        "func-names": "off",
-        "no-param-reassign": "off",
-        "no-empty": "warn",
-        "@typescript-eslint/no-empty-function": "warn",
-        "@typescript-eslint/no-shadow": "error",
-        "react/jsx-one-expression-per-line": "off",
-        "react/jsx-filename-extension": ["error", { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
-        "import/extensions": ["error", "ignorePackages", {
-          js: "never",
-          jsx: "never",
-          ts: "never",
-          tsx: "never",
-        }],
-        "no-restricted-imports": [
-          "error",
+        "@typescript-eslint/array-type": [
+          "warn",
           {
-            "patterns": ["@mui/*/*/*"],
+            "default": "generic",
           },
         ],
-        "import/no-absolute-path": "off"
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/no-empty-interface": [
+          "warn",
+          {
+            "allowSingleExtends": true,
+          },
+        ],
+
       },
       plugins: ["@typescript-eslint"],
       parserOptions: {
@@ -112,7 +81,7 @@ module.exports = {
   settings: {
     "import/resolver": {
       typescript: {
-        project: ["app/tsconfig.json", "edge/tsconfig.json"],
+        project: ["app/tsconfig.json"],
       },
     },
     "import/core-modules": ["__STATIC_CONTENT_MANIFEST"],
