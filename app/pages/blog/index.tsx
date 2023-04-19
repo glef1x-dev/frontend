@@ -1,4 +1,4 @@
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps } from "next";
 import { Blog } from "~/components";
 import { Layout } from "~/layouts";
 
@@ -10,14 +10,13 @@ interface BlogProps {
   blogPosts: Validated<typeof BlogPosts>["results"];
 }
 
-export const getStaticProps: GetStaticProps<BlogProps> = async () => {
+export const getServerSideProps: GetServerSideProps<BlogProps> = async () => {
   const blogPosts = await apiClient.getBlogPosts();
 
   return {
     props: {
       blogPosts: blogPosts.results,
     },
-    revalidate: 250,
   };
 };
 
