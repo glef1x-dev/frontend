@@ -16,7 +16,7 @@ interface StandardProps extends WithChildren {
 
 interface MenuLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   active: boolean;
-  href: string;
+  href?: string;
 }
 
 interface MenuButtonIconProps extends WithClassName {
@@ -24,24 +24,23 @@ interface MenuButtonIconProps extends WithClassName {
   direction?: "left" | "right";
 }
 
-const StyledMenuItem = forwardRef<
-  HTMLAnchorElement,
-  Omit<MenuLinkProps, "href">
->(({ active, children, className, ...rest }, ref) => (
-  <a
-    className={clsx(
-      "flex items-center px-4 py-3 text-sm font-medium tracking-wide cursor-pointer default-transition",
-      active
-        ? "bg-gray-100/50 text-gray-900 dark:bg-gray-700/50 dark:text-white"
-        : "text-gray-300 hover:text-gray-700 dark:hover:text-white",
-      className
-    )}
-    ref={ref}
-    {...rest}
-  >
-    {children}
-  </a>
-));
+const StyledMenuItem = forwardRef<HTMLAnchorElement, MenuLinkProps>(
+  ({ active, children, className, ...rest }, ref) => (
+    <a
+      className={clsx(
+        "flex items-center px-4 py-3 text-sm font-medium tracking-wide cursor-pointer default-transition",
+        active
+          ? "bg-gray-100/50 text-gray-900 dark:bg-gray-700/50 dark:text-white"
+          : "text-gray-300 hover:text-gray-700 dark:hover:text-white",
+        className
+      )}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </a>
+  )
+);
 
 function MenuButtonIcon({
   className,
@@ -78,7 +77,7 @@ function MenuLink({
   href,
   onClick,
   ...rest
-}: MenuLinkProps): JSX.Element {
+}: Omit<MenuLinkProps, "href"> & { href: string }): JSX.Element {
   return (
     <Link href={href} passHref>
       <StyledMenuItem onClick={(...args): void => onClick?.(...args)} {...rest}>
@@ -153,6 +152,7 @@ export function Dropdown({
                                 <StyledMenuItem
                                   className="group"
                                   active={active}
+                                  href={item.href}
                                   rel="noopener noreferrer"
                                   target="_blank"
                                 >
