@@ -136,9 +136,11 @@ export class ApiClient {
           post: undefined,
           template: false,
           url: repo.html_url.toLowerCase(),
+          stargazersCount: repo.stargazers_count,
         } as Project;
       })
-      .filter((project) => project !== null);
+      .filter((project) => project !== null)
+      .sort((a, b) => b.stargazersCount - a.stargazersCount);
   }
 }
 
