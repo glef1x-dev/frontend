@@ -1,6 +1,6 @@
 import { z } from "zod";
 import createPaginatedResponseSchema from "~/types/paginated-base";
-import { BLOG_POST_DATETIME_FORMAT, formatDate } from "~/utils/datetime";
+import { VERBOSE_DATETIME_FORMAT, formatDate } from "~/utils/datetime";
 
 export const BlogPostTagModel = z.object({
   id: z.number(),
@@ -15,7 +15,7 @@ export const BlogPostModel = z.object({
   created: z
     .string()
     .datetime()
-    .transform((date) => formatDate(date, BLOG_POST_DATETIME_FORMAT)),
+    .transform((date) => formatDate(date, VERBOSE_DATETIME_FORMAT)),
   modified: z.string().datetime().nullish(),
   image: z.string().url(),
   slug: z.string(),

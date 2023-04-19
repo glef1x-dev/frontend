@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { differenceInYears } from "date-fns";
 import { Icon } from "@iconify/react";
 
 import { Animate, Button, Pill } from "~/components";
@@ -8,6 +7,7 @@ import { EventType, NavigationItemType } from "~/types";
 import { Layout } from "~/layouts";
 
 import type { EventProps } from "~/components/Event.component";
+import dayjs from "dayjs";
 
 const Event = dynamic<EventProps>(
   () => import("~/components/Event.component").then(({ Event }) => Event),
@@ -41,7 +41,7 @@ const ACTIONS: Array<NavigationItem> = [
 export default function HomePage(): JSX.Element {
   const today = new Date();
   const birthday = new Date("2005-07-04");
-  const age = differenceInYears(today, birthday);
+  const age = dayjs(today).diff(birthday, "years");
   const isBirthday =
     today.getDate() === birthday.getDate() &&
     today.getMonth() === birthday.getMonth();

@@ -25,7 +25,6 @@
 		"canvas-confetti": "^1.6.0",
 		"clsx": "^1.2.1",
 		"copy-to-clipboard": "^3.3.3",
-		"date-fns": "^2.29.3",
 		"dayjs": "^1.11.7",
 		"emoji-regex": "^10.2.1",
 		"inter-ui": "^3.19.3",
