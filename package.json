@@ -2,7 +2,6 @@
   "name": "root",
   "version": "1.0.0beta1",
   "private": true,
-  "type": "module",
   "packageManager": "pnpm@7.17.1",
   "scripts": {
     "postinstall": "husky install",
