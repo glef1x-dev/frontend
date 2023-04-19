@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "date": "04-20-2023",
+    "title": "glefix.dev website got a new UI!",
+    "description": "Launch a completely redesigned version of glefix.dev.",
+    "icon": "feather:award",
+    "link": {
+      "text": "Navigate to the GitHub repository",
+      "url": "https://github.com/glef1x-dev/frontend/tree/feature/new-ui"
+    }
+  },
+  {
+    "date": "10-01-2022",
+    "title": "Launched glefix.dev!",
+    "description": "Successfully launched the first version of glefix.dev.",
+    "icon": "feather:award",
+    "link": {
+      "text": "Navigate to the GitHub repository",
+      "url": "https://github.com/glef1x-dev"
+    }
+  },
+  {
+    "date": "09-03-2022",
+    "title": "Moved to the United States!",
+    "description": "Moved to the United States from Ukraine because of the Russo-Ukrainian war and Putin\uD83D\uDE21.",
+    "icon": "feather:award"
+  },
+  {
+    "date": "05-11-2022",
+    "title": "First job ever!",
+    "description": "Began my first full-time job ever. I was hired as a Python junior developer.",
+    "icon": "feather:briefcase"
+  },
+  {
+    "date": "01-10-2020",
+    "title": "Started freelancing!",
+    "description": "I started freelancing and making some money. I was hired by a few clients to make websites(mostly admin-panels) and bots on a platform called \"Telegram\".",
+    "icon": "feather:briefcase"
+  },
+  {
+    "date": "07-04-2005",
+    "title": "Birthday!",
+    "description": "I was born on the 4th of July, 2005.",
+    "icon": "feather:gift"
+  }
+]
