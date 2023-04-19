@@ -8,12 +8,10 @@ export interface AppSettings {
 
 const settingsSlice = createSlice({
   name: "settings",
-  initialState: (): AppSettings => {
-    return {
-      animations: true,
-      playClickSound: true,
-    };
-  },
+  initialState: {
+    animations: true,
+    playClickSound: true,
+  } as AppSettings,
   reducers: {
     toggleShowAnimations(state) {
       state.animations = !state.animations;
