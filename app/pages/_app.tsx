@@ -20,7 +20,11 @@ import { wrapper } from "~/lib/state/store";
 import Init from "~/components/Init.component";
 import { PersistGate } from "redux-persist/integration/react";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 NProgress.configure({
   easing: "ease",
@@ -49,6 +53,8 @@ export default function App({
     router.events.on("routeChangeComplete", () => NProgress.done());
     router.events.on("routeChangeError", () => NProgress.done());
 
+    document.body.classList.add(inter.variable);
+
     if (process.env.NODE_ENV === "production") {
       splitbee.init({
         disableCookie: true,
@@ -68,9 +74,7 @@ export default function App({
         >
           <Init />
           <Analytics />
-          <div className={`${inter.variable}`}>
-            {getLayout(<Component {...props.pageProps} />, props.pageProps)}
-          </div>
+          {getLayout(<Component {...props.pageProps} />, props.pageProps)}
           <style jsx global>
             {`
               #nprogress .bar {

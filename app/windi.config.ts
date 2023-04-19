@@ -28,8 +28,7 @@ export default defineConfig({
       },
       colors,
       fontFamily: {
-        // TODO fix it so it works properly with @next/font
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         wave: {
