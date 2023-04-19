@@ -1,16 +1,16 @@
-import { create as createConfetti } from 'canvas-confetti';
-import { useEffect, useRef } from 'react';
+import { create as createConfetti } from "canvas-confetti";
+import { useEffect, useRef } from "react";
 
-import { EventType } from '~/types';
+import { EventType } from "~/types";
 
 export interface EventProps {
-	event: EventType;
+  event: EventType;
 }
 
 export function Event({ event }: EventProps): JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const confetti = createConfetti(canvasRef.current, {
+  const confetti = createConfetti(canvasRef.current as HTMLCanvasElement, {
     resize: true,
   });
 

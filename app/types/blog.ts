@@ -18,17 +18,14 @@ export const BlogPostModel = z.object({
     .transform((date) => formatDate(date, BLOG_POST_DATETIME_FORMAT)),
   modified: z.string().datetime().nullish(),
   image: z.string().url(),
-  body: z.string(),
   slug: z.string(),
+  body: z.string(),
   likesCount: z.number().gte(0),
   readingTimeInMinutes: z.number().gte(0),
 });
 
 export const BlogPosts = createPaginatedResponseSchema(
-  BlogPostModel.merge(
-    z.object({
-      description: z.string().optional(),
-      body: z.string().optional(),
-    })
-  )
+  BlogPostModel.omit({
+    body: true,
+  })
 );

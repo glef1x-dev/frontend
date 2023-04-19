@@ -1,22 +1,22 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 interface XFigureProps {
-	alt?: string;
-	caption?: string;
-	src: string;
+  alt?: string;
+  caption?: string;
+  src: string;
 }
 
 export function XFigure({ alt, caption, src }: XFigureProps): JSX.Element {
   return (
     <figure>
       <Image
-        alt={alt ?? caption}
+        alt={alt ?? caption ?? ""}
         className="rounded-3xl object-cover select-none hover:shadow-xl"
         draggable={false}
-        height="100%"
+        height={600}
         layout="responsive"
         src={src}
-        width="100%"
+        width={1000}
       />
       <figcaption>{alt ?? caption}</figcaption>
     </figure>

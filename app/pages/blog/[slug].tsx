@@ -34,6 +34,10 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps<BlogPostProps, PathProps> = async ({
   params,
 }) => {
+  if (!params) {
+    throw new Error("No params provided");
+  }
+
   const post = await apiClient.getPostBySlug(params.slug);
 
   return {

@@ -12,7 +12,7 @@ export type GetBlogPostsOptions = Partial<{
   pageSize: number | null;
 }>;
 
-export type BlogPost = Validated<typeof BlogPostModel> & {
+export type BlogPost = Omit<Validated<typeof BlogPostModel>, "body"> & {
   body: MDXRemoteSerializeResult<
     Record<string, unknown>,
     Record<string, unknown>
@@ -107,12 +107,12 @@ export class ApiClient {
         error: json,
       });
 
-      return null;
+      return [];
     }
 
     const json = response.data as GitHubRepos;
 
-    return json
+    const projects = json
       .map((repo) => {
         if (
           repo.archived ||
@@ -124,7 +124,7 @@ export class ApiClient {
 
         return {
           description: repositoryDescription,
-          icon: ((): string => {
+          icon: ((): string | undefined => {
             if (!repositoryDescription) return undefined;
 
             const char = repo.description.split(" ")[0];
@@ -139,8 +139,9 @@ export class ApiClient {
           stargazersCount: repo.stargazers_count,
         } as Project;
       })
-      .filter((project) => project !== null)
-      .sort((a, b) => b.stargazersCount - a.stargazersCount);
+      .filter((project) => project !== null) as Array<Project>;
+
+    return projects.sort((a, b) => b.stargazersCount - a.stargazersCount);
   }
 }
 

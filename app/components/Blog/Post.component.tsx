@@ -5,10 +5,10 @@ import clsx from "clsx";
 import { Pill } from "~/components";
 
 import { Validated } from "~/services/api/type-utils";
-import { BlogPostModel } from "~/types";
+import { BlogPosts } from "~/types";
 
 interface PostProps {
-  blogPost: Validated<typeof BlogPostModel>;
+  blogPost: Validated<typeof BlogPosts>["results"][0];
   index: number;
 }
 

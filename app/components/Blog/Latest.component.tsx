@@ -4,11 +4,10 @@ import Link from "next/link";
 import { Pill } from "~/components";
 
 import { Validated } from "~/services/api/type-utils";
-import { BlogPostModel } from "~/types";
-import { BLOG_POST_DATETIME_FORMAT, formatDate } from "~/utils/datetime";
+import { BlogPosts } from "~/types";
 
 interface LatestProps {
-  blogPost: Validated<typeof BlogPostModel>;
+  blogPost: Validated<typeof BlogPosts>["results"][0];
 }
 
 export function Latest({ blogPost }: LatestProps): JSX.Element {

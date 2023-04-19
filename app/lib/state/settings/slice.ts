@@ -10,7 +10,7 @@ const settingsSlice = createSlice({
   name: "settings",
   initialState: (): AppSettings => {
     return {
-      animations: null,
+      animations: true,
       playClickSound: true,
     };
   },
