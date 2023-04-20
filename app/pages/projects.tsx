@@ -1,10 +1,10 @@
 import type { GetStaticProps } from "next";
 import { Layout } from "~/layouts";
 import { Animate, List } from "~/components";
-import { ListActionType } from "~/types";
-
 import type { ListAction, Project } from "~/types";
+import { ListActionType } from "~/types";
 import { apiClient } from "~/services/api";
+import GithubStarsCount from "~/components/Projects/GithubStarsCount";
 
 interface ProjectProps {
   stringifiedProjects: string;
@@ -71,6 +71,11 @@ export default function ProjectsPage({
                   ]}
                   description={project.description}
                   icon={<span className="text-xl">{project.icon}</span>}
+                  iconAtTheEndOTitle={
+                    <GithubStarsCount
+                      stargazersCount={project.stargazersCount}
+                    />
+                  }
                   title={project.name}
                 />
               </Animate>

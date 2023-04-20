@@ -17,6 +17,7 @@
 	},
 	"dependencies": {
 		"@headlessui/react": "^1.7.14",
+		"@iconify/icons-material-symbols": "^1.2.37",
 		"@iconify/react": "^3.2.2",
 		"@reduxjs/toolkit": "^1.9.3",
 		"@splitbee/web": "^0.3.0",

@@ -46,6 +46,9 @@ importers:
       '@headlessui/react':
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
+      '@iconify/icons-material-symbols':
+        specifier: ^1.2.37
+        version: 1.2.37
       '@iconify/react':
         specifier: ^3.2.2
         version: 3.2.2(react@18.2.0)
@@ -304,12 +307,22 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
+  /@iconify/icons-material-symbols@1.2.37:
+    resolution: {integrity: sha512-zSYqZGViZu+KG8eKBitpTDer+EaBfH6TaIRj1gnru0Zi85sqHb0kelvv+w+NZOdKj7nP+nH37950+rGc/Wd+nQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify/react@3.2.2(react@18.2.0):
     resolution: {integrity: sha512-z3+Jno3VcJzgNHsN5mEvYMsgCkOZkydqdIwOxjXh45+i2Vs9RGH68Y52vt39izwFSfuYUXhaW+1u7m7+IhCn/g==}
     peerDependencies:
       react: '>=16'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@iconify/types@2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: false
 
   /@jridgewell/sourcemap-codec@1.4.15:

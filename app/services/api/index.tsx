@@ -120,24 +120,35 @@ export class ApiClient {
         )
           return null;
 
-        const repositoryDescription = repo.description ?? "";
-
-        return {
-          description: repositoryDescription,
-          icon: ((): string | undefined => {
-            if (!repositoryDescription) return undefined;
-
-            const char = repo.description.split(" ")[0];
-
-            return emojiRegex().test(char) ? char : undefined;
-          })(),
+        const result: Project = {
           homepage: repo.homepage ?? undefined,
           name: repo.name,
           post: undefined,
           template: false,
           url: repo.html_url.toLowerCase(),
           stargazersCount: repo.stargazers_count,
-        } as Project;
+          description: repo.description,
+        };
+
+        if (!repo.description) {
+          return result;
+        }
+
+        let emoji: string | null = null;
+        const descriptionLeadingEmojiMatch = repo.description
+          .split(" ")[0]
+          .match(emojiRegex());
+
+        if (descriptionLeadingEmojiMatch) {
+          emoji = descriptionLeadingEmojiMatch[0];
+        }
+
+        if (emoji) {
+          result.description = result.description.split(" ").slice(1).join(" ");
+          result.icon = emoji;
+        }
+
+        return result;
       })
       .filter((project) => project !== null) as Array<Project>;
 
