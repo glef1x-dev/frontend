@@ -13,6 +13,7 @@ interface ItemProps extends WithChildren {
   icon?: string | ReactNode;
   iconColor?: string;
   title: string;
+  iconAtTheEndOTitle?: ReactNode;
 }
 
 export function Item({
@@ -22,6 +23,7 @@ export function Item({
   icon,
   iconColor,
   title,
+  iconAtTheEndOTitle,
 }: ItemProps): JSX.Element {
   return (
     <li className="bg-gray-50 bg-opacity-75 dark:bg-gray-900 dark:bg-opacity-75 backdrop-filter backdrop-blur-sm border border-gray-100 dark:border-gray-500 rounded-lg transition ease-in-out duration-300">
@@ -45,9 +47,12 @@ export function Item({
               <>{icon}</>
             ))}
           <div className="min-w-0 flex-1 px-4">
-            <h1 className="text-gray-700 dark:text-white text-lg font-bold">
-              {title}
-            </h1>
+            <div className="flex items-center">
+              <h1 className="text-gray-700 inline-block dark:text-white text-lg font-bold">
+                {title}
+              </h1>
+              <div className="inline-block ml-2">{iconAtTheEndOTitle}</div>
+            </div>
             {description && (
               <p className="flex items-center mt-1 text-gray-500 dark:text-gray-400 text-xs">
                 {description}
