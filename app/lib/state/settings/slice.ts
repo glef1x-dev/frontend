@@ -26,15 +26,8 @@ const settingsSlice = createSlice({
         "(prefers-reduced-motion: reduce)"
       ).matches;
       if (preferNoAnimations) {
-        return {
-          ...state,
-          animations: state.animations ?? false,
-        };
+        state.animations = false;
       }
-      return {
-        ...state,
-        animations: state.animations ?? true,
-      };
     });
   },
 });
