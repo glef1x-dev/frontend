@@ -1,5 +1,7 @@
 # Frontend source code of `glefix.dev`
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3221713c-01b3-44f9-877a-0e40750548f0/deploy-status)](https://app.netlify.com/sites/glefixblog/deploys)
+
 ## Features
 
 - Optimized for serverless deployment to CDN edge locations (Cloudflare Workers)
