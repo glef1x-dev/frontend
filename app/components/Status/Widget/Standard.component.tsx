@@ -125,6 +125,7 @@ export function Widget(): JSX.Element {
                     className="rounded object-cover"
                     src={activity.avatar.url}
                     fill
+                    priority
                   />
                 </div>
               </a>
@@ -135,6 +136,7 @@ export function Widget(): JSX.Element {
                   className="rounded object-cover"
                   src={activity.avatar.url}
                   fill
+                  priority
                 />
               </div>
             )}
