@@ -2,15 +2,13 @@ import { useTheme } from "next-themes";
 
 import { Status } from "~/components";
 
-import { NavigationItemType, Theme } from "~/types";
-
 import type { NavigationItem, NavigationItems } from "~/types";
+import { NavigationItemType, Theme } from "~/types";
 import {
   togglePlayClickSound,
   toggleShowAnimations,
 } from "~/lib/state/settings/slice";
 import { useSettings } from "./use-settings";
-import { useStatus } from "./use-lanyard";
 
 const staticMenuItems: Array<Array<NavigationItem>> = [
   [
@@ -67,25 +65,23 @@ export function useNavigation(): {
   menu: NavigationItems;
   settings: NavigationItems;
 } {
+  const { theme, setTheme } = useTheme();
+
   const [settings, dispatch] = useSettings();
   const { animations: background, playClickSound } = settings;
-  const { color, loading, status } = useStatus();
-  const { theme, setTheme } = useTheme();
 
   const menuItems: NavigationItems = [
     ...staticMenuItems,
-    ...(!loading && status?.discord_status !== "offline"
-      ? [
-          [
-            {
-              type: NavigationItemType.LINK,
-              icon: <Status.Indicator color={color} pulse />,
-              text: "Status",
-              href: "/status",
-            } as NavigationItem,
-          ],
-        ]
-      : []),
+    ...[
+      [
+        {
+          type: NavigationItemType.LINK,
+          icon: <Status.DynamicIndicator />,
+          text: "Status",
+          href: "/status",
+        } as NavigationItem,
+      ],
+    ],
   ];
 
   const settingsItems: NavigationItems = [

@@ -1,2 +1,3 @@
-export { Indicator } from './Indicator.component';
-export * from './Widget';
+export { Indicator } from "./Indicator.component";
+export { DynamicIndicator } from "./DynamicIndicator.component";
+export * from "./Widget";

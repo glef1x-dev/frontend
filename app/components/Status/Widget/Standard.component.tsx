@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 
 import { Error, Loading } from "~/components/Status";
 import { Status } from "~/components";
-import { useStatus } from "~/hooks/use-lanyard";
+import { useLanyard } from "~/hooks/use-lanyard";
 
 type Avatar =
   | {
@@ -24,7 +24,7 @@ interface Activity {
 }
 
 export function Widget(): JSX.Element {
-  const { color, loading, status } = useStatus();
+  const { statusColor, loading, status } = useLanyard();
 
   if (loading) return <Loading />;
 
@@ -43,7 +43,7 @@ export function Widget(): JSX.Element {
       description: `#${status.discord_user.discriminator}`,
       icon: (
         <Status.Indicator
-          color={color}
+          color={statusColor}
           pulse={status.discord_status !== "offline"}
         />
       ),

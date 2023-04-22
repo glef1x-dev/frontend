@@ -45,7 +45,6 @@
 		"react-hot-toast": "^2.4.0",
 		"react-redux": "^8.0.5",
 		"react-use": "^17.4.0",
-		"react-use-lanyard": "^0.1.4",
 		"redux": "^4.2.1",
 		"redux-logger": "^3.0.6",
 		"redux-persist": "^6.0.0",
