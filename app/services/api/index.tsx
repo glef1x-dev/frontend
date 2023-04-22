@@ -20,8 +20,7 @@ export type BlogPost = Omit<Validated<typeof BlogPostModel>, "body"> & {
 };
 
 const axiosInstance = axios.create({
-  timeout: 10_000,
-  baseURL: process.env.BASE_API_URL,
+  baseURL: process.env.BASE_API_URL || "https://api.glefix.dev/api/v1",
 });
 
 const REPOSITORY_NAMES_FOR_PORTFOLIO = [
