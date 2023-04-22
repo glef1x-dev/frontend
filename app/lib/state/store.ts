@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore } from "redux-persist";
-import rootReducer from "./reducers";
+import { persistReducer, persistStore } from "redux-persist";
 import { createWrapper } from "next-redux-wrapper";
 import logger from "redux-logger";
+import { rootReducer } from "~/lib/state/reducers";
 
 const makeStore = (): ReturnType<typeof configureStore> => {
   const isServer = typeof window === "undefined";
@@ -14,6 +14,16 @@ const makeStore = (): ReturnType<typeof configureStore> => {
     return store;
   }
 
+  /* eslint-disable-next-line @typescript-eslint/no-var-requires */
+  const storage = require("redux-persist/lib/storage").default;
+
+  const rootPersistConfig = {
+    key: "root",
+    whitelist: ["settings"],
+    storage,
+  };
+
+  store.replaceReducer(persistReducer(rootPersistConfig, rootReducer));
   store["__persistor"] = persistStore(store); // Nasty hack
   return store;
 };

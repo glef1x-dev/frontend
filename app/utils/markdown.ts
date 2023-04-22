@@ -6,7 +6,7 @@ import RemarkEmoji from "remark-emoji";
 import RemarkPrism from "remark-prism";
 import RemarkSlug from "remark-slug";
 
-export async function parseBlogPostMarkdown(rawBody: string) {
+export async function parseBlogPostMarkdown(rawBody: string): Promise<ReturnType<typeof serialize>> {
   return await serialize(rawBody, {
     mdxOptions: {
       rehypePlugins: [[RehypeAutolinkHeadings, {}]],

@@ -8,6 +8,7 @@ import { Layout } from "~/layouts";
 
 import { ReactElement } from "react";
 import { apiClient, BlogPost } from "~/services/api";
+import Comments from "~/components/Blog/Comments.component";
 
 interface PathProps extends ParsedUrlQuery {
   slug: string;
@@ -82,6 +83,7 @@ export default function BlogPost({ post }: BlogPostProps): JSX.Element {
 
         <article className="max-w-prose prose prose-primary prose-lg text-gray-500 mx-auto">
           <MDXRemote {...post.body} components={Blog.X} />
+          <Comments />
         </article>
       </div>
     </div>

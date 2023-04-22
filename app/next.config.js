@@ -2,13 +2,13 @@ const WindiCSS = require("windicss-webpack-plugin");
 const { withAxiom } = require("next-axiom");
 
 const ContentSecurityPolicy = `
-  child-src *.google.com streamable.com;
+  child-src *.google.com streamable.com utteranc.es;
   connect-src *;
   default-src 'self';
   font-src 'self';
   img-src * blob: data:;
   media-src 'none';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.splitbee.io;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.splitbee.io https://utteranc.es/client.js;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   worker-src 'self' 'unsafe-inline' blob:;
 `;
