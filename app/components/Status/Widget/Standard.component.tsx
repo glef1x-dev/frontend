@@ -119,24 +119,22 @@ export function Widget(): JSX.Element {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <div className="max-w-md max-h-12 my-auto rounded pointer-events-none select-none ring-2 ring-gray-200 dark:ring-gray-500">
+                <div className="relative overflow-hidden w-12 h-12 my-auto rounded pointer-events-none select-none ring-2 ring-gray-200 dark:ring-gray-500">
                   <Image
                     alt={activity.avatar.alt}
-                    className="w-full max-h-12 rounded"
-                    height={48}
+                    className="rounded object-cover"
                     src={activity.avatar.url}
-                    width={48}
+                    fill
                   />
                 </div>
               </a>
             ) : (
-              <div className="max-w-md max-h-12 my-auto rounded pointer-events-none select-none ring-2 ring-gray-200 dark:ring-gray-500">
+              <div className="relative overflow-hidden w-12 h-12 my-auto rounded pointer-events-none select-none ring-2 ring-gray-200 dark:ring-gray-500">
                 <Image
                   alt={activity.avatar.alt}
-                  className="w-full max-h-12 rounded"
-                  height={48}
+                  className="rounded object-cover"
                   src={activity.avatar.url}
-                  width={48}
+                  fill
                 />
               </div>
             )}
