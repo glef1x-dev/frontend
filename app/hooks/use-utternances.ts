@@ -7,8 +7,9 @@ export default function useUtternances(
   onLoad?: () => void
 ): React.MutableRefObject<HTMLDivElement | null> {
   const divRef = useRef<HTMLDivElement | null>(null);
-  const { theme } = useTheme();
-  const utterancesTheme = theme === "dark" ? "github-dark" : "github-light";
+  const { resolvedTheme } = useTheme();
+  const utterancesTheme =
+    resolvedTheme === "dark" ? "github-dark" : "github-light";
 
   useEffect(() => {
     if (!divRef.current) {
