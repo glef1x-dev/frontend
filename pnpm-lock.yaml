@@ -49,6 +49,9 @@ importers:
       '@iconify/icons-material-symbols':
         specifier: ^1.2.38
         version: 1.2.38
+      '@iconify/icons-mdi':
+        specifier: ^1.2.44
+        version: 1.2.44
       '@iconify/react':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -303,6 +306,12 @@ packages:
 
   /@iconify/icons-material-symbols@1.2.38:
     resolution: {integrity: sha512-mIHzvcLzi/9xuBeeMl+4WFVza4VLqvyMOUqoGZdvx3KnhVRpVaEaQhYXZn8qVB7ozBowFrd5MY8bDequA9dxsg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify/icons-mdi@1.2.44:
+    resolution: {integrity: sha512-j1hw1Ar1EMz74Ehg1BwQ5h69gO++9GZqJYye2huvl9jPgvXqlNmwAFWOVZQ3EoLTfoAwcp8awfQh3FcMvaqyuA==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

@@ -1,23 +1,27 @@
-import { useEffect, useId } from "react";
+import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 export default function useUtternances(
   repositoryName: string,
-  issueTerm = "pathname"
-): string {
-  const anchorIdForInjectingUtternances = useId();
+  issueTerm = "pathname",
+  onLoad?: () => void
+): React.MutableRefObject<HTMLDivElement | null> {
+  const divRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
   const utterancesTheme = theme === "dark" ? "github-dark" : "github-light";
 
   useEffect(() => {
-    const anchor = document.getElementById(anchorIdForInjectingUtternances);
-    if (!anchor) {
-      throw new Error("Unable to inject comments without placeholder div.");
+    if (!divRef.current) {
+      console.error("Comment container ref is not set.");
+      return;
     }
 
     const script = document.createElement("script");
     script.async = true;
     script.src = "https://utteranc.es/client.js";
+    if (onLoad) {
+      script.onload = onLoad;
+    }
 
     script.setAttribute("crossorigin", "anonymous");
     script.setAttribute("repo", repositoryName);
@@ -25,13 +29,8 @@ export default function useUtternances(
     script.setAttribute("issue-term", issueTerm);
     script.setAttribute("theme", utterancesTheme);
 
-    anchor.replaceChildren(script);
-  }, [
-    repositoryName,
-    issueTerm,
-    utterancesTheme,
-    anchorIdForInjectingUtternances,
-  ]);
+    divRef.current.replaceChildren(script);
+  }, [repositoryName, issueTerm, utterancesTheme, divRef]);
 
-  return anchorIdForInjectingUtternances;
+  return divRef;
 }
