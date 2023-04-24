@@ -57,7 +57,7 @@ export default function BlogPost({ post }: BlogPostProps): JSX.Element {
           <div className="w-full h-full h-64 lg:h-96 mb-8 bg-gray-200 dark:bg-gray-600 rounded-3xl motion-safe:animate-pulse" />
           <Image
             alt={post.title}
-            className="absolute top-0 left-0 w-full h-auto max-h-64 lg:max-h-96 mb-8 rounded-3xl object-cover select-none shadow-xl default-transition"
+            className="absolute hidden lg:inline top-0 left-0 w-full h-auto max-h-64 lg:max-h-96 mb-8 rounded-3xl object-cover select-none shadow-xl default-transition"
             draggable={false}
             src={post.image}
             width={1700}
