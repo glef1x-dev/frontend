@@ -1,17 +1,15 @@
-import splitbee from '@splitbee/web';
+import type { GetServerSideProps } from "next";
 
-import type { GetServerSideProps } from 'next';
-
-import type { Referrals } from '~/types';
+import type { Referrals } from "~/types";
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { default: rawReferrals } = await import('~/data/referrals.json');
+  const { default: rawReferrals } = await import("~/data/referrals.json");
   const referrals = rawReferrals as Referrals;
 
   if (!params || !params.name) {
     return {
       redirect: {
-        destination: '/referrals',
+        destination: "/referrals",
         permanent: true,
       },
     };
@@ -26,22 +24,17 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     if (referralName === paramName) return referral;
 
-    if (referral.aliases) return referral.aliases.find((alias) => alias.toLowerCase() === paramName);
+    if (referral.aliases)
+      return referral.aliases.find(
+        (alias) => alias.toLowerCase() === paramName
+      );
 
     return undefined;
   });
 
-  if (referral) {
-    splitbee.track(referral.name.toLowerCase(), {
-      code: referral.code,
-      type: 'referral',
-      url: referral.url,
-    });
-  }
-
   return {
     redirect: {
-      destination: referral ? referral.url : '/referrals',
+      destination: referral ? referral.url : "/referrals",
       permanent: true,
     },
   };

@@ -1,5 +1,4 @@
 import NProgress from "nprogress";
-import splitbee from "@splitbee/web";
 import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
@@ -54,12 +53,6 @@ export default function App({
     router.events.on("routeChangeError", () => NProgress.done());
 
     document.body.classList.add(inter.variable);
-
-    if (process.env.NODE_ENV === "production") {
-      splitbee.init({
-        disableCookie: true,
-      });
-    }
   });
 
   const getLayout = Component.getLayout ?? ((page): ReactElement => page);

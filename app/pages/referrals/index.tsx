@@ -1,4 +1,3 @@
-import splitbee from "@splitbee/web";
 import toast, { Toaster } from "react-hot-toast";
 import writeText from "copy-to-clipboard";
 import { Icon } from "@iconify/react";
@@ -109,12 +108,6 @@ export default function ReferralsPage({
                       icon: "feather:external-link",
                       label: "Referral Link",
                       href: referral.url,
-                      onClick: () =>
-                        splitbee.track(referral.name.toLowerCase(), {
-                          code: referral.code,
-                          type: "referral",
-                          url: referral.url,
-                        }),
                     },
                   ]}
                   description={referral.description}

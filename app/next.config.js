@@ -9,7 +9,7 @@ const ContentSecurityPolicy = `
   font-src 'self';
   img-src * blob: data:;
   media-src 'none';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.splitbee.io https://utteranc.es/client.js;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://utteranc.es/client.js;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   worker-src 'self' 'unsafe-inline' blob:;
 `;

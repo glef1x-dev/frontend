@@ -61,9 +61,6 @@ importers:
       '@sentry/nextjs':
         specifier: ^7.49.0
         version: 7.49.0(next@13.3.1)(react@18.2.0)
-      '@splitbee/web':
-        specifier: ^0.3.0
-        version: 0.3.0
       '@vercel/analytics':
         specifier: ^1.0.0
         version: 1.0.0(react@18.2.0)
@@ -743,10 +740,6 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
-    dev: false
-
-  /@splitbee/web@0.3.0:
-    resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
     dev: false
 
   /@swc/helpers@0.5.0:
