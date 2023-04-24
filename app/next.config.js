@@ -1,5 +1,6 @@
 const WindiCSS = require("windicss-webpack-plugin");
 const { withAxiom } = require("next-axiom");
+const { withSentryConfig } = require("@sentry/nextjs");
 
 const ContentSecurityPolicy = `
   child-src *.google.com streamable.com utteranc.es;
@@ -104,6 +105,17 @@ const config = {
 
     return config;
   },
+  sentry: {
+    hideSourceMaps: true,
+  },
 };
 
-module.exports = withAxiom(config);
+const sentryWebpackPluginOptions = {
+  org: "educate-dz",
+  project: "glefix-dev-nextjs",
+};
+
+module.exports = withSentryConfig(
+  withAxiom(config),
+  sentryWebpackPluginOptions
+);
