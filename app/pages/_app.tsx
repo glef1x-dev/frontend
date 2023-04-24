@@ -1,5 +1,4 @@
 import NProgress from "nprogress";
-import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import { useEffectOnce } from "react-use";
@@ -66,7 +65,6 @@ export default function App({
           themes={Object.values(Theme)}
         >
           <Init />
-          <Analytics />
           {getLayout(<Component {...props.pageProps} />, props.pageProps)}
           <style jsx global>
             {`
