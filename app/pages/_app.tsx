@@ -17,6 +17,7 @@ import { colors } from "~/lib";
 import { wrapper } from "~/lib/state/store";
 import Init from "~/components/Init.component";
 import { PersistGate } from "redux-persist/integration/react";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,6 +65,7 @@ export default function App({
           defaultTheme={Theme.SYSTEM}
           themes={Object.values(Theme)}
         >
+          <Analytics />
           <Init />
           {getLayout(<Component {...props.pageProps} />, props.pageProps)}
           <style jsx global>
