@@ -36,15 +36,16 @@ const config = {
       "source.unsplash.com",
       "images.unsplash.com",
       "dyzdj8dlifcx0.cloudfront.net",
-      // main domains
-      "www.glefix.dev",
-      "glefix.dev",
     ],
     remotePatterns: [
       {
         protocol: "http",
         hostname: "127.0.0.1",
         port: "8000",
+      },
+      {
+        protocol: "https",
+        hostname: "**.glefix.dev",
       },
     ],
   },
