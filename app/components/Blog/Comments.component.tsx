@@ -38,7 +38,7 @@ export default function Comments({
     <>
       <a
         href="#comments"
-        className="not-prose hover:underline focus:transition-none focus:ring-inset focus:shadow-none"
+        className="not-prose dark:decoration-blue-600 hover:underline focus:transition-none focus:ring-inset focus:shadow-none"
       >
         <div className="flex text-blue-600 items-center gap-2 mt-12 mb-6">
           <Icon width={30} height={30} icon={commentsIcon} />
