@@ -36,6 +36,9 @@ const config = {
       "source.unsplash.com",
       "images.unsplash.com",
       "dyzdj8dlifcx0.cloudfront.net",
+      // main domains
+      "www.glefix.dev",
+      "glefix.dev",
     ],
     remotePatterns: [
       {
