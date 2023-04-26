@@ -1,6 +1,6 @@
 export * from "./blog";
 export * from "./common";
-export * from "./events";
+export * from "./canvas-animations";
 export * from "./lanyard";
 export * from "./list";
 export * from "./navigation";

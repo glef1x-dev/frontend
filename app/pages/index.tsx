@@ -3,14 +3,15 @@ import { Icon } from "@iconify/react";
 
 import { Animate, Button, Pill } from "~/components";
 import type { NavigationItem } from "~/types";
-import { EventType, NavigationItemType } from "~/types";
+import { NavigationItemType } from "~/types";
 import { Layout } from "~/layouts";
 
-import type { EventProps } from "~/components/Event.component";
-import dayjs from "dayjs";
+import type { CanvasProps } from "~/components/Canvas.component";
+import { getCanvasAnimations } from "~/utils/events";
+import { calculateMyAge } from "~/utils/datetime";
 
-const Event = dynamic<EventProps>(
-  () => import("~/components/Event.component").then(({ Event }) => Event),
+const Canvas = dynamic<CanvasProps>(
+  () => import("~/components/Canvas.component").then(({ Canvas }) => Canvas),
   {
     ssr: false,
   }
@@ -39,18 +40,16 @@ const ACTIONS: Array<NavigationItem> = [
 ];
 
 export default function HomePage(): JSX.Element {
-  const today = new Date();
-  const birthday = new Date("2005-07-04");
-  const age = dayjs(today).diff(birthday, "years");
-  const isBirthday =
-    today.getDate() === birthday.getDate() &&
-    today.getMonth() === birthday.getMonth();
+  const myAge = calculateMyAge();
+  const canvasAnimations = getCanvasAnimations();
 
-  const description = `I am a ${age} years old full-stack developer`;
+  const description = `I am a ${myAge} years old full-stack developer`;
 
   return (
     <Layout.Default>
-      {isBirthday && <Event event={EventType.BIRTHDAY} />}
+      {canvasAnimations.map((e, index) => (
+        <Canvas animation={e} key={e.name ? e.name + index : index} />
+      ))}
       <div className="min-h-screen flex items-center justify-center py-12">
         <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full space-y-8 text-center">
           <Animate
