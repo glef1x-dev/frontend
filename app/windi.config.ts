@@ -22,6 +22,7 @@ export default defineConfig({
     extend: {
       animation: {
         wave: "wave 2.25s ease-in-out infinite",
+        "blinking-cursor": "blinking 1s step-end infinite",
       },
       backgroundOpacity: {
         15: "0.15",
@@ -40,6 +41,10 @@ export default defineConfig({
           "50%": { transform: "rotate(10deg)" },
           "60%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(0deg)" },
+        },
+        blinking: {
+          "0%, 100%": { opacity: "0" },
+          "50%": { opacity: 1 },
         },
       },
       saturate: {

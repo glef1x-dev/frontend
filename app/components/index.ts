@@ -8,3 +8,4 @@ export * as Status from "./Status";
 
 export { Animate } from "./Animate.component";
 export { Canvas } from "./Canvas.component";
+export { Typewriter } from "./Typewriter.component";

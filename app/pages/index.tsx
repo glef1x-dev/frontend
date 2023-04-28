@@ -1,14 +1,16 @@
 import dynamic from "next/dynamic";
 import { Icon } from "@iconify/react";
 
-import { Animate, Button, Pill } from "~/components";
+import { Animate, Button, Pill, Typewriter } from "~/components";
 import type { NavigationItem } from "~/types";
 import { NavigationItemType } from "~/types";
 import { Layout } from "~/layouts";
 
 import type { CanvasProps } from "~/components/Canvas.component";
-import { getCanvasAnimations } from "~/utils/events";
+import { getCanvasAnimations } from "~/utils/animated-events";
+import { TypewriterClass } from "typewriter-effect";
 import { calculateMyAge } from "~/utils/datetime";
+import { useCallback } from "react";
 
 const Canvas = dynamic<CanvasProps>(
   () => import("~/components/Canvas.component").then(({ Canvas }) => Canvas),
@@ -40,15 +42,37 @@ const ACTIONS: Array<NavigationItem> = [
 ];
 
 export default function HomePage(): JSX.Element {
-  const myAge = calculateMyAge();
   const canvasAnimations = getCanvasAnimations();
+  const myAge = calculateMyAge();
 
-  const description = `I am a ${myAge} years old full-stack developer`;
+  const typingDescriptionFn = useCallback((typewriter: TypewriterClass) => {
+    const toggleBlinkingState = (state): void => {
+      state.elements.cursor.classList.toggle(
+        "motion-safe:animate-blinking-cursor"
+      );
+    };
+
+    typewriter
+      .typeString(`I am a ${myAge} years old full-stack developer`)
+      .callFunction(toggleBlinkingState)
+      .pauseFor(1500)
+      .callFunction(toggleBlinkingState)
+      .deleteAll()
+      .typeString(`I like to create cool things\u{1f9d9}`)
+      .callFunction(toggleBlinkingState)
+      .pauseFor(1500)
+      .deleteAll()
+      .callFunction(toggleBlinkingState)
+      .start();
+  }, []);
 
   return (
     <Layout.Default>
-      {canvasAnimations.map((e, index) => (
-        <Canvas animation={e} key={e.name ? e.name + index : index} />
+      {canvasAnimations.map((animation, index) => (
+        <Canvas
+          animation={animation}
+          key={animation.name ? animation.name + index : index}
+        />
       ))}
       <div className="min-h-screen flex items-center justify-center py-12">
         <div className="max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full space-y-8 text-center">
@@ -68,19 +92,10 @@ export default function HomePage(): JSX.Element {
             <Pill.Standard className="mt-4">software developer</Pill.Standard>
           </Animate>
 
-          <Animate
-            as="p"
-            animation={{
-              opacity: [0, 1],
-              scale: [0.75, 1],
-            }}
-            className="max-w-xs mt-4 md:mt-8 mx-auto text-base text-gray-300 sm:text-lg md:text-xl md:max-w-3xl"
-            transition={{
-              delay: 0.5,
-            }}
-          >
-            {description}
-          </Animate>
+          <Typewriter
+            typingFn={typingDescriptionFn}
+            fallbackTextIfTypingIsDisabled={`I am a ${myAge} years old full-stack developer`}
+          />
 
           <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-4 sm:space-y-0 w-full mt-8 sm:mt-4">
             {ACTIONS.map((action, index) => {
