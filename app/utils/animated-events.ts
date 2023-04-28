@@ -10,7 +10,7 @@ const defaultOptions = {
   animationDurationInMilliseconds: 15_000,
 };
 
-const events: Array<ConditionalCanvasAnimation> = [
+const animatedEvents: Array<ConditionalCanvasAnimation> = [
   {
     type: EventType.BIRTHDAY,
     preconditionFn: isTodayMyBirthday,
@@ -63,7 +63,7 @@ function nonNullable<T>(value: T): value is NonNullable<T> {
 }
 
 export function getCanvasAnimations(): Array<CanvasAnimation> {
-  return events
+  return animatedEvents
     .map((e): null | CanvasAnimation => {
       const { preconditionFn, ...rest } = e;
       if (!preconditionFn()) {

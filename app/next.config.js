@@ -43,10 +43,6 @@ const config = {
         hostname: "127.0.0.1",
         port: "8000",
       },
-      {
-        protocol: "https",
-        hostname: "**.glefix.dev",
-      },
     ],
   },
   // Inspired by: https://github.com/leerob/leerob.io/blob/main/next.config.js#L44-L81
