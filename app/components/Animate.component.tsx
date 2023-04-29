@@ -1,18 +1,22 @@
-import { animate, spring } from 'motion';
-import { isCrawlerUserAgent } from 'is-web-crawler';
-import { useEffect, useRef } from 'react';
-import { useMedia } from 'react-use';
+import { animate, spring } from "motion";
+import { isCrawlerUserAgent } from "is-web-crawler";
+import { useEffect, useRef } from "react";
+import { useMedia } from "react-use";
 
-import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom';
-import type { ComponentPropsWithRef, ElementType } from 'react';
-import { useSettings } from '~/hooks/use-settings';
+import type {
+  AnimationOptionsWithOverrides,
+  MotionKeyframesDefinition,
+} from "@motionone/dom";
+import type { ComponentPropsWithRef, ElementType } from "react";
+import { useAppSelector } from "~/hooks/use-redux";
+import { selectSettings } from "~/lib/state/settings/slice";
 
 type AnimateProps<T extends ElementType> = {
-	animation: MotionKeyframesDefinition;
-	as?: T;
-	enabled?: boolean;
-	transition?: AnimationOptionsWithOverrides;
-} & Omit<ComponentPropsWithRef<T>, 'animation' | 'as' | 'transition'>;
+  animation: MotionKeyframesDefinition;
+  as?: T;
+  enabled?: boolean;
+  transition?: AnimationOptionsWithOverrides;
+} & Omit<ComponentPropsWithRef<T>, "animation" | "as" | "transition">;
 
 const defaultTransition: AnimationOptionsWithOverrides = {
   delay: 0,
@@ -23,19 +27,24 @@ const defaultTransition: AnimationOptionsWithOverrides = {
 
 export function Animate<T extends ElementType>({
   animation,
-  as: Component = 'div' as T,
+  as: Component = "div" as T,
   children,
   enabled = true,
   transition,
   ...rest
 }: AnimateProps<T>): JSX.Element {
-  const [{ animations }] = useSettings();
-  const prefersReducedMotion = useMedia('(prefers-reduced-motion)', true);
+  const { animations } = useAppSelector(selectSettings);
+  const prefersReducedMotion = useMedia("(prefers-reduced-motion)", true);
 
   const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (ref.current && enabled && animations && !(prefersReducedMotion || isCrawlerUserAgent())) {
+    if (
+      ref.current &&
+      enabled &&
+      animations &&
+      !(prefersReducedMotion || isCrawlerUserAgent())
+    ) {
       animate(ref.current, animation, {
         ...defaultTransition,
         ...transition,
@@ -44,7 +53,7 @@ export function Animate<T extends ElementType>({
   }, [animation, animations, enabled, prefersReducedMotion, transition]);
 
   return (
-  // @ts-expect-error Valid component
+    // @ts-expect-error Valid component
     <Component ref={ref} {...rest}>
       {children}
     </Component>

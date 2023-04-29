@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 
 import { Animate, Button, Pill, Typewriter } from "~/components";
 import type { NavigationItem } from "~/types";
-import { NavigationItemType } from "~/types";
+import { ButtonType } from "~/types";
 import { Layout } from "~/layouts";
 
 import type { CanvasProps } from "~/components/Canvas.component";
@@ -21,19 +21,19 @@ const Canvas = dynamic<CanvasProps>(
 
 const ACTIONS: Array<NavigationItem> = [
   {
-    type: NavigationItemType.LINK,
+    type: ButtonType.LINK,
     href: "/blog",
     icon: <Icon className="mr-3" icon="feather:edit-3" />,
     text: "Blog",
   },
   {
-    type: NavigationItemType.LINK,
+    type: ButtonType.LINK,
     href: "/projects",
     icon: <Icon className="mr-3" icon="feather:copy" />,
     text: "Projects",
   },
   {
-    type: NavigationItemType.LINK,
+    type: ButtonType.LINK,
     external: true,
     href: "https://github.com/GLEF1X",
     icon: <Icon className="mr-3" icon="feather:github" />,
@@ -99,7 +99,7 @@ export default function HomePage(): JSX.Element {
 
           <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-4 sm:space-y-0 w-full mt-8 sm:mt-4">
             {ACTIONS.map((action, index) => {
-              if (action.type !== NavigationItemType.LINK) return null;
+              if (action.type !== ButtonType.LINK) return null;
 
               return (
                 <Animate

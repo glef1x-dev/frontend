@@ -9,7 +9,6 @@ export function formatStargazersCount(stargazersCount: number): string {
 }
 
 export function splitGraphemes(input: string): Array<string> {
-  // TODO: consider Intl.Segmenter
   const splitter = new Graphemer();
   return splitter.splitGraphemes(input);
 }

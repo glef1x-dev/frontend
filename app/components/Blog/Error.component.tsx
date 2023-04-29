@@ -1,10 +1,10 @@
-import { Icon } from '@iconify/react';
-import { Layout } from '~/layouts';
-import { NavigationItemType } from '~/types';
-import { Button } from '..';
+import { Icon } from "@iconify/react";
+import { Layout } from "~/layouts";
+import { ButtonType } from "~/types";
+import { Button } from "..";
 
 interface ErrorProps {
-	routeBlog?: boolean;
+  routeBlog?: boolean;
 }
 
 export function Error({ routeBlog = true }: ErrorProps): JSX.Element {
@@ -29,25 +29,25 @@ export function Error({ routeBlog = true }: ErrorProps): JSX.Element {
               <Button.Standard
                 icon="feather:arrow-left"
                 onClick={(): void => history.go(-1)}
-                type={NavigationItemType.ACTION}
+                type={ButtonType.ACTION}
               >
                 Back
               </Button.Standard>
               <Button.Standard
                 href="/"
                 icon="feather:home"
-                type={NavigationItemType.LINK}
+                type={ButtonType.LINK}
               >
                 Home
               </Button.Standard>
               {routeBlog && (
-              <Button.Standard
-                href="/blog"
-                icon="feather:book"
-                type={NavigationItemType.LINK}
-              >
-                Blog
-              </Button.Standard>
+                <Button.Standard
+                  href="/blog"
+                  icon="feather:book"
+                  type={ButtonType.LINK}
+                >
+                  Blog
+                </Button.Standard>
               )}
             </div>
           </div>

@@ -8,7 +8,7 @@ interface NavigationItemBase {
   href: string;
 }
 
-export enum NavigationItemType {
+export enum ButtonType {
   ACTION = "action",
   DIVIDER = "divider",
   LINK = "link",
@@ -16,14 +16,14 @@ export enum NavigationItemType {
 
 export type NavigationItem =
   | ({
-      type: NavigationItemType.ACTION;
+      type: ButtonType.ACTION;
     } & Omit<NavigationItemBase, "href">)
   | {
-      type: NavigationItemType.DIVIDER;
+      type: ButtonType.DIVIDER;
     }
   | ({
       external?: boolean;
-      type: NavigationItemType.LINK;
+      type: ButtonType.LINK;
     } & NavigationItemBase);
 
 export type NavigationItems = Array<Array<NavigationItem>>;

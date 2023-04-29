@@ -1,8 +1,8 @@
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
-import { Button } from '~/components';
-import { Layout } from '~/layouts';
-import { NavigationItemType } from '~/types';
+import { Button } from "~/components";
+import { Layout } from "~/layouts";
+import { ButtonType } from "~/types";
 
 export default function Error(): JSX.Element {
   return (
@@ -26,14 +26,14 @@ export default function Error(): JSX.Element {
             </p>
             <div className="mt-6 flex justify-center items-center space-x-4">
               <Button.Standard
-                type={NavigationItemType.ACTION}
+                type={ButtonType.ACTION}
                 onClick={(): void => history.go(-1)}
                 icon="feather:arrow-left"
               >
                 Back
               </Button.Standard>
               <Button.Standard
-                type={NavigationItemType.LINK}
+                type={ButtonType.LINK}
                 href="/"
                 icon="feather:home"
               >

@@ -18,6 +18,7 @@ import { wrapper } from "~/lib/state/store";
 import Init from "~/components/Init.component";
 import { PersistGate } from "redux-persist/integration/react";
 import { Analytics } from "@vercel/analytics/react";
+import { Donate } from "~/components";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -67,6 +68,8 @@ export default function App({
         >
           <Analytics />
           <Init />
+          <Donate.Modal />
+
           {getLayout(<Component {...props.pageProps} />, props.pageProps)}
           <style jsx global>
             {`

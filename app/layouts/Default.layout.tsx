@@ -4,8 +4,9 @@ import { NextSeo } from "next-seo";
 import { Navbar } from "~/components";
 
 import type { WithChildren, WithProps } from "~/types";
-import { useSettings } from "~/hooks/use-settings";
 import { useSeoProps } from "~/hooks/use-seo";
+import { useAppSelector } from "~/hooks/use-redux";
+import { selectSettings } from "~/lib/state/settings/slice";
 
 const Background = dynamic(() =>
   import("~/components/Background/Standard.component").then(
@@ -23,7 +24,7 @@ export function DefaultLayout({
   children,
   seo: customSeo,
 }: DefaultLayoutProps): JSX.Element {
-  const [{ animations: background }] = useSettings();
+  const { animations: background } = useAppSelector(selectSettings);
   const showBackground = overrideBackground ?? background;
 
   const seo = useSeoProps(customSeo);

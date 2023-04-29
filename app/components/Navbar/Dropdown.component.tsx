@@ -5,7 +5,7 @@ import { forwardRef, Fragment } from "react";
 import { Icon } from "@iconify/react";
 import { Menu, Transition } from "@headlessui/react";
 import type { NavigationItems } from "~/types";
-import { NavigationItemType, WithChildren, WithClassName } from "~/types";
+import { ButtonType, WithChildren, WithClassName } from "~/types";
 
 type Position = "top-left" | "top-right";
 
@@ -121,7 +121,7 @@ export function Dropdown({
                     <Menu.Item key={j}>
                       {({ active }): JSX.Element => {
                         switch (item.type) {
-                          case NavigationItemType.ACTION:
+                          case ButtonType.ACTION:
                             return (
                               <StyledMenuItem
                                 active={active}
@@ -141,11 +141,11 @@ export function Dropdown({
                                 )}
                               </StyledMenuItem>
                             );
-                          case NavigationItemType.DIVIDER:
+                          case ButtonType.DIVIDER:
                             return (
                               <hr className="mt-2 pb-2 border-gray-100 dark:border-gray-500" />
                             );
-                          case NavigationItemType.LINK:
+                          case ButtonType.LINK:
                             const external = item.external ?? false;
                             if (external) {
                               return (
