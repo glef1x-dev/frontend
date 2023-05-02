@@ -58,18 +58,11 @@ const animatedEvents: Array<ConditionalCanvasAnimation> = [
   },
 ];
 
-function nonNullable<T>(value: T): value is NonNullable<T> {
-  return value !== null && value !== undefined;
-}
-
 export function getCanvasAnimations(): Array<CanvasAnimation> {
-  return animatedEvents
-    .map((e): null | CanvasAnimation => {
-      const { preconditionFn, ...rest } = e;
-      if (!preconditionFn()) {
-        return null;
-      }
-      return rest;
-    })
-    .filter(nonNullable);
+  return animatedEvents.reduce<Array<CanvasAnimation>>((acc, animation) => {
+    if (animation.preconditionFn()) {
+      acc.push(animation);
+    }
+    return acc;
+  }, []);
 }
