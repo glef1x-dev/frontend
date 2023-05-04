@@ -5,7 +5,6 @@ import { useEffectOnce } from "react-use";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 
-import "inter-ui/inter.css";
 import "nprogress/nprogress.css";
 import "windi.css";
 

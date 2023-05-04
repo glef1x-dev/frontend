@@ -30,7 +30,6 @@
 		"dayjs": "^1.11.7",
 		"emoji-regex": "^10.2.1",
 		"graphemer": "^1.4.0",
-		"inter-ui": "^3.19.3",
 		"is-web-crawler": "^1.1.0",
 		"motion": "^10.15.5",
 		"next": "^13.3.1",
