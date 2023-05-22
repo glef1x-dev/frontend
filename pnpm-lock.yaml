@@ -112,9 +112,9 @@ importers:
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
-      ogl-typescript:
-        specifier: ^0.1.40
-        version: 0.1.40
+      ogl:
+        specifier: ^0.0.117
+        version: 0.0.117
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -182,6 +182,9 @@ importers:
       '@types/nprogress':
         specifier: ^0.2.0
         version: 0.2.0
+      '@types/ogl':
+        specifier: npm:ogl-types@^0.0.102
+        version: /ogl-types@0.0.102
       '@types/react':
         specifier: ^18.0.38
         version: 18.0.38
@@ -3678,8 +3681,12 @@ packages:
       es-abstract: 1.21.2
     dev: true
 
-  /ogl-typescript@0.1.40:
-    resolution: {integrity: sha512-7lpT8u35jd9W7Q48enrcCEL4H0x4co6pn5t6rXZgQN7UT39mcdzRsSr4ucZDOvfwKkUT+UvH2zw83/9mT59bFQ==}
+  /ogl-types@0.0.102:
+    resolution: {integrity: sha512-hJW9LeQ0BN68++GqXlwrMsJ89/hBwA7+35TsBDO1okyFOs+TdbiulvsEdA5t+Sr7GvxOHiq2fr+aF9dfU//Q2g==}
+    dev: true
+
+  /ogl@0.0.117:
+    resolution: {integrity: sha512-vpcdQ5EFVzi9FYwsk+rjYAg6xy1qHcZc1M/7LU3z1L7pNNRca9ouWNgQlzLGakyDbAQ1iXitJ29IAiJJtz6FNg==}
     dev: false
 
   /once@1.4.0:

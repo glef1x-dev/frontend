@@ -5,7 +5,7 @@ import {
   Mesh,
   Program,
   Renderer,
-} from "ogl-typescript";
+} from "ogl";
 import { log } from "next-axiom";
 import { useEffectOnce } from "react-use";
 import { useRef } from "react";
