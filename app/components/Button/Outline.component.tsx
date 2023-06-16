@@ -29,7 +29,7 @@ export function Outline({
     <Link
       href={href}
       className={clsx(
-        "inline-flex items-center justify-center w-full sm:w-auto bg-gray-50/75 hover:bg-gray-100/75 hover:text-gray-500 dark:bg-gray-900/75 dark:hover:bg-gray-800/75 dark:border-gray-700 dark:text-primary-500 dark:hover:text-primary-400 backdrop-filter backdrop-blur-sm saturate-200 text-gray-400 font-medium border-2 border-gray-200 rounded-lg cursor-pointer default-transition default-focus",
+        "inline-flex items-center justify-center w-full sm:w-auto bg-gray-50/75 hover:bg-gray-100/75 hover:text-gray-500 dark:bg-gray-900/75 dark:hover:bg-gray-800/75 dark:border-gray-700 dark:text-primary-500 dark:hover:text-primary-400 backdrop-filter backdrop-blur-sm saturate-200 text-gray-400 font-medium border-2 border-gray-200/50 rounded-lg cursor-pointer default-transition default-focus",
         small ? "px-4 py-1 text-sm" : "px-8 py-2",
         className
       )}
