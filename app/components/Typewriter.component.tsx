@@ -96,13 +96,13 @@ export const Typewriter = memo(function Typewriter({
       }}
       options={{
         loop: true,
-        delay: 70,
-        deleteSpeed: 70,
+        delay: 65,
+        deleteSpeed: 75,
         skipAddStyles: true,
         cursorClassName:
-          "max-w-xs mt-4 md:mt-8 mx-auto text-base text-gray-300 sm:text-lg md:text-xl md:max-w-3xl",
+          "max-w-xs mt-4 md:mt-8 mx-auto text-base text-gray-300 sm:text-lg md:text-xl md:max-w-2xl",
         wrapperClassName:
-          "max-w-xs mt-4 md:mt-8 mx-auto text-base text-gray-300 sm:text-lg md:text-xl md:max-w-3xl",
+          "max-w-xs mt-4 md:mt-8 mx-auto text-base text-gray-300 sm:text-lg md:text-xl md:max-w-2xl",
         // @ts-expect-error: Typings are wrong
         stringSplitter: splitGraphemes,
       }}

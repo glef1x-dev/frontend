@@ -26,12 +26,6 @@
     "icon": "feather:award"
   },
   {
-    "date": "05-11-2022",
-    "title": "First job ever!",
-    "description": "Began my first full-time job ever. I was hired as a Python junior developer.",
-    "icon": "feather:briefcase"
-  },
-  {
     "date": "01-10-2020",
     "title": "Started freelancing!",
     "description": "I started freelancing and making some money. I was hired by a few clients to make websites(mostly admin-panels) and bots on a platform called \"Telegram\".",

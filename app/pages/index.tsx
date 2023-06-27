@@ -43,7 +43,6 @@ const ACTIONS: Array<NavigationItem> = [
 
 export default function HomePage(): JSX.Element {
   const canvasAnimations = getCanvasAnimations();
-  const myAge = calculateMyAge();
 
   const typingDescriptionFn = useCallback((typewriter: TypewriterClass) => {
     const toggleBlinkingState = (state): void => {
@@ -53,7 +52,7 @@ export default function HomePage(): JSX.Element {
     };
 
     typewriter
-      .typeString(`I am a ${myAge} years old full-stack developer`)
+      .typeString("Welcome to my digital playground. Enjoy exploring!")
       .callFunction(toggleBlinkingState)
       .pauseFor(1500)
       .callFunction(toggleBlinkingState)
@@ -94,7 +93,9 @@ export default function HomePage(): JSX.Element {
 
           <Typewriter
             typingFn={typingDescriptionFn}
-            fallbackTextIfTypingIsDisabled={`I am a ${myAge} years old full-stack developer`}
+            fallbackTextIfTypingIsDisabled={
+              "Welcome to my digital playground. Enjoy exploring!"
+            }
           />
 
           <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-4 sm:space-y-0 w-full mt-8 sm:mt-4">

@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import type { PersistConfig } from "redux-persist";
 import { persistReducer, persistStore } from "redux-persist";
 import { createWrapper } from "next-redux-wrapper";
 import logger from "redux-logger";
@@ -17,7 +18,7 @@ const makeStore = (): ReturnType<typeof configureStore> => {
   /* eslint-disable-next-line @typescript-eslint/no-var-requires */
   const storage = require("redux-persist/lib/storage").default;
 
-  const rootPersistConfig = {
+  const rootPersistConfig: PersistConfig<never> = {
     key: "root",
     whitelist: ["settings"],
     storage,
