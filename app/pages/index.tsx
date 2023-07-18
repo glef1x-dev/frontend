@@ -9,7 +9,6 @@ import { Layout } from "~/layouts";
 import type { CanvasProps } from "~/components/Canvas.component";
 import { getCanvasAnimations } from "~/utils/animated-events";
 import { TypewriterClass } from "typewriter-effect";
-import { calculateMyAge } from "~/utils/datetime";
 import { useCallback } from "react";
 
 const Canvas = dynamic<CanvasProps>(
@@ -46,9 +45,11 @@ export default function HomePage(): JSX.Element {
 
   const typingDescriptionFn = useCallback((typewriter: TypewriterClass) => {
     const toggleBlinkingState = (state): void => {
-      state.elements.cursor.classList.toggle(
-        "motion-safe:animate-blinking-cursor"
-      );
+      requestAnimationFrame(() => {
+        state.elements.cursor.classList.toggle(
+          "motion-safe:animate-blinking-cursor"
+        );
+      });
     };
 
     typewriter
