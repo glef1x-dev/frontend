@@ -60,8 +60,7 @@ export default function BlogPost({ post }: BlogPostProps): JSX.Element {
             className="absolute hidden lg:inline top-0 left-0 w-full h-auto max-h-64 lg:max-h-96 mb-8 rounded-3xl object-cover select-none shadow-xl default-transition"
             draggable={false}
             src={post.image}
-            width={1700}
-            height={900}
+            fill
           />
         </div>
 

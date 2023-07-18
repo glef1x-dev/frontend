@@ -29,9 +29,7 @@ export function Latest({ blogPost }: LatestProps): JSX.Element {
             className="absolute top-0 left-0 w-full h-full rounded-lg rounded-b-none lg:(rounded-l-lg rounded-r-none) object-cover select-none"
             draggable={false}
             src={blogPost.image}
-            // TODO width is selected arbitrary and incurs overhead costs
-            width={1700}
-            height={600}
+            fill
             priority
           />
         </div>

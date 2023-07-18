@@ -30,9 +30,7 @@ export function _Post({ blogPost, index }: PostProps): JSX.Element {
           className="absolute top-0 left-0 w-full h-48 object-cover select-none"
           draggable={false}
           src={blogPost.image}
-          // TODO width is selected arbitrary and incurs overhead costs
-          width={1700}
-          height={600}
+          fill
           priority
         />
       </div>
